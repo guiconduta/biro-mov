@@ -1,18 +1,17 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/config";
 import { getFeaturedCases } from "@/lib/catalog";
-
-const BASE = "https://biro.mov";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${BASE}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
-    { url: `${BASE}/work`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/cases`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${SITE_URL}/work`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/cases`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
 
   const cases: MetadataRoute.Sitemap = getFeaturedCases().map((c) => ({
-    url: `${BASE}/cases/${c.slug}`,
+    url: `${SITE_URL}/cases/${c.slug}`,
     lastModified: now,
     changeFrequency: "yearly",
     priority: 0.7,

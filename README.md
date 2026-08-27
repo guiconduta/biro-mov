@@ -37,12 +37,13 @@ npm run dev            # http://localhost:3000
 - `components/site/` — seções da Home. `components/work/` — biblioteca. `components/LiteYouTube.tsx`
   — facade do player (thumb primeiro, iframe só no play, `youtube-nocookie`).
 
-## Deploy (Fase 6)
+## Deploy
 
-1. Criar/entrar numa conta na [Vercel](https://vercel.com) e conectar este repositório
-   (subir para o GitHub antes).
-2. Vercel detecta Next.js — build `npm run build`, sem config extra.
-3. Apontar o domínio nas configurações do projeto na Vercel.
-4. Trocar `https://biro.mov` em `app/robots.ts`, `app/sitemap.ts` e `metadataBase`
-   (`app/layout.tsx`) pelo domínio real.
-5. Cada push na branch principal redeploya automático.
+No ar em **https://biro-mov.vercel.app** (Vercel, repo `guiconduta/biro-mov`,
+branch `main`). Cada push na `main` redeploya automático.
+
+- `vercel.json` fixa o preset `nextjs` e o build command.
+- A URL canônica (metadata, sitemap, robots) vem de `lib/config.ts`: usa o domínio de
+  produção da Vercel por padrão. **Para apontar um domínio próprio:** adicione o domínio em
+  Vercel → Settings → Domains e defina `NEXT_PUBLIC_SITE_URL=https://seu-dominio` nas
+  Environment Variables. Nenhum código muda.

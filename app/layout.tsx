@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { site } from "@/lib/catalog";
+import { SITE_URL } from "@/lib/config";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: site.slogan,
-  metadataBase: new URL("https://biro.mov"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: `${site.name} — ${site.descriptor}`,
     description: site.slogan,
