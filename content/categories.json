@@ -1,0 +1,51 @@
+[
+  {
+    "id": "social-films",
+    "label": "Social Films",
+    "description": "Peças verticais para redes, foco em narrativa e ritmo.",
+    "order": 1,
+    "visible": true
+  },
+  {
+    "id": "commercial-sales",
+    "label": "Commercial / Sales",
+    "description": "Peça com objetivo comercial direto — anúncio, VSL, lançamento.",
+    "order": 2,
+    "visible": true
+  },
+  {
+    "id": "brand-institutional",
+    "label": "Brand / Institutional",
+    "description": "Filme de marca, institucional, cultura, manifesto.",
+    "order": 3,
+    "visible": true
+  },
+  {
+    "id": "interviews",
+    "label": "Interviews",
+    "description": "Depoimento, entrevista, documental de personagem.",
+    "order": 4,
+    "visible": true
+  },
+  {
+    "id": "real-estate-architecture",
+    "label": "Real Estate / Architecture",
+    "description": "Imóvel, arquitetura, empreendimento.",
+    "order": 5,
+    "visible": true
+  },
+  {
+    "id": "automotive",
+    "label": "Automotivo",
+    "description": "Carros — PPF, detailing, apresentação.",
+    "order": 6,
+    "visible": true
+  },
+  {
+    "id": "special-projects",
+    "label": "Special Projects",
+    "description": "Fora das caixas acima — curso, experimental, autoral.",
+    "order": 7,
+    "visible": true
+  }
+]

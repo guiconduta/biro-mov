@@ -1,0 +1,387 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    *{box-sizing:border-box}
+    body{margin:0;background:#0B0B0B;color:#E7ECE8;
+      font-family:'Poppins',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:#A7F6C5;text-decoration:none}
+    a:hover{color:#CBFBDD}
+    h1,h2,h3,p{margin:0}
+  </style>
+</helmet>
+
+<div style="width:1440px;background:#0B0B0B;overflow:hidden">
+
+  <!-- ============ HEADER ============ -->
+  <div style="position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+    padding:20px 64px;background:rgba(11,11,11,0.85);border-bottom:1px solid rgba(167,246,197,0.12)">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="logo-branca.png" alt="BM." style="height:22px;width:auto;display:block">
+      <span style="font-weight:600;font-size:16px;letter-spacing:0.5px;color:#F2F5F1">BIRO<span style="color:#A7F6C5">.MOV</span></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:32px">
+      <a href="#work" style="color:#7C8A83;font-size:13px;font-weight:500;letter-spacing:0.5px">Work</a>
+      <a href="#selected" style="color:#7C8A83;font-size:13px;font-weight:500;letter-spacing:0.5px">Selected</a>
+      <a href="#clients" style="color:#7C8A83;font-size:13px;font-weight:500;letter-spacing:0.5px">Clients</a>
+      <a href="#about" style="color:#7C8A83;font-size:13px;font-weight:500;letter-spacing:0.5px">About</a>
+      <a href="#contact" style="color:#7C8A83;font-size:13px;font-weight:500;letter-spacing:0.5px">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div style="display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:#7C8A83;font-weight:600">
+        <span style="width:7px;height:7px;border-radius:50%;background:#A7F6C5;display:block"></span>
+        REC <span style="color:#5C6862;font-variant-numeric:tabular-nums">00:00:04:20</span>
+      </div>
+      <a href="#contact" style="background:#A7F6C5;color:#0B0B0B;font-weight:600;font-size:13px;
+        padding:11px 22px;border-radius:999px;letter-spacing:0.3px">Vamos conversar</a>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <div style="position:relative;height:820px;overflow:hidden;background:#0B0B0B">
+    <img src="hero.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.9">
+    <div style="position:absolute;inset:0;background:
+      radial-gradient(120% 90% at 30% 40%, rgba(11,11,11,0) 0%, rgba(11,11,11,0.55) 55%, #0B0B0B 100%),
+      linear-gradient(180deg, rgba(11,11,11,0.5) 0%, rgba(11,11,11,0) 30%, #0B0B0B 100%)"></div>
+
+    <!-- framing brackets -->
+    <span style="position:absolute;top:40px;left:64px;width:26px;height:26px;border-top:2px solid rgba(167,246,197,0.5);border-left:2px solid rgba(167,246,197,0.5)"></span>
+    <span style="position:absolute;top:40px;right:64px;width:26px;height:26px;border-top:2px solid rgba(167,246,197,0.5);border-right:2px solid rgba(167,246,197,0.5)"></span>
+    <span style="position:absolute;bottom:40px;left:64px;width:26px;height:26px;border-bottom:2px solid rgba(167,246,197,0.5);border-left:2px solid rgba(167,246,197,0.5)"></span>
+    <span style="position:absolute;bottom:40px;right:64px;width:26px;height:26px;border-bottom:2px solid rgba(167,246,197,0.5);border-right:2px solid rgba(167,246,197,0.5)"></span>
+
+    <div style="position:absolute;left:64px;right:64px;bottom:96px;display:flex;flex-direction:column;gap:24px">
+      <span style="font-size:11px;letter-spacing:4px;color:#7C8A83;font-weight:600">FILMMAKER &amp; EDIÇÃO — SEQ. 01</span>
+      <h1 style="font-size:82px;line-height:1.02;font-weight:700;letter-spacing:-2.5px;color:#F2F5F1;max-width:1000px">
+        Conteúdo visual com<br>ritmo e direção.</h1>
+      <p style="font-size:19px;font-weight:500;color:#B9C4BD;max-width:620px;letter-spacing:-0.2px">
+        [linha de posicionamento / conversão — a definir com você]</p>
+      <div style="display:flex;align-items:center;gap:20px;margin-top:8px">
+        <a href="#contact" style="background:#A7F6C5;color:#0B0B0B;font-weight:600;font-size:15px;padding:15px 30px;border-radius:999px">Começar um projeto</a>
+        <a href="#selected" style="color:#E7ECE8;font-weight:500;font-size:15px;border-bottom:1px solid rgba(167,246,197,0.4);padding-bottom:2px">Ver trabalhos</a>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:64px;bottom:44px;font-size:11px;letter-spacing:2px;color:#5C6862;font-variant-numeric:tabular-nums">A001_C023</div>
+    <div style="position:absolute;right:64px;bottom:44px;font-size:11px;letter-spacing:2px;color:#5C6862">FPS 24.00 · SHUTTER 180° · ISO 800</div>
+  </div>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <div id="selected" style="padding:120px 64px;background:#0B0B0B">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:11px;letter-spacing:4px;color:#7C8A83;font-weight:600">SELECTED WORK — SEQ. 01</span>
+        <h2 style="font-size:42px;font-weight:600;letter-spacing:-0.8px;color:#F2F5F1">Trabalhos selecionados</h2>
+      </div>
+      <a href="#work" style="font-size:13px;font-weight:600;letter-spacing:1px;color:#A7F6C5">VER BIBLIOTECA →</a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">01 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">THE OFFICE IMÓVEIS</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">The Hill</div>
+        </div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">02 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">TÁBUA CRONOLÓGICA DA BÍBLIA</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">Reel Elaborado — Hook Série</div>
+        </div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">03 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">AMANDA LINZ · ENTREVISTA</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">Dia dos Namorados</div>
+        </div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">04 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">AUTOMOTIVO · PPF</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">Rover Sport</div>
+        </div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">05 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">DOMMA · BRANDING</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">Dia das Mães</div>
+        </div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">06 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">AMENDONÇA CONCRETOS</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">Reel Comercial — Produção 01</div>
+        </div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">07 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">DRA. JULIANA · CORPORATIVO</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">Reel Corporativo</div>
+        </div>
+      </div>
+
+      <div style="position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;
+        border:1px solid rgba(167,246,197,0.12);background:linear-gradient(180deg,#12332B 0%,#0B0B0B 85%)">
+        <div style="position:absolute;top:14px;left:14px;font-size:10px;letter-spacing:2px;color:#7C8A83;font-weight:600">08 · 9:16</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border:1.5px solid rgba(167,246,197,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <div style="width:0;height:0;border-left:14px solid #A7F6C5;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px"></div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.9) 70%)">
+          <div style="font-size:9px;letter-spacing:2px;color:#7C8A83;font-weight:600;margin-bottom:4px">GICONDUTA · IMOBILIÁRIO</div>
+          <div style="font-size:14px;font-weight:600;color:#F2F5F1">Terreno Bairro Glória</div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:24px;font-size:12px;color:#5C6862;letter-spacing:0.5px">Posters verticais próprios entram na curadoria · 8 de 63 vídeos catalogados</p>
+  </div>
+
+  <!-- ============ CLIENTS ============ -->
+  <div id="clients" style="padding:120px 64px;background:#0F1211;border-top:1px solid rgba(167,246,197,0.12)">
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:48px">
+      <span style="font-size:11px;letter-spacing:4px;color:#7C8A83;font-weight:600">CLIENTS</span>
+      <h2 style="font-size:42px;font-weight:600;letter-spacing:-0.8px;color:#F2F5F1;max-width:720px">
+        Marcas que confiaram a direção da própria imagem.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 64px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">The Office Imóveis</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">GiConduta</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">Amendonça Concretos</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">Domma</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">Amanda Linz</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">Agon Sports World</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">Tábua Cronológica da Bíblia</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid rgba(167,246,197,0.12)">
+        <span style="font-size:20px;font-weight:600;color:#F2F5F1">Dra. Juliana</span>
+        <span style="font-size:13px;color:#7C8A83;text-align:right">[linha de autoridade]</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ WHAT I DO ============ -->
+  <div style="padding:120px 64px;background:#0B0B0B">
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:48px">
+      <span style="font-size:11px;letter-spacing:4px;color:#7C8A83;font-weight:600">WHAT I DO</span>
+      <h2 style="font-size:42px;font-weight:600;letter-spacing:-0.8px;color:#F2F5F1">Áreas de capacidade</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+
+      <div style="background:#1A1E1D;border:1px solid rgba(167,246,197,0.12);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:16px">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#A7F6C5" stroke-width="1.6">
+          <path d="M4 4h4M16 4h4M4 20h4M16 20h4M4 4v4M20 4v4M4 20v-4M20 20v-4"/><circle cx="12" cy="12" r="3"/></svg>
+        <div style="font-size:11px;letter-spacing:2px;color:#7C8A83;font-weight:600">01</div>
+        <div style="font-size:19px;font-weight:600;color:#F2F5F1">Direção</div>
+        <p style="font-size:14px;color:#9AA8A1;line-height:1.5">Da ideia ao corte: roteiro, decupagem e a decisão do que fica em cena.</p>
+      </div>
+
+      <div style="background:#1A1E1D;border:1px solid rgba(167,246,197,0.12);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:16px">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#A7F6C5" stroke-width="1.6">
+          <rect x="3" y="6" width="10" height="3"/><rect x="3" y="12" width="16" height="3"/><rect x="3" y="18" width="7" height="3"/></svg>
+        <div style="font-size:11px;letter-spacing:2px;color:#7C8A83;font-weight:600">02</div>
+        <div style="font-size:19px;font-weight:600;color:#F2F5F1">Social Films</div>
+        <p style="font-size:14px;color:#9AA8A1;line-height:1.5">Peças verticais pensadas para reter — gancho, ritmo e final que converte.</p>
+      </div>
+
+      <div style="background:#1A1E1D;border:1px solid rgba(167,246,197,0.12);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:16px">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#A7F6C5" stroke-width="1.6">
+          <path d="M3 12c4-7 14-7 18 0M3 12c4 7 14 7 18 0"/><circle cx="12" cy="12" r="2.5"/></svg>
+        <div style="font-size:11px;letter-spacing:2px;color:#7C8A83;font-weight:600">03</div>
+        <div style="font-size:19px;font-weight:600;color:#F2F5F1">Edição &amp; Ritmo</div>
+        <p style="font-size:14px;color:#9AA8A1;line-height:1.5">Montagem, som e cor. O corte que segura a atenção do primeiro frame ao CTA.</p>
+      </div>
+
+      <div style="background:#1A1E1D;border:1px solid rgba(167,246,197,0.12);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:16px">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#A7F6C5" stroke-width="1.6">
+          <path d="M4 18V9l8-5 8 5v9"/><path d="M4 18h16"/><rect x="10" y="12" width="4" height="6"/></svg>
+        <div style="font-size:11px;letter-spacing:2px;color:#7C8A83;font-weight:600">04</div>
+        <div style="font-size:19px;font-weight:600;color:#F2F5F1">Projetos Imobiliários</div>
+        <p style="font-size:14px;color:#9AA8A1;line-height:1.5">Imóvel e empreendimento com linguagem de cinema — o espaço vira desejo.</p>
+      </div>
+
+    </div>
+    <p style="margin-top:20px;font-size:12px;color:#5C6862;letter-spacing:0.5px">Textos de intenção em rascunho — ajuste na sua voz.</p>
+  </div>
+
+  <!-- ============ FEATURED CASES ============ -->
+  <div style="padding:120px 64px;background:#0F1211;border-top:1px solid rgba(167,246,197,0.12)">
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:48px">
+      <span style="font-size:11px;letter-spacing:4px;color:#7C8A83;font-weight:600">FEATURED CASES — SEQ. 02</span>
+      <h2 style="font-size:42px;font-weight:600;letter-spacing:-0.8px;color:#F2F5F1">Cases em profundidade</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="min-height:340px;border-radius:18px;border:1px solid rgba(167,246,197,0.12);
+        background:linear-gradient(135deg,#12332B 0%,#0B0B0B 90%);padding:36px;display:flex;flex-direction:column;justify-content:space-between">
+        <span style="font-size:11px;letter-spacing:3px;color:#7C8A83;font-weight:600">CASE 01</span>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:28px;font-weight:600;color:#F2F5F1;letter-spacing:-0.5px">GiConduta — Imobiliário</div>
+          <p style="font-size:15px;color:#9AA8A1;line-height:1.5">[resumo do case — desafio, abordagem e resultado, em curadoria]</p>
+          <span style="font-size:13px;font-weight:600;letter-spacing:1px;color:#A7F6C5">VER CASE →</span>
+        </div>
+      </div>
+      <div style="min-height:340px;border-radius:18px;border:1px solid rgba(167,246,197,0.12);
+        background:linear-gradient(135deg,#12332B 0%,#0B0B0B 90%);padding:36px;display:flex;flex-direction:column;justify-content:space-between">
+        <span style="font-size:11px;letter-spacing:3px;color:#7C8A83;font-weight:600">CASE 02</span>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:28px;font-weight:600;color:#F2F5F1;letter-spacing:-0.5px">Amendonça Concretos</div>
+          <p style="font-size:15px;color:#9AA8A1;line-height:1.5">[resumo do case — desafio, abordagem e resultado, em curadoria]</p>
+          <span style="font-size:13px;font-weight:600;letter-spacing:1px;color:#A7F6C5">VER CASE →</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:12px;color:#5C6862;letter-spacing:0.5px">2–4 cases · quais projetos viram case = sua escolha.</p>
+  </div>
+
+  <!-- ============ PROCESS ============ -->
+  <div style="position:relative;padding:120px 64px;overflow:hidden;background:#0B0B0B">
+    <img src="filmmaker.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.22">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,#0B0B0B 0%,rgba(11,11,11,0.7) 50%,#0B0B0B 100%)"></div>
+    <div style="position:relative">
+      <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:56px">
+        <span style="font-size:11px;letter-spacing:4px;color:#7C8A83;font-weight:600">PROCESS</span>
+        <h2 style="font-size:42px;font-weight:600;letter-spacing:-0.8px;color:#F2F5F1">Como o projeto acontece</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:32px;padding:28px 0;border-top:1px solid rgba(167,246,197,0.15)">
+          <div style="font-size:26px;font-weight:600;color:#A7F6C5">01</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:19px;font-weight:600;color:#F2F5F1">Direção &amp; roteiro</div>
+            <div style="font-size:14px;color:#9AA8A1">Você recebe: conceito, referência visual e roteiro aprovado.</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:32px;padding:28px 0;border-top:1px solid rgba(167,246,197,0.15)">
+          <div style="font-size:26px;font-weight:600;color:#A7F6C5">02</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:19px;font-weight:600;color:#F2F5F1">Captação</div>
+            <div style="font-size:14px;color:#9AA8A1">Você recebe: diária de filmagem com direção em set e material bruto organizado.</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:32px;padding:28px 0;border-top:1px solid rgba(167,246,197,0.15)">
+          <div style="font-size:26px;font-weight:600;color:#A7F6C5">03</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:19px;font-weight:600;color:#F2F5F1">Edição &amp; ritmo</div>
+            <div style="font-size:14px;color:#9AA8A1">Você recebe: 1º corte para revisão, mais 2 rodadas de ajuste, som e cor.</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:32px;padding:28px 0;border-top:1px solid rgba(167,246,197,0.15);border-bottom:1px solid rgba(167,246,197,0.15)">
+          <div style="font-size:26px;font-weight:600;color:#A7F6C5">04</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:19px;font-weight:600;color:#F2F5F1">Entrega</div>
+            <div style="font-size:14px;color:#9AA8A1">Você recebe: masters em 9:16 e 16:9, versões de corte e arquivos para tráfego.</div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:20px;font-size:12px;color:#5C6862;letter-spacing:0.5px">Etapas e entregáveis em rascunho — reescreva na sua voz.</p>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <div id="about" style="padding:120px 64px;background:#0F1211;border-top:1px solid rgba(167,246,197,0.12)">
+    <div style="display:grid;grid-template-columns:460px 1fr;gap:64px;align-items:center">
+      <img src="hero.jpg" alt="Biro" style="width:100%;border-radius:18px;display:block;border:1px solid rgba(167,246,197,0.12)">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font-size:11px;letter-spacing:4px;color:#7C8A83;font-weight:600">ABOUT</span>
+        <h2 style="font-size:40px;font-weight:600;letter-spacing:-0.8px;color:#F2F5F1;line-height:1.1">
+          Faço conteúdo comercial parecer cinema — e ainda vender.</h2>
+        <p style="font-size:16px;color:#9AA8A1;line-height:1.6">[texto em 1ª pessoa — pendente. Visão sobre imagem e narrativa, curto, sem bio genérica de currículo.]</p>
+        <p style="font-size:16px;color:#9AA8A1;line-height:1.6">[segunda linha — o que te move como diretor.]</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <div id="contact" style="padding:140px 64px;background:#0B0B0B;border-top:1px solid rgba(167,246,197,0.12);text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:3px;color:#7C8A83;font-weight:600;margin-bottom:24px">
+      <span style="width:7px;height:7px;border-radius:50%;background:#A7F6C5;display:block"></span>
+      [AGENDA ABERTA — X PROJETOS ESTE MÊS]
+    </div>
+    <h2 style="font-size:64px;font-weight:700;letter-spacing:-2px;color:#F2F5F1;max-width:900px;margin:0 auto 40px;line-height:1.05">
+      Vamos tirar da ideia?</h2>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">
+      <a href="#" style="border:1px solid rgba(167,246,197,0.5);color:#F2F5F1;font-weight:600;font-size:15px;padding:16px 32px;border-radius:999px">[WhatsApp]</a>
+      <a href="#" style="border:1px solid rgba(167,246,197,0.5);color:#F2F5F1;font-weight:600;font-size:15px;padding:16px 32px;border-radius:999px">@biro.mov</a>
+      <a href="#" style="border:1px solid rgba(167,246,197,0.5);color:#F2F5F1;font-weight:600;font-size:15px;padding:16px 32px;border-radius:999px">[e-mail]</a>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <div style="padding:56px 64px;background:#0B0B0B;border-top:1px solid rgba(167,246,197,0.12);
+    display:flex;align-items:center;justify-content:space-between">
+    <span style="font-weight:600;font-size:15px;letter-spacing:0.5px;color:#F2F5F1">BIRO<span style="color:#A7F6C5">.MOV</span></span>
+    <span style="font-size:11px;letter-spacing:3px;color:#5C6862;font-weight:600">AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING</span>
+    <span style="font-size:12px;color:#5C6862">© 2026</span>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

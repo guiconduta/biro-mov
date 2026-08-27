@@ -1,0 +1,122 @@
+[
+  {
+    "id": "gabi-silva",
+    "name": "Gabi Silva",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 1
+  },
+  {
+    "id": "guilherme-matilha",
+    "name": "Guilherme Matilha",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 2
+  },
+  {
+    "id": "tabua-cronologica",
+    "name": "Tábua Cronológica da Bíblia",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 3
+  },
+  {
+    "id": "amanda-linz",
+    "name": "Amanda Linz",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 4
+  },
+  {
+    "id": "the-office-imoveis",
+    "name": "The Office Imóveis",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 5
+  },
+  {
+    "id": "giconduta",
+    "name": "GiConduta",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 6
+  },
+  {
+    "id": "domma",
+    "name": "Domma",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 7
+  },
+  {
+    "id": "amendonca-concretos",
+    "name": "Amendonça Concretos",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 8
+  },
+  {
+    "id": "agon-sports-world",
+    "name": "Agon Sports World",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 9
+  },
+  {
+    "id": "base-academia",
+    "name": "Base Academia",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 10
+  },
+  {
+    "id": "dra-juliana",
+    "name": "Dra. Juliana",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 11
+  },
+  {
+    "id": "gps-viagem",
+    "name": "GPS Viagem",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 12
+  },
+  {
+    "id": "maquiare",
+    "name": "Maquiare",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 13
+  },
+  {
+    "id": "matilha-equilibrada",
+    "name": "Matilha Equilibrada",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 14
+  },
+  {
+    "id": "credigil",
+    "name": "Credígil",
+    "logo": null,
+    "context": null,
+    "featured": false,
+    "order": 15
+  }
+]

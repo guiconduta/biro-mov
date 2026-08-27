@@ -1,0 +1,38 @@
+[
+  {
+    "id": "direcao",
+    "label": "Direção",
+    "intent": "Da ideia ao corte: roteiro, decupagem e a decisão do que fica em cena.",
+    "exampleVideoId": null,
+    "exampleImage": null,
+    "order": 1,
+    "pricingRef": null
+  },
+  {
+    "id": "social-films",
+    "label": "Social Films",
+    "intent": "Peças verticais pensadas para reter — gancho, ritmo e final que converte.",
+    "exampleVideoId": null,
+    "exampleImage": null,
+    "order": 2,
+    "pricingRef": null
+  },
+  {
+    "id": "edicao-ritmo",
+    "label": "Edição & Ritmo",
+    "intent": "Montagem, som e cor. O corte que segura a atenção do primeiro frame ao CTA.",
+    "exampleVideoId": null,
+    "exampleImage": null,
+    "order": 3,
+    "pricingRef": null
+  },
+  {
+    "id": "imobiliario",
+    "label": "Projetos Imobiliários",
+    "intent": "Imóvel e empreendimento com linguagem de cinema — o espaço vira desejo.",
+    "exampleVideoId": null,
+    "exampleImage": null,
+    "order": 4,
+    "pricingRef": null
+  }
+]

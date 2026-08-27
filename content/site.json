@@ -1,0 +1,51 @@
+{
+  "name": "BIRO.MOV",
+  "wordmark": {
+    "light": "BIRO",
+    "accent": ".MOV"
+  },
+  "descriptor": "FILMMAKER & EDIÇÃO",
+  "slogan": "CONTEÚDO VISUAL COM RITMO E DIREÇÃO",
+  "footerTag": "AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING",
+  "hero": {
+    "headline": "Conteúdo visual com ritmo e direção.",
+    "sub": "",
+    "ctaLabel": "Começar um projeto",
+    "media": "/branding/hero.jpg"
+  },
+  "process": [
+    {
+      "step": "01",
+      "title": "Direção & roteiro",
+      "deliverable": "Conceito, referência visual e roteiro aprovado."
+    },
+    {
+      "step": "02",
+      "title": "Captação",
+      "deliverable": "Diária de filmagem com direção em set e material bruto organizado."
+    },
+    {
+      "step": "03",
+      "title": "Edição & ritmo",
+      "deliverable": "1º corte para revisão, mais 2 rodadas de ajuste, som e cor."
+    },
+    {
+      "step": "04",
+      "title": "Entrega",
+      "deliverable": "Masters em 9:16 e 16:9, versões de corte e arquivos para tráfego."
+    }
+  ],
+  "about": {
+    "text": "",
+    "photo": "/branding/hero.jpg"
+  },
+  "contact": {
+    "whatsapp": "",
+    "instagram": "@biro.mov",
+    "email": "",
+    "availabilityNote": ""
+  },
+  "flags": {
+    "pricingEnabled": false
+  }
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "gm-agitacao-reels",
+    "clientId": "guilherme-matilha",
+    "name": "Agitação Reels",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 1
+  },
+  {
+    "id": "gabi-reels",
+    "clientId": "gabi-silva",
+    "name": "Reels — Gabi Silva",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 2
+  },
+  {
+    "id": "tabua-reels",
+    "clientId": "tabua-cronologica",
+    "name": "Reel Elaborado — Tábua Cronológica",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 3
+  },
+  {
+    "id": "amanda-entrevistas",
+    "clientId": "amanda-linz",
+    "name": "Entrevistas — Amanda Linz",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 4
+  },
+  {
+    "id": "tof-imobiliario",
+    "clientId": "the-office-imoveis",
+    "name": "Imobiliário — The Office Imóveis",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 5
+  },
+  {
+    "id": "giconduta-imobiliario",
+    "clientId": "giconduta",
+    "name": "Imobiliário — GiConduta",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 6
+  },
+  {
+    "id": "imobiliario-avulsos",
+    "clientId": null,
+    "name": "Imobiliário — avulsos (cliente a definir)",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 7
+  },
+  {
+    "id": "domma-reels",
+    "clientId": "domma",
+    "name": "Branding — Domma",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 8
+  },
+  {
+    "id": "amendonca-institucional",
+    "clientId": "amendonca-concretos",
+    "name": "Institucional — Amendonça",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 9
+  },
+  {
+    "id": "amendonca-reel-comercial",
+    "clientId": "amendonca-concretos",
+    "name": "Reel Comercial — Amendonça",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 10
+  },
+  {
+    "id": "automotivo",
+    "clientId": null,
+    "name": "Automotivo — avulsos",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 11
+  },
+  {
+    "id": "agon-reels",
+    "clientId": "agon-sports-world",
+    "name": "Reels — Agon Sports World",
+    "year": null,
+    "isCase": false,
+    "caseSlug": null,
+    "order": 12
+  }
+]
