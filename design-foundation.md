@@ -21,28 +21,31 @@ badges redondos, monograma B em círculo. Satoshi geométrico. Um único acento 
 
 ---
 
-## 1. Cor — v2 (emerald mais profundo)
+## 1. Cor — v2.1 (Phthalo Green forward)
 
 | Token | Hex | Uso |
 |-------|-----|-----|
-| `--bg` | `#050D0A` | fundo (verde-quase-preto) |
-| `--surface` | `#10130F` | cards |
-| `--surface-2` | `#0F1F1B` | painel com tinta jade |
-| `--jade` | `#123524` | seções profundas, stop de gradiente |
-| `--teal` | `#076258` | **NOVO** — acento secundário, bordas ativas, stop de gradiente |
+| `--bg` | `#05100C` | canvas (phthalo-black) |
+| `--surface` | `#0A2019` | cards (phthalo escuro) |
+| `--surface-2` | `#0C2C23` | painel |
+| `--phthalo` | `#0C3B30` | **assinatura** — verde phthalo profundo |
+| `--jade` | `#124A3B` | phthalo mais claro — washes de seção |
+| `--teal` | `#0A6A5A` | ponte viva — borda ativa, stop de gradiente, filete de tópico |
 | `--accent` | `#9FCBB4` | menta suave (acento único) |
 | `--accent-hi` | `#C7E3D4` | hover do acento |
-| `--graphite` | `#1A1E1D` | neutro |
-| `--text-hi` | `#F4F6F3` | títulos |
-| `--text` | `#DFE6E1` | corpo |
-| `--text-mute` | `#74857C` | eyebrow, meta, HUD |
-| `--hairline` | `rgba(159,203,180,.13)` | bordas 1px |
+| `--text-hi` | `#F2F7F3` · `--text` `#DCE8E1` · `--text-mute` `#7C938A` | texto |
+| `--hairline` | `rgba(159,203,180,.14)` | bordas 1px |
 
-**Gradiente atmosférico iridescente** (`--iridescent`): cônico
-`#123524 → #076258 → #6F7FB6 (lavanda) → #E3B78F (pêssego) → #A7D8C2 → #123524`.
-Usado **borrado** (`blur(60px)`) em orbes: hero, contato. É a assinatura visual nova.
+`section--jade` = wash phthalo `#082019 → #05130F`.
+
+**Gradiente iridescente / motion colors** (`--iridescent`): cônico
+`#0C3B30 → #0A6A5A → #6F7FB6 (lavanda) → #E3B78F (pêssego) → #A7D8C2 → #0C3B30`.
+Usado: **borrado** em orbes (hero, contato) e **nítido** nos tiles da seção Motion Color.
 
 Tema **dark único**.
+
+> Nota do usuário: a paleta do mockup de identidade foi exploratória; a direção real é
+> **Phthalo Green**. Ajustada nesta v2.1.
 
 ---
 
@@ -63,9 +66,26 @@ Tema **dark único**.
 - **`.icon-badge`** — círculo `--surface-2` + borda hairline, ícone de linha menta centrado.
   Usado no What I Do.
 - **`.orb`** — círculo com `--iridescent` borrado. Hero (bleed pela direita), Contact (atrás
-  do título). É o "gradient atmosférico" do mockup.
+  do título).
 - **`.play-ring`** / play dos cards — círculo com anel menta.
 - Raios maiores: `--r-card: 22px`, `--r-lg: 30px`, pills em tudo.
+
+## 3b. Ícones (set do mockup — `components/icons.tsx`)
+
+Traço 1.5, grid 24, `currentColor` (menta no badge): **IconFilm** (edição/filmstrip),
+**IconColor** (color grading / círculos sobrepostos), **IconAudio** (waveform),
+**IconMotion** (sparkle). + IconFrame (direção), IconBuilding (imobiliário), IconPlay.
+
+## 3c. Separação de tópico (ref. bento do mockup)
+
+`.topic` = eyebrow (caixa alta, +3px) → `.topic__rule` (filete 48×2px, gradiente
+`accent → teal`) → `.h-section`. Aplicado em todas as seções.
+
+## 3d. Motion Color (seção nova)
+
+Faixa de 5 tiles de gradiente entre Process e About:
+verde `#0C3B30→#0A6A5A` · teal→menta · **iridescente** (animado, drift 18s) · lavanda→pêssego
+`#6F7FB6→#E3B78F` · phthalo escuro. `aria-hidden`, respeita `prefers-reduced-motion`.
 
 ---
 
