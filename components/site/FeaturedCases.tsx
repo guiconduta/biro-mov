@@ -12,8 +12,9 @@ export function FeaturedCases() {
   return (
     <section className="section section--jade" id="cases">
       <div className="wrap">
-        <div className="sec-head__l" style={{ marginBottom: 44 }}>
+        <div className="topic" style={{ marginBottom: 44 }}>
           <span className="eyebrow">Featured Cases — SEQ. 02</span>
+          <span className="topic__rule" />
           <h2 className="h-section">Cases em profundidade</h2>
         </div>
 

@@ -1,10 +1,10 @@
 import { getCapabilities } from "@/lib/catalog";
-import { IconFrame, IconSequence, IconMotion, IconBuilding } from "@/components/icons";
+import { IconFrame, IconMotion, IconAudio, IconBuilding } from "@/components/icons";
 
 const ICONS: Record<string, React.ReactNode> = {
   direcao: <IconFrame size={24} />,
-  "social-films": <IconSequence size={24} />,
-  "edicao-ritmo": <IconMotion size={24} />,
+  "social-films": <IconMotion size={24} />,
+  "edicao-ritmo": <IconAudio size={24} />,
   imobiliario: <IconBuilding size={24} />,
 };
 
@@ -14,8 +14,9 @@ export function WhatIDo() {
   return (
     <section className="section" id="what-i-do">
       <div className="wrap">
-        <div className="sec-head__l" style={{ marginBottom: 44 }}>
+        <div className="topic" style={{ marginBottom: 46 }}>
           <span className="eyebrow">What I Do</span>
+          <span className="topic__rule" />
           <h2 className="h-section">Áreas de capacidade</h2>
         </div>
 
@@ -23,7 +24,7 @@ export function WhatIDo() {
           {caps.map((cap, i) => (
             <div className="cap" key={cap.id}>
               <span className="icon-badge" aria-hidden>
-                {ICONS[cap.id] ?? <IconFrame size={26} />}
+                {ICONS[cap.id] ?? <IconFrame size={24} />}
               </span>
               <span className="cap__n">{String(i + 1).padStart(2, "0")}</span>
               <span className="cap__t">{cap.label}</span>

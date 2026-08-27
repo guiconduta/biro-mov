@@ -11,8 +11,9 @@ export function SelectedWork() {
     <section className="section" id="selected">
       <div className="wrap">
         <div className="sec-head">
-          <div className="sec-head__l">
+          <div className="topic">
             <span className="eyebrow">Selected Work — SEQ. 01</span>
+            <span className="topic__rule" />
             <h2 className="h-section">Trabalhos selecionados</h2>
           </div>
           <Link className="link-accent" href="/work">

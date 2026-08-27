@@ -10,8 +10,9 @@ export function Process() {
       <div className="process__scrim" />
 
       <div className="process__inner wrap">
-        <div className="sec-head__l" style={{ marginBottom: 52 }}>
+        <div className="topic" style={{ marginBottom: 52 }}>
           <span className="eyebrow">Process</span>
+          <span className="topic__rule" />
           <h2 className="h-section">Como o projeto acontece</h2>
         </div>
 

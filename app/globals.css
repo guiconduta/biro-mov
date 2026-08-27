@@ -2,23 +2,24 @@
 
 /* ===== BIRO.MOV — tokens (design-foundation.md) — v2 identidade circular ===== */
 :root {
-  /* base — emerald/teal mais profundo (ref. identidade + textura água) */
-  --bg: #050d0a;
-  --surface: #10130f;
-  --surface-2: #0f1f1b;
-  --jade: #123524;
-  --teal: #076258;          /* mid-tone: acento secundário, bordas ativas, gradiente */
-  --accent: #9fcbb4;         /* menta suave */
+  /* base — Phthalo Green forward */
+  --bg: #05100c;             /* phthalo-black (canvas) */
+  --surface: #0a2019;        /* card — phthalo escuro */
+  --surface-2: #0c2c23;      /* painel */
+  --phthalo: #0c3b30;        /* assinatura — verde phthalo profundo */
+  --jade: #124a3b;           /* phthalo mais claro — washes de seção */
+  --teal: #0a6a5a;           /* ponte viva — borda ativa, stop de gradiente */
+  --accent: #9fcbb4;         /* menta suave (acento único) */
   --accent-hi: #c7e3d4;
   --graphite: #1a1e1d;
 
-  --text-hi: #f4f6f3;
-  --text: #dfe6e1;
-  --text-dim: #9aa8a1;
-  --text-mute: #74857c;
-  --edge: #58655d;
+  --text-hi: #f2f7f3;
+  --text: #dce8e1;
+  --text-dim: #9ab0a6;
+  --text-mute: #7c938a;
+  --edge: #5a716a;
 
-  --hairline: rgba(159, 203, 180, 0.13);
+  --hairline: rgba(159, 203, 180, 0.14);
   --fill-subtle: rgba(159, 203, 180, 0.05);
 
   /* mais redondo (estilo circular) */
@@ -27,10 +28,10 @@
   --r-pill: 999px;
   --r-input: 12px;
 
-  /* gradiente atmosférico iridescente */
+  /* gradiente atmosférico iridescente (motion colors) */
   --iridescent: conic-gradient(
     from 210deg at 50% 50%,
-    #123524 0deg, #076258 68deg, #6f7fb6 148deg, #e3b78f 214deg, #a7d8c2 288deg, #123524 360deg
+    #0c3b30 0deg, #0a6a5a 66deg, #6f7fb6 146deg, #e3b78f 212deg, #a7d8c2 286deg, #0c3b30 360deg
   );
 
   --font-display: var(--font-satoshi), var(--font-inter), system-ui, -apple-system, sans-serif;
@@ -62,7 +63,20 @@ img { max-width: 100%; display: block; }
 /* ===== primitives ===== */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
 .section { padding-block: clamp(80px, 12vw, 128px); }
-.section--jade { background: #0b120f; border-top: 1px solid var(--hairline); }
+.section--jade {
+  background: linear-gradient(180deg, #082019 0%, #05130f 100%);
+  border-top: 1px solid var(--hairline);
+}
+
+/* ===== separação de tópico (ref. bento do mockup) ===== */
+.topic { display: flex; flex-direction: column; gap: 14px; }
+.topic__rule {
+  width: 48px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
+}
+.topic + * { margin-top: 0; }
 
 .eyebrow {
   font-family: var(--font-display);

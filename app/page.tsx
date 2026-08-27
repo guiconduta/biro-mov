@@ -6,6 +6,7 @@ import { Clients } from "@/components/site/Clients";
 import { WhatIDo } from "@/components/site/WhatIDo";
 import { FeaturedCases } from "@/components/site/FeaturedCases";
 import { Process } from "@/components/site/Process";
+import { MotionStrip } from "@/components/site/MotionStrip";
 import { About } from "@/components/site/About";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
@@ -21,6 +22,7 @@ export default function HomePage() {
         <WhatIDo />
         <FeaturedCases />
         <Process />
+        <MotionStrip />
         <About />
         <Contact />
       </main>

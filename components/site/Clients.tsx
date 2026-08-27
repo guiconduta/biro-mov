@@ -6,8 +6,9 @@ export function Clients() {
   return (
     <section className="section section--jade" id="clients">
       <div className="wrap">
-        <div className="sec-head__l" style={{ marginBottom: 44 }}>
+        <div className="topic" style={{ marginBottom: 44 }}>
           <span className="eyebrow">Clients</span>
+          <span className="topic__rule" />
           <h2 className="h-section" style={{ maxWidth: "18ch" }}>
             Marcas que confiaram a direção da própria imagem.
           </h2>
