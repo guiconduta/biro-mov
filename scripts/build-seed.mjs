@@ -220,7 +220,7 @@ const site = {
     { step: "04", title: "Entrega", deliverable: "Masters em 9:16 e 16:9, versões de corte e arquivos para tráfego." },
   ],
   about: { text: "", photo: "/branding/hero.jpg" }, // texto 1ª pessoa — pendente
-  contact: { whatsapp: "", instagram: "@biro.mov", email: "", availabilityNote: "" },
+  contact: { whatsapp: "(47) 99207-4245", instagram: "@biro.mov", email: "gconduta.araujo@gmail.com", availabilityNote: "" },
   flags: { pricingEnabled: false },
 };
 

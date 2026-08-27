@@ -3,9 +3,11 @@ import { site } from "@/lib/catalog";
 export function Contact() {
   const { whatsapp, instagram, email, availabilityNote } = site.contact;
 
-  const wa = whatsapp
-    ? `https://wa.me/${whatsapp.replace(/\D/g, "")}`
-    : undefined;
+  const waDigits = whatsapp.replace(/\D/g, "");
+  const waE164 = waDigits && !waDigits.startsWith("55") && waDigits.length <= 11
+    ? `55${waDigits}`
+    : waDigits;
+  const wa = waE164 ? `https://wa.me/${waE164}` : undefined;
   const ig = instagram
     ? `https://instagram.com/${instagram.replace(/^@/, "")}`
     : undefined;
