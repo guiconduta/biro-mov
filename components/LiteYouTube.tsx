@@ -47,7 +47,7 @@ export function LiteYouTube({
         padding: 0,
         border: 0,
         cursor: "pointer",
-        background: `#0b0b0b center/cover no-repeat url("${thumb}")`,
+        background: `#050d0a center/cover no-repeat url("${thumb}")`,
         display: "block",
       }}
     >
@@ -56,7 +56,7 @@ export function LiteYouTube({
         style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(180deg, rgba(11,11,11,.1), rgba(11,11,11,.5))",
+          background: "linear-gradient(180deg, rgba(5,13,10,.1), rgba(5,13,10,.5))",
         }}
       />
       <span
@@ -70,7 +70,7 @@ export function LiteYouTube({
           height: 64,
           borderRadius: "50%",
           border: "1.5px solid rgba(167,246,197,.7)",
-          background: "rgba(11,11,11,.35)",
+          background: "rgba(5,13,10,.35)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -81,7 +81,7 @@ export function LiteYouTube({
             width: 0,
             height: 0,
             marginLeft: 5,
-            borderLeft: "17px solid #a7f6c5",
+            borderLeft: "17px solid #9fcbb4",
             borderTop: "11px solid transparent",
             borderBottom: "11px solid transparent",
           }}

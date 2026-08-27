@@ -15,7 +15,8 @@ export function Contact() {
 
   return (
     <section className="section contact" id="contact">
-      <div className="wrap">
+      <div className="orb contact__orb" aria-hidden />
+      <div className="wrap contact__inner">
         <span className="hud" style={{ justifyContent: "center" }}>
           <span className="hud__dot" />
           {availabilityNote || "[AGENDA ABERTA — X PROJETOS ESTE MÊS]"}

@@ -2,10 +2,10 @@ import { getCapabilities } from "@/lib/catalog";
 import { IconFrame, IconSequence, IconMotion, IconBuilding } from "@/components/icons";
 
 const ICONS: Record<string, React.ReactNode> = {
-  direcao: <IconFrame size={30} />,
-  "social-films": <IconSequence size={30} />,
-  "edicao-ritmo": <IconMotion size={30} />,
-  imobiliario: <IconBuilding size={30} />,
+  direcao: <IconFrame size={24} />,
+  "social-films": <IconSequence size={24} />,
+  "edicao-ritmo": <IconMotion size={24} />,
+  imobiliario: <IconBuilding size={24} />,
 };
 
 export function WhatIDo() {
@@ -22,7 +22,9 @@ export function WhatIDo() {
         <div className="cap-grid">
           {caps.map((cap, i) => (
             <div className="cap" key={cap.id}>
-              {ICONS[cap.id] ?? <IconFrame size={30} />}
+              <span className="icon-badge" aria-hidden>
+                {ICONS[cap.id] ?? <IconFrame size={26} />}
+              </span>
               <span className="cap__n">{String(i + 1).padStart(2, "0")}</span>
               <span className="cap__t">{cap.label}</span>
               <p>{cap.intent}</p>

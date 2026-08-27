@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/catalog";
 
@@ -13,7 +12,7 @@ export function Header() {
   return (
     <header className="hdr">
       <a className="hdr__brand" href="#top" aria-label={site.name}>
-        <Image src="/branding/logo-branca.png" alt="" width={80} height={20} priority />
+        <span className="b-mark" aria-hidden>B</span>
         <span className="wordmark">
           {site.wordmark.light}
           <b>{site.wordmark.accent}</b>

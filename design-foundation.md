@@ -1,11 +1,11 @@
-# Design Foundation — BIRO.MOV
+# Design Foundation — BIRO.MOV (v2 — identidade circular)
 
-Fonte: pasta `Desktop/Branding/` (brand board `branding.png`, `CONCEITO BIRO.MOV.png`,
-`LOGO/`, fotos) + o template de orçamento. Alimenta a Fase 4 (Design).
+Base: brand board `Branding/branding.png` + **novo mockup de identidade** (mockup de
+identidade visual do usuário, 2026-08-27) + textura de referência (água esmeralda aérea).
+Alimenta a Fase 4/5 (Design).
 
-**Leitura em uma frase:** monitor de diretor / visor de câmera — jade-preto, um único acento
-verde-menta, Poppins geométrico, HUD de filmagem (REC, timecode, SEQ, colchetes de
-enquadramento) como ornamento.
+**Leitura em uma frase:** emerald cinematográfico + **estilo circular** — orbes iridescentes,
+badges redondos, monograma B em círculo. Satoshi geométrico. Um único acento menta.
 
 ---
 
@@ -13,116 +13,83 @@ enquadramento) como ornamento.
 
 | | |
 |---|---|
-| Nome | **BIRO.MOV** — `BIRO` branco + `.MOV` menta |
-| Descritor | `FILMMAKER & EDIÇÃO` (caixa alta, tracking largo) |
-| Monograma | **BM.** (arquivos: `LOGO/logo branca.png`, `logo preta.png`, `logo verde.png`, `BM LOGO BRANCA.png`) |
-| Slogan | **CONTEÚDO VISUAL COM RITMO E DIREÇÃO** |
-| Assinatura de rodapé | `AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING` |
+| Nome | **BIRO.MOV** — `BIRO` + `.MOV` menta (site). Big treatment do mockup usa só `BIRO`. |
+| Descritor | `FILMMAKER & EDIÇÃO` |
+| Monograma | **B em círculo** (`.b-mark` no código) — o "estilo circular" que o usuário curtiu |
+| Slogan | `CONTEÚDO VISUAL COM RITMO E DIREÇÃO` |
+| Rodapé | `AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING` |
 
 ---
 
-## 1. Cor (paleta oficial do brand board)
+## 1. Cor — v2 (emerald mais profundo)
 
-| Token | Nome na marca | Hex | Uso |
-|-------|---------------|-----|-----|
-| `--bg` | Preto Absoluto | `#0B0B0B` | fundo da página |
-| `--surface` | Grafite / Chumbo | `#1A1E1D` | cards, painéis |
-| `--surface-jade` | Verde Jade Escuro | `#0F2827` | faixas/seções profundas, gradiente do hero |
-| `--accent` | Verde Menta Suave | `#A7F6C5` | **acento único** — CTA, filtro ativo, `.MOV`, play, números de case, REC dot |
-| `--text-hi` | — | `#F2F5F1` | títulos |
-| `--text` | — | `#E7ECE8` | corpo |
-| `--text-mute` | — | `#7C8A83` | secundário, meta, HUD, eyebrows |
-| `--hairline` | — | `rgba(167,246,197,0.12)` | bordas 1px, colchetes de enquadramento |
-| `--fill-subtle` | — | `rgba(167,246,197,0.05)` | preenchimento fantasma em hover |
+| Token | Hex | Uso |
+|-------|-----|-----|
+| `--bg` | `#050D0A` | fundo (verde-quase-preto) |
+| `--surface` | `#10130F` | cards |
+| `--surface-2` | `#0F1F1B` | painel com tinta jade |
+| `--jade` | `#123524` | seções profundas, stop de gradiente |
+| `--teal` | `#076258` | **NOVO** — acento secundário, bordas ativas, stop de gradiente |
+| `--accent` | `#9FCBB4` | menta suave (acento único) |
+| `--accent-hi` | `#C7E3D4` | hover do acento |
+| `--graphite` | `#1A1E1D` | neutro |
+| `--text-hi` | `#F4F6F3` | títulos |
+| `--text` | `#DFE6E1` | corpo |
+| `--text-mute` | `#74857C` | eyebrow, meta, HUD |
+| `--hairline` | `rgba(159,203,180,.13)` | bordas 1px |
 
-Regra do acento: `#A7F6C5` é escasso — marca "a próxima ação" e "o dado que importa".
-**Tema dark único** no v1.
+**Gradiente atmosférico iridescente** (`--iridescent`): cônico
+`#123524 → #076258 → #6F7FB6 (lavanda) → #E3B78F (pêssego) → #A7D8C2 → #123524`.
+Usado **borrado** (`blur(60px)`) em orbes: hero, contato. É a assinatura visual nova.
 
----
-
-## 2. Tipografia — Poppins
-
-- **Família:** `Poppins` (Google Fonts) — "geométrica, moderna, impactante". Pesos: 500 / 600 / 700.
-- Fallback: `'Poppins', system-ui, -apple-system, sans-serif`.
-
-| Papel | Tamanho | Peso | Tracking | Caso |
-|-------|---------|------|----------|------|
-| Display / Hero | 64–88px | 600–700 | −1 a −3px | normal |
-| Título de seção | 34–44px | 600 | −0.5 a −1px | normal |
-| Lead / subtítulo | 18–22px | 500 | −0.2px | normal |
-| Corpo | 15–17px | 400–500 | 0 | normal |
-| **Eyebrow / HUD** | 10–12px | 500–600 | **+2 a +4px** | CAIXA ALTA |
-| Meta / legenda | 12–13px | 400 | +0.5px | normal |
-
-Assinatura: **título enorme e apertado** vs **eyebrow minúsculo e espaçado** ("SELECTED WORK",
-"CLIENTS"...). O wordmark `BIRO.MOV` sempre com `.MOV` em `--accent`.
+Tema **dark único**.
 
 ---
 
-## 3. Forma, HUD, movimento
+## 2. Tipografia — Satoshi / Inter
 
-- **Raio:** `--r-card: 18px` · `--r-pill: 999px` · `--r-input: 8px`.
-- **HUD de filmagem** (motivo assinatura, usado como cromo, não decoração vazia):
-  `● REC` (dot menta pulsando), timecode `00:00:04:20`, `SEQ. 01/02...`, **colchetes de
-  enquadramento** nos cantos das seções/cards, cruz central fina, guias tracejadas.
-- **Ícones:** linha, vocabulário de filme — FRAME (colchetes + cruz), SEQUÊNCIA (barras
-  empilhadas), MOVIMENTO (arcos), PLAY (triângulo em círculo), STORYTELLING (S sinuoso).
-  Grid 16/20/24, traço 1.5–2px. **Nunca emoji.**
-- **Bordas antes de sombra:** cards dark sobre canvas dark separados por `--hairline`.
-- **Movimento:** contido. Fade + subida 8–16px no scroll. Hover de card = colchetes acendem
-  em `--accent` + escala 1.01. REC dot pisca devagar. Sem paralaxe pesado.
+- **Display / títulos:** `Satoshi` (self-hosted em `public/fonts/`, via `next/font/local`;
+  pesos 400/500/700/900). Geométrica, moderna, precisa.
+- **Corpo / UI:** `Inter` (`next/font/google`).
+- Tokens: `--font-display`, `--font-body`.
+- Contraste editorial: display gigante e apertado (tracking −2 a −3px, peso 900 no hero) vs
+  eyebrow minúsculo espaçado (+3px, caixa alta).
 
 ---
 
-## 4. Fotografia
+## 3. Estilo circular (o que o usuário pediu mais)
 
-Disponível em `Branding/fotos/Novas Fotos Branding/`:
-- `hero photo editada.png` — Biro com câmera Sony, luz verde, fumaça, watermark BM. → **Hero + About**.
-- `filmmaker.png` — silhueta com gimbal, barras de neon verde, chão reflexivo → **fundo de seção** (Process / divisor).
-- `olho verde.jpg` — olho close, íris verde → motivo pontual.
-- equipamentos (drone, gimbal, mic, monitor) → thumbs de "What I Do" se preciso.
-
-Tratamento: vinheta para `--bg` nas bordas; tudo "senta" no canvas escuro.
-
----
-
-## 5. Aplicação nas 8 seções da Home
-
-| Seção | Aplicação |
-|-------|-----------|
-| **Header** | Monograma BM. + wordmark. Nav (Work · Selected · Clients · About · Contact). À direita: `● REC · 00:00:04:20` (HUD). CTA pill menta. |
-| **Hero** | Foto do Biro full-bleed, vinheta jade→preto. Colchetes de enquadramento nos cantos. Título Display. Slogan como tagline. 1 CTA. Rodapé HUD (`SEQ. 01`). |
-| **Selected Work** | Eyebrow `SELECTED WORK · SEQ. 01`. Mosaico de cards 9:16 (todos os vídeos são verticais). Poster + glifo play; hover acende colchetes. "Ver biblioteca →". |
-| **Clients** | Eyebrow `CLIENTS`. Nome grande + 1 linha `[linha de autoridade]`. Sem mural de logos. |
-| **What I Do** | 3–4 blocos em `--surface`, ícone de filme. Label + 1 linha de intenção + thumb. |
-| **Featured Cases** | 2–4 teasers grandes: capa, título Display, resumo, "Ver case →" menta. |
-| **Process** | Timeline vertical sobre `filmmaker.png` esmaecida. Nº da etapa em menta. "O que você recebe". |
-| **About** | Foto do Biro, texto 1ª pessoa curto. |
-| **Contact** | Headline Display. Pills WhatsApp / Instagram (@biro.mov) / e-mail com borda menta. Eyebrow de disponibilidade opcional. |
-| **Footer** | `AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING` + BM. |
+- **`.b-mark`** — B em círculo com borda menta. Header + footer.
+- **`.icon-badge`** — círculo `--surface-2` + borda hairline, ícone de linha menta centrado.
+  Usado no What I Do.
+- **`.orb`** — círculo com `--iridescent` borrado. Hero (bleed pela direita), Contact (atrás
+  do título). É o "gradient atmosférico" do mockup.
+- **`.play-ring`** / play dos cards — círculo com anel menta.
+- Raios maiores: `--r-card: 22px`, `--r-lg: 30px`, pills em tudo.
 
 ---
 
-## 6. Tokens (rascunho CSS Fase 5)
+## 4. Forma e movimento
 
-```css
-:root{
-  --bg:#0B0B0B; --surface:#1A1E1D; --surface-jade:#0F2827;
-  --accent:#A7F6C5;
-  --text-hi:#F2F5F1; --text:#E7ECE8; --text-mute:#7C8A83;
-  --hairline:rgba(167,246,197,.12); --fill-subtle:rgba(167,246,197,.05);
-  --font:'Poppins',system-ui,-apple-system,sans-serif;
-  --r-card:18px; --r-pill:999px; --r-input:8px;
-}
-```
+- Bordas antes de sombra. Cards dark separados por `--hairline`.
+- HUD de filmagem mantido (REC dot, timecode, SEQ, colchetes de enquadramento) — convive com
+  o circular.
+- Movimento contido: fade + subida no scroll, hover de card = escala + borda menta.
 
 ---
 
-## 7. Pendências para o Design fechar
+## 5. Fotografia / textura
 
-- Vetor do monograma BM. (tenho só PNG) — ideal ter SVG.
-- Tagline do Hero: usar o slogan oficial ou algo mais direto de conversão? (slogan é
-  "conceito"; um hero costuma ser mais afiado)
-- Foto do About: a mesma do hero ou outra.
-- Still/loop de vídeo real para o Hero (hoje uso a foto).
-- Contatos reais (WhatsApp, e-mail) — o brand board usa números fictícios.
+- `public/branding/hero.jpg` (Biro c/ câmera) — Hero + About.
+- `public/branding/filmmaker.jpg` (silhueta gimbal neon) — fundo do Process.
+- Textura de água esmeralda (ref. do usuário) — **não embutida** (sem arquivo); o mood dela
+  está na paleta v2 e nos orbes. Se o usuário mandar o arquivo, entra como fundo do Hero.
+
+---
+
+## 6. Pendências
+
+- Arquivo do monograma/logo novo em vetor (hoje `.b-mark` é recriado em CSS).
+- Textura de água em alta, se for virar fundo.
+- Aplicar o contraste "card claro sobre o dark" do mockup (bento) — ainda não feito no site.
+- Curadoria + textos ([colchetes]).
