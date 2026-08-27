@@ -57,6 +57,26 @@ export function getSelectedWork(): PublicVideo[] {
   return getVideosByTier("selected");
 }
 
+/**
+ * Reel da Home. Enquanto a curadoria de `selected` não acontece, cai para os
+ * primeiros N da biblioteca (por `order`). Substituir quando o usuário marcar
+ * os selected no inventário.
+ */
+export function getHomeReel(limit = 8): PublicVideo[] {
+  const sel = getSelectedWork();
+  if (sel.length) return sel.slice(0, 12);
+  // fallback sem curadoria: espalha por cliente para não repetir o mesmo
+  const lib = getLibrary();
+  const seen = new Set<string>();
+  const spread = lib.filter((v) => {
+    const key = v.clientId ?? v.projectId ?? v.id;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  return (spread.length >= limit ? spread : lib).slice(0, limit);
+}
+
 /** Biblioteca /work: selected + portfolio (archive excluído). */
 export function getLibrary(): PublicVideo[] {
   return getVideos().filter((v) => v.tier !== "archive");
@@ -78,6 +98,18 @@ export function getClients(): Client[] {
 export function getFeaturedClients(): Client[] {
   const withPublished = new Set(getVideos().map((v) => v.clientId).filter(Boolean));
   return getClients().filter((c) => c.featured && withPublished.has(c.id));
+}
+
+/**
+ * Clientes que têm ao menos um vídeo publicado. Enquanto `featured` não é
+ * curado, a seção Clients usa esta lista.
+ */
+export function getClientsWithWork(): Client[] {
+  const withPublished = new Set(getVideos().map((v) => v.clientId).filter(Boolean));
+  const featured = getFeaturedClients();
+  return featured.length
+    ? featured
+    : getClients().filter((c) => withPublished.has(c.id));
 }
 
 export function getProjects(): Project[] {
