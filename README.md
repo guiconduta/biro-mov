@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BIRO.MOV — portfólio
 
-## Getting Started
+Site do portfólio audiovisual de BIRO.MOV. Next.js 15 (App Router), catálogo em JSON
+versionado, sem CMS — todo conteúdo é editado no repositório.
 
-First, run the development server:
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script | O que faz |
+|--------|-----------|
+| `npm run dev` | servidor de desenvolvimento |
+| `npm run build` | build de produção (⚠️ pare o `dev` antes — no Windows os dois brigam pelo `.next`) |
+| `npm run seed` | regenera `content/*.json` a partir de `scripts/build-seed.mjs` |
+| `npm run validate:catalog` | valida schema + integridade de chaves do catálogo |
+| `npm run typecheck` | `tsc --noEmit` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Onde está o conteúdo
 
-## Learn More
+- `scripts/build-seed.mjs` — **fonte de verdade** dos vídeos/clientes/projetos. Edite as
+  tabelas ali e rode `npm run seed`.
+- `content/site.json` — textos da Home (hero, process, about, contatos), flag `pricingEnabled`.
+- `content/capabilities.json`, `content/cases.json` — editados à mão (o seed não sobrescreve).
+- `public/branding/` — imagens (hero, filmmaker, logo).
+- `design-foundation.md` — sistema visual (cores, tipografia, HUD).
 
-To learn more about Next.js, take a look at the following resources:
+## Estrutura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/` — rotas: `/` (Home), `/work` (biblioteca + modal), `/cases`, `/cases/[slug]`,
+  `/pricing` (gated por `pricingEnabled`, `noindex`), `sitemap.ts`, `robots.ts`.
+- `lib/catalog.ts` — leitura tipada do catálogo; remove `grade`/`status` do que vai ao cliente.
+- `components/site/` — seções da Home. `components/work/` — biblioteca. `components/LiteYouTube.tsx`
+  — facade do player (thumb primeiro, iframe só no play, `youtube-nocookie`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy (Fase 6)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Criar/entrar numa conta na [Vercel](https://vercel.com) e conectar este repositório
+   (subir para o GitHub antes).
+2. Vercel detecta Next.js — build `npm run build`, sem config extra.
+3. Apontar o domínio nas configurações do projeto na Vercel.
+4. Trocar `https://biro.mov` em `app/robots.ts`, `app/sitemap.ts` e `metadataBase`
+   (`app/layout.tsx`) pelo domínio real.
+5. Cada push na branch principal redeploya automático.

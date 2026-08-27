@@ -92,6 +92,21 @@ img { max-width: 100%; display: block; }
 .link-accent { color: var(--accent); font-weight: 600; font-size: 13px; letter-spacing: 1px; }
 .link-accent:hover { color: var(--accent-hi); }
 
+/* cases (compartilhado Home + /cases) */
+.cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 760px) { .cases-grid { grid-template-columns: 1fr; } }
+.case-card {
+  min-height: 320px;
+  border-radius: var(--r-card);
+  border: 1px solid var(--hairline);
+  background: linear-gradient(135deg, #12332b 0%, #0b0b0b 90%);
+  padding: 36px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
+}
+.case-card__t { font-size: 28px; font-weight: 600; color: var(--text-hi); letter-spacing: -0.5px; }
+.case-card p { font-size: 15px; color: var(--text-dim); line-height: 1.5; }
+.todo { color: var(--edge); font-style: italic; }
+
 /* HUD */
 .hud {
   display: inline-flex;

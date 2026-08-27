@@ -2,6 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import type { PublicVideo } from "@/lib/types";
 
+const TYPE_PREFIX =
+  /^(Edição|Entrevista|Projeto Imobiliário|Projeto Simples|Reel Elaborado|Reel Comercial|Reel Automotivo|Reel Corporativo|Reel Simples|Reel IA|VSL|Curso|Tábua Cronológica)\s*-\s*/i;
+
+// "Reel Elaborado - Tábua ... v3 (Gabi Silva)" -> "Tábua ... v3"
+function cardTitle(title: string, clientLabel?: string): string {
+  let t = title.replace(TYPE_PREFIX, "");
+  if (clientLabel) {
+    const esc = clientLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    t = t.replace(new RegExp(`\\s*\\(${esc}\\)\\s*$`, "i"), "");
+  }
+  return t;
+}
+
 export function VideoCard({
   video,
   clientLabel,
@@ -30,18 +43,4 @@ export function VideoCard({
       </span>
     </Link>
   );
-}
-
-// "Reel Elaborado - Tábua ... v3 (Gabi Silva)" -> "Tábua ... v3"
-// (o prefixo de tipo e o nome do cliente entre parênteses são ruído no card)
-function cardTitle(title: string, clientLabel?: string): string {
-  let t = title.replace(
-    /^(Edição|Entrevista|Projeto Imobiliário|Projeto Simples|Reel Elaborado|Reel Comercial|Reel Automotivo|Reel Corporativo|Reel Simples|Reel IA|VSL|Curso|Tábua Cronológica)\s*-\s*/i,
-    "",
-  );
-  if (clientLabel) {
-    const esc = clientLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    t = t.replace(new RegExp(`\\s*\\(${esc}\\)\\s*$`, "i"), "");
-  }
-  return t;
 }
