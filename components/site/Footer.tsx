@@ -3,7 +3,7 @@ import { site } from "@/lib/catalog";
 export function Footer() {
   return (
     <footer className="ftr">
-      <span className="ftr__brand">
+      <span className="ftr__brand" translate="no">
         <span className="b-mark" aria-hidden>B</span>
         <span className="wordmark">
           {site.wordmark.light}

@@ -18,11 +18,9 @@ function cardTitle(title: string, clientLabel?: string): string {
 export function VideoCard({
   video,
   clientLabel,
-  seq,
 }: {
   video: PublicVideo;
   clientLabel?: string;
-  seq?: number;
 }) {
   return (
     <Link className="vcard" href={`/work#${video.id}`} aria-label={video.title}>
@@ -31,9 +29,7 @@ export function VideoCard({
           <Image src={video.poster} alt="" fill sizes="(max-width:720px) 50vw, 25vw" style={{ objectFit: "cover" }} />
         </div>
       )}
-      {typeof seq === "number" && (
-        <span className="vcard__seq">{String(seq).padStart(2, "0")} · 9:16</span>
-      )}
+      <span className="vcard__seq" translate="no">{video.format}</span>
       <span className="vcard__play" aria-hidden>
         <i />
       </span>

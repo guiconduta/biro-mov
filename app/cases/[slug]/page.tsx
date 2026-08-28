@@ -36,7 +36,7 @@ export default async function CasePage({
   return (
     <>
       <Header />
-      <main className="wrap section">
+      <main id="main" className="wrap section">
         <span className="eyebrow">Case</span>
         <h1 className="h-section" style={{ marginTop: 14 }}>{c.title}</h1>
         <p style={{ color: "var(--text-dim)", maxWidth: "60ch", marginTop: 16 }}>{c.summary}</p>

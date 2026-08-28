@@ -15,7 +15,7 @@ export default function CasesIndex() {
   return (
     <>
       <Header />
-      <main className="wrap section">
+      <main id="main" className="wrap section">
         <span className="eyebrow">Featured Cases</span>
         <h1 className="h-section" style={{ marginTop: 14, marginBottom: 40 }}>Cases</h1>
 

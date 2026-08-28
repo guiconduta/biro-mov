@@ -22,11 +22,10 @@ export function SelectedWork() {
         </div>
 
         <div className="reel-grid">
-          {reel.map((v, i) => (
+          {reel.map((v) => (
             <VideoCard
               key={v.id}
               video={v}
-              seq={i + 1}
               clientLabel={v.clientId ? clientById.get(v.clientId) : undefined}
             />
           ))}

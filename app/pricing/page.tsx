@@ -16,7 +16,7 @@ export default function PricingPage() {
   return (
     <>
       <Header />
-      <main className="wrap section">
+      <main id="main" className="wrap section">
         <span className="eyebrow">Pricing</span>
         <h1 className="h-section" style={{ marginTop: 14 }}>Pacotes</h1>
         <p style={{ color: "var(--text-dim)", marginTop: 16 }}>

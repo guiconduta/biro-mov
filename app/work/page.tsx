@@ -20,7 +20,7 @@ export default function WorkPage() {
   return (
     <>
       <Header />
-      <main className="wrap">
+      <main id="main" className="wrap">
         <div className="work-head">
           <span className="eyebrow">Biblioteca — SEQ. 02</span>
           <h1>Work</h1>

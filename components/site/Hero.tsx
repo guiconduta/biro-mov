@@ -15,7 +15,7 @@ export function Hero() {
       </div>
 
       <div className="hero__inner wrap">
-        <span className="eyebrow">{site.descriptor} — SEQ. 01</span>
+        <span className="eyebrow" translate="no">{site.descriptor}</span>
         <h1>{headline}</h1>
         <p className="hero__sub">
           {sub || "[linha de posicionamento / conversão — a definir]"}
@@ -26,9 +26,9 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="hero__foot" aria-hidden>
+      <div className="hero__foot" aria-hidden translate="no">
         <span>A001_C023</span>
-        <span>FPS 24.00 · SHUTTER 180° · ISO 800</span>
+        <span>00:00:04:20</span>
       </div>
     </section>
   );

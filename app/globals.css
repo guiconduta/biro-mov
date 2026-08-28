@@ -34,11 +34,14 @@
     #0c3b30 0deg, #0a6a5a 66deg, #6f7fb6 146deg, #e3b78f 212deg, #a7d8c2 286deg, #0c3b30 360deg
   );
 
-  --font-display: var(--font-satoshi), var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-body: var(--font-inter), var(--font-satoshi), system-ui, -apple-system, sans-serif;
+  /* Satoshi como sistema de família única — ladder de pesos */
+  --font-display: var(--font-satoshi), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: var(--font-satoshi), system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --maxw: 1280px;
   --gutter: clamp(20px, 5vw, 64px);
+
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -50,15 +53,57 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(159, 203, 180, 0.18);
 }
 
 h1, h2, h3, p { margin: 0; }
-h1, h2, h3 { font-family: var(--font-display); }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+p { text-wrap: pretty; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 ::selection { background: var(--accent); color: var(--bg); }
+
+/* foco visível — WIG / WCAG 2.2 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* âncoras não somem sob o header sticky */
+section[id], [id]:target { scroll-margin-top: 84px; }
+
+/* skip link */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: var(--r-pill);
+  transform: translateY(-150%);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* ===== primitives ===== */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
