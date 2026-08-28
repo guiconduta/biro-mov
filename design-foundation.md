@@ -49,14 +49,15 @@ Tema **dark único**.
 
 ---
 
-## 2. Tipografia — Satoshi / Inter
+## 2. Tipografia — Satoshi, família única
 
-- **Display / títulos:** `Satoshi` (self-hosted em `public/fonts/`, via `next/font/local`;
-  pesos 400/500/700/900). Geométrica, moderna, precisa.
-- **Corpo / UI:** `Inter` (`next/font/google`).
-- Tokens: `--font-display`, `--font-body`.
-- Contraste editorial: display gigante e apertado (tracking −2 a −3px, peso 900 no hero) vs
-  eyebrow minúsculo espaçado (+3px, caixa alta).
+- **Satoshi** (self-hosted `public/fonts/`, `next/font/local`, pesos 400/500/700/900).
+  Sistema de **uma família só** — Inter removida (fonte "default" demais; `frontend-design`
+  + `ui-ux-pro-max` recomendam single-family precision system aqui).
+- Ladder: **900** hero · **700** títulos de seção · **500** labels/eyebrow · **400** corpo.
+- `--font-display` = `--font-body` = Satoshi.
+- Contraste editorial: display gigante e apertado (tracking −2 a −3px) vs eyebrow minúsculo
+  espaçado (+3px, caixa alta). `text-wrap: balance` em títulos, `pretty` em parágrafos.
 
 ---
 
@@ -107,9 +108,20 @@ verde `#0C3B30→#0A6A5A` · teal→menta · **iridescente** (animado, drift 18s
 
 ---
 
-## 6. Pendências
+## 6. Base de qualidade (aplicada — commit `2e79d0d`)
 
-- Arquivo do monograma/logo novo em vetor (hoje `.b-mark` é recriado em CSS).
-- Textura de água em alta, se for virar fundo.
-- Aplicar o contraste "card claro sobre o dark" do mockup (bento) — ainda não feito no site.
+Guiada por `frontend-design`, `ui-ux-pro-max` e Web Interface Guidelines (Vercel):
+`:focus-visible` global · skip link + `id="main"` · `color-scheme:dark` + `theme-color` ·
+`prefers-reduced-motion` reset global · `scroll-margin-top` nas âncoras ·
+modal com focus trap + restauração + `aria-labelledby` + `overscroll-behavior` + trava de
+scroll · filtros com `aria-pressed` / `aria-live` / URL em query params · thumbs `<img
+loading=lazy>` · `translate="no"` na marca. Removido: linha falsa de câmera no Hero
+("data slop"); índice numérico dos cards (não era sequência) → tag de formato.
+
+## 7. Pendências
+
+- Monograma/logo novo em vetor (hoje `.b-mark` é CSS).
+- Textura de água esmeralda em alta (fundo do Hero).
+- Contraste "card claro sobre o dark" do bento — não aplicado.
+- `/work/[slug]` estático + VideoObject no modal (SEO por vídeo).
 - Curadoria + textos ([colchetes]).
