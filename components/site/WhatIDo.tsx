@@ -7,7 +7,7 @@ export function WhatIDo() {
     <section className="section" id="what-i-do">
       <div className="wrap">
         <div className="sec-head">
-          <span className="eyebrow eyebrow--center">O que eu faço</span>
+          <span className="eyebrow">O que eu faço</span>
           <h2 className="h-section">Direção do conceito à entrega.</h2>
           <p className="lead">
             Cada peça começa por uma decisão: apresentar, explicar, posicionar ou vender.

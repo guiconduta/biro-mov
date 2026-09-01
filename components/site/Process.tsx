@@ -5,7 +5,7 @@ export function Process() {
     <section className="section" id="process">
       <div className="wrap">
         <div className="sec-head">
-          <span className="eyebrow eyebrow--center">Antes da câmera</span>
+          <span className="eyebrow">Antes da câmera</span>
           <h2 className="h-section">Todo vídeo começa com uma decisão.</h2>
           <p className="lead">
             Antes de gravar, definimos o que a peça precisa fazer e como ela chega até o

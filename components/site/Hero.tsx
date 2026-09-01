@@ -2,7 +2,7 @@ import Image from "next/image";
 import { site } from "@/lib/catalog";
 
 export function Hero() {
-  const { ctaLabel, media } = site.hero;
+  const { media } = site.hero;
   return (
     <section className="hero" id="top">
       <Image
@@ -25,7 +25,7 @@ export function Hero() {
         </h1>
         <p className="lead">{site.slogan.toLowerCase().replace(/^\w/, (c) => c.toUpperCase())}.</p>
         <div className="hero__cta">
-          <a className="btn btn--solid" href="#selected">{ctaLabel}</a>
+          <a className="btn btn--solid" href="#selected">Ver trabalhos</a>
           <a className="btn btn--ghost" href="#contact">Falar no WhatsApp</a>
         </div>
         <span className="hero__scroll" aria-hidden>SCROLL</span>

@@ -13,8 +13,8 @@ export function Header() {
   return (
     <header className="hdr">
       <a className="wordmark" href="#top" translate="no">
-        {site.wordmark.light.toLowerCase()}
-        <b>{site.wordmark.accent.toLowerCase()}</b>
+        {site.wordmark.light}
+        <b>{site.wordmark.accent}</b>
       </a>
 
       <nav className="hdr__nav">

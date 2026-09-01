@@ -4,8 +4,8 @@ export function Footer() {
   return (
     <footer className="ftr">
       <span className="wordmark" translate="no">
-        {site.wordmark.light.toLowerCase()}
-        <b>{site.wordmark.accent.toLowerCase()}</b>
+        {site.wordmark.light}
+        <b>{site.wordmark.accent}</b>
       </span>
       <span className="ftr__tag">{site.footerTag}</span>
       <span style={{ fontWeight: 300, fontSize: 12, color: "var(--edge)" }}>
