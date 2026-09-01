@@ -1,6 +1,6 @@
 # Design Foundation — BIRO.MOV (v3)
 
-Direção atual: **proposta "Soluções Audiovisuais 2026.2" (`.dc.html` do usuário) ×
+Direção atual: **gabrielside.com** (valores reais extraídos) — acento continua menta.
 gabrielside.com**. Substitui a v2 (phthalo/Satoshi/circular).
 
 **Leitura em uma frase:** near-black quente, tipografia Poppins fina e elegante, acento
@@ -37,6 +37,22 @@ Assinatura: `Guilherme Conduta Araujo · Joinville/SC`.
 - Tema dark único.
 
 ---
+
+## 1b. Sistema gabrielside (v3.1 — valores extraídos do site)
+
+| | valor |
+|---|---|
+| Display | **Outfit** 400–900 (headlines 800–900, `-0.03/-0.035em`) |
+| Corpo | **Inter** 300–500 |
+| Labels/eyebrow/nº | **JetBrains Mono** 400–500, uppercase, `letter-spacing 0.24em` |
+| bg | `#020202` · painel/stats/cards `#141418` |
+| texto | creme `#EFE5D1` (títulos) · `#C9C9CE` corpo · `#A0A0A8` mudo |
+| acento | `#A7F6C5` menta (gabrielside usa dourado; nós mantemos menta) |
+| eyebrow | `— LABEL` mono, menta, caixa alta |
+| botões | pill uppercase mono · solid menta / ghost `#141418` + borda `rgba(menta,.3)` |
+| cards | `#141418` + `1px rgba(menta,.12)`, raio 12, padding 40/32 |
+| stats | faixa full-bleed `#141418`, números Outfit 900 |
+| section head | alinhado à esquerda (Contact centrado) |
 
 ## 2. Tipografia — Poppins, pesos leves
 
