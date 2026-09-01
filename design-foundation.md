@@ -1,91 +1,66 @@
-# Design Foundation — BIRO.MOV (v3)
+# Design Foundation — BIRO.MOV (v3.1)
 
-Direção atual: **gabrielside.com** (valores reais extraídos) — acento continua menta.
-gabrielside.com**. Substitui a v2 (phthalo/Satoshi/circular).
+Direção: **sistema da gabrielside.com** (valores reais extraídos do site), com o **acento
+menta `#A7F6C5`** da BIRO.MOV no lugar do dourado. Substitui todas as versões anteriores
+(phthalo/Satoshi/circular; Poppins fina).
 
-**Leitura em uma frase:** near-black quente, tipografia Poppins fina e elegante, acento
-menta, texturas sutis (linhas de onda + glow), estrutura com números/stats e eyebrows com
-traço.
-
----
-
-## 0. Marca
-
-`biro.mov` (minúsculo no site) · `.mov` em menta · descritor `FILMMAKER & EDIÇÃO`.
-Slogan: `CONTEÚDO VISUAL COM RITMO E DIREÇÃO`. Rodapé: `AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING`.
-Assinatura: `Guilherme Conduta Araujo · Joinville/SC`.
+**Leitura em uma frase:** near-black, tipografia geométrica pesada (Outfit 900), texto
+creme quente, acento menta, eyebrows mono com traço, faixa de stats.
 
 ---
 
-## 1. Cor (v3 — da `.dc.html` do usuário)
+## 1. Cor
 
 | Token | Valor | Uso |
 |-------|-------|-----|
-| `--bg` | `#070707` | fundo (near-black quente) |
-| `--bg-soft` | `#0c0c0c` | cards de vídeo |
-| `--surface` | `rgba(244,242,236,0.03)` | cards |
-| `--surface-hover` | `rgba(167,246,197,0.055)` | hover de card |
-| `--card-border` | `rgba(244,242,236,0.08)` | borda de card |
-| `--hairline` | `rgba(244,242,236,0.065)` | divisor de seção |
+| `--bg` | `#020202` | fundo |
+| `--panel` | `#141418` | faixa de Stats, cards |
+| `--surface` | `#101014` | cards de vídeo |
+| `--card-border` | `rgba(167,246,197,0.12)` | borda de card |
+| `--hairline` | `rgba(239,229,209,0.08)` | divisor de seção |
 | `--accent` | `#A7F6C5` | acento único (menta) |
-| `--accent-hi` | `#D8FCE5` | hover do acento |
-| `--text-hi` | `#F4F2EC` | títulos (ivory quente) |
-| `--text` `#C9D0CB` · `--text-dim` `#9AA39D` · `--text-mute` `#8A918C` · `--edge` `#6E756F` | texto |
+| `--accent-hi` | `#D8FCE5` | hover |
+| `--text-hi` | `#EFE5D1` | títulos (creme quente) |
+| `--text` | `#C9C9CE` | corpo |
+| `--text-dim` `#9AA0A0` · `--text-mute` `#A0A0A8` · `--edge` `#6E6E76` | texto secundário |
 
-- **Glow** (`--glow`): `radial-gradient(60% 55% at 50% 42%, rgba(167,246,197,0.09), transparent 70%)` — Hero, Contact.
-- **Waves** (`--waves`): SVG de 3 linhas de onda, `stroke-opacity 0.055` — textura de fundo.
-- Tema dark único.
-
----
-
-## 1b. Sistema gabrielside (v3.1 — valores extraídos do site)
-
-| | valor |
-|---|---|
-| Display | **Outfit** 400–900 (headlines 800–900, `-0.03/-0.035em`) |
-| Corpo | **Inter** 300–500 |
-| Labels/eyebrow/nº | **JetBrains Mono** 400–500, uppercase, `letter-spacing 0.24em` |
-| bg | `#020202` · painel/stats/cards `#141418` |
-| texto | creme `#EFE5D1` (títulos) · `#C9C9CE` corpo · `#A0A0A8` mudo |
-| acento | `#A7F6C5` menta (gabrielside usa dourado; nós mantemos menta) |
-| eyebrow | `— LABEL` mono, menta, caixa alta |
-| botões | pill uppercase mono · solid menta / ghost `#141418` + borda `rgba(menta,.3)` |
-| cards | `#141418` + `1px rgba(menta,.12)`, raio 12, padding 40/32 |
-| stats | faixa full-bleed `#141418`, números Outfit 900 |
-| section head | alinhado à esquerda (Contact centrado) |
-
-## 2. Tipografia — Poppins, pesos leves
-
-- **Poppins** (`next/font/google`, 200/300/400/500/600 + itálico 300).
-- Corpo `font-weight: 300`. Títulos `font-weight: 300`, `letter-spacing: -0.03em` (hero
-  `-0.037em`), `line-height ~1.05`, `text-wrap: balance`.
-- **Headlines em 2 tons** (ivory + `<b>` menta, ambos peso 300) — ex. "Marcas em
-  **movimento**".
-- Números de stats: `font-weight: 200`, `-0.04em`, `tabular-nums`.
+`--glow`: radial menta 0.08 → transparente (Hero, Contact). `--waves`: SVG de 3 linhas de
+onda, `stroke-opacity 0.05` (textura de fundo). Tema dark único.
 
 ---
 
-## 3. Estruturas assinatura
+## 2. Tipografia (as 3 famílias da gabrielside)
 
-- **Eyebrow** = `— LABEL` (traço curto da gabrielside via `::before`) + `letter-spacing:
-  0.22em`, caixa alta, cor menta (ou `--text-mute` com `.eyebrow--mute`).
-- **Section head** centrado: eyebrow → `h-section` fina → `lead` (`max-width ~62ch`).
-- **Stats** (`components/site/Stats.tsx` + `Counter.tsx`): 4 números com contagem animada
-  (IntersectionObserver + `requestAnimationFrame`, cúbica), `border-top` menta 0.22,
-  respeita `prefers-reduced-motion`. Dados reais do catálogo: clientes, projetos, vídeos,
-  formatos.
-- **Process** = grade de 4 (formato C.E.N.A. da `.dc.html`): `border-top` menta, número
-  fino menta, título caixa-alta pequeno, texto mudo.
-- **Botões**: `.btn--solid` (ivory → menta no hover) · `.btn--ghost` (borda hairline →
-  menta). Pills.
-- **Hero**: imagem de fundo a 0.28 + waves + glow + scrim; headline 2 tons; dual CTA;
-  indicador `SCROLL` com filete.
-- **Cards** (`.card`): `--surface` + borda hairline → hover tinta menta.
-- Raios: `--r-card 18px` · `--r-lg 22px` · pills.
+- **Outfit** (`next/font/google`, 400–900) — display. Headlines **800–900**,
+  `letter-spacing -0.03/-0.035em`, `line-height ~1.05`. Hero 900, section h2 800.
+- **Inter** (300–600) — corpo. `.lead` peso 300.
+- **JetBrains Mono** (400–500) — eyebrows, labels, nav, números de stats, botões.
+  Uppercase, `letter-spacing 0.1–0.24em`.
+- **Headlines 2 tons:** creme + `<b>` menta (mesmo peso). Ex.: "Marcas em **movimento**".
 
 ---
 
-## 4. Base de qualidade (mantida da v2 — palette-agnostic)
+## 3. Componentes
+
+- **Eyebrow:** `— LABEL` (traço via `::before`), JetBrains Mono, 12px, `0.24em`, caixa
+  alta, cor menta (`.eyebrow--mute` = cinza).
+- **Section head:** alinhado à **esquerda** (eyebrow → h2 → lead). `.sec-head--center`
+  só no Contact.
+- **Botões** (`.btn`): pill, mono uppercase, `0.1em`, peso 500. `.btn--solid` = menta /
+  texto `#020202`. `.btn--ghost` = `#141418` + `1px rgba(167,246,197,0.3)`.
+- **Cards** (`.card`): `#141418`, `1px var(--card-border)`, raio 12, hover borda menta +
+  `translateY(-2px)`.
+- **Stats** (`Stats.tsx` + `Counter.tsx`): faixa full-bleed `#141418`, números Outfit 900
+  `clamp(40–62px)`, contagem animada (IntersectionObserver + rAF, cúbica, respeita
+  `prefers-reduced-motion`). Dados: clientes, projetos, vídeos, formatos (do catálogo).
+- **Hero:** foto de fundo a 0.28 + waves + glow + scrim; headline Outfit 900 2 tons; dual
+  CTA (solid + ghost); indicador `SCROLL` com filete.
+- **Process:** grade de 4, `border-top` menta, nº Outfit 900 menta, título mono caixa-alta.
+- Raios: `--r-card 12px` · `--r-lg 16px` · pills `100px`.
+
+---
+
+## 4. Base de qualidade (mantida — palette-agnostic)
 
 `:focus-visible` global · skip link + `id="main"` · `color-scheme:dark` + `theme-color` ·
 `prefers-reduced-motion` reset · `scroll-margin-top` · modal `/work` com focus trap +
@@ -96,15 +71,15 @@ restauração + `aria-labelledby` + `overscroll-behavior` · filtros com `aria-p
 
 ## 5. Fotografia
 
-`public/branding/hero.jpg` (Biro c/ câmera) — Hero (fundo a 0.28) + About.
+`public/branding/hero.jpg` (Biro c/ câmera) — Hero (a 0.28) + About.
 `public/branding/filmmaker.jpg` — reserva.
 
 ---
 
 ## 6. Pendências
 
-- `/work` e `/cases` ainda no CSS da v2 — restilizar para a linguagem v3.
-- Contadores: definir os números "oficiais" (hoje = contagem do catálogo).
+- `/work` e `/cases` ainda no CSS antigo — restilizar para v3.1.
+- Números "oficiais" das stats (incl. anos de estrada) — hoje = contagem do catálogo.
 - Logo/wordmark em vetor.
-- Textura de água esmeralda (se ainda quiser) em alta.
-- Curadoria + textos `[colchetes]`.
+- Curadoria + textos `[colchetes]` (hero sub, linhas de autoridade, About, availability).
+- Dev-indicator do Next aparece no canto (só em dev, some no build).
