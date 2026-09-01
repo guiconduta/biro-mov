@@ -12,7 +12,7 @@ export function SelectedWork() {
       <div className="wrap">
         <div className="reel-head">
           <div className="reel-head__l">
-            <span className="eyebrow">Portfólio</span>
+            <span className="eyebrow"><span className="eyebrow__n">02</span>Portfólio</span>
             <h2 className="h-section">Trabalhos selecionados.</h2>
           </div>
           <Link className="link-cta" href="/work">Ver biblioteca completa →</Link>

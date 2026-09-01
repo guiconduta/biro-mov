@@ -7,7 +7,7 @@ export function Clients() {
     <section className="section" id="clients">
       <div className="wrap">
         <div className="sec-head sec-head--left">
-          <span className="eyebrow">Confiaram na direção</span>
+          <span className="eyebrow"><span className="eyebrow__n">03</span>Confiaram na direção</span>
           <h2 className="h-section">Marcas que já entraram em cena.</h2>
         </div>
 

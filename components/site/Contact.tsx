@@ -12,10 +12,12 @@ export function Contact() {
 
   return (
     <section className="section contact" id="contact">
-      <div className="waves" aria-hidden />
       <div className="glow" aria-hidden />
+      <span className="ring contact__ring" aria-hidden />
       <div className="contact__inner">
-        <span className="eyebrow eyebrow--center">Vamos conversar</span>
+        <span className="eyebrow eyebrow--center">
+          <span className="eyebrow__n">07</span>Vamos conversar
+        </span>
         <h2>
           Sua próxima ideia<br />já pode entrar em <b>cena</b>.
         </h2>

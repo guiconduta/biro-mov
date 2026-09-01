@@ -5,16 +5,9 @@ export function Hero() {
   const { media } = site.hero;
   return (
     <section className="hero" id="top">
-      <Image
-        src={media}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        style={{ objectFit: "cover", opacity: 0.28 }}
-      />
-      <div className="waves" aria-hidden />
+      <Image src={media} alt="" fill priority sizes="100vw" style={{ objectFit: "cover", opacity: 0.26 }} />
       <div className="glow" aria-hidden />
+      <span className="ring hero__ring" aria-hidden />
       <div className="hero__scrim" aria-hidden />
 
       <div className="hero__inner">
