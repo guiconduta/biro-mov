@@ -1,127 +1,94 @@
-# Design Foundation — BIRO.MOV (v2 — identidade circular)
+# Design Foundation — BIRO.MOV (v3)
 
-Base: brand board `Branding/branding.png` + **novo mockup de identidade** (mockup de
-identidade visual do usuário, 2026-08-27) + textura de referência (água esmeralda aérea).
-Alimenta a Fase 4/5 (Design).
+Direção atual: **proposta "Soluções Audiovisuais 2026.2" (`.dc.html` do usuário) ×
+gabrielside.com**. Substitui a v2 (phthalo/Satoshi/circular).
 
-**Leitura em uma frase:** emerald cinematográfico + **estilo circular** — orbes iridescentes,
-badges redondos, monograma B em círculo. Satoshi geométrico. Um único acento menta.
+**Leitura em uma frase:** near-black quente, tipografia Poppins fina e elegante, acento
+menta, texturas sutis (linhas de onda + glow), estrutura com números/stats e eyebrows com
+traço.
 
 ---
 
 ## 0. Marca
 
-| | |
-|---|---|
-| Nome | **BIRO.MOV** — `BIRO` + `.MOV` menta (site). Big treatment do mockup usa só `BIRO`. |
-| Descritor | `FILMMAKER & EDIÇÃO` |
-| Monograma | **B em círculo** (`.b-mark` no código) — o "estilo circular" que o usuário curtiu |
-| Slogan | `CONTEÚDO VISUAL COM RITMO E DIREÇÃO` |
-| Rodapé | `AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING` |
+`biro.mov` (minúsculo no site) · `.mov` em menta · descritor `FILMMAKER & EDIÇÃO`.
+Slogan: `CONTEÚDO VISUAL COM RITMO E DIREÇÃO`. Rodapé: `AUDIOVISUAL · EDIÇÃO · DIREÇÃO · STORYTELLING`.
+Assinatura: `Guilherme Conduta Araujo · Joinville/SC`.
 
 ---
 
-## 1. Cor — v2.1 (Phthalo Green forward)
+## 1. Cor (v3 — da `.dc.html` do usuário)
 
-| Token | Hex | Uso |
-|-------|-----|-----|
-| `--bg` | `#05100C` | canvas (phthalo-black) |
-| `--surface` | `#0A2019` | cards (phthalo escuro) |
-| `--surface-2` | `#0C2C23` | painel |
-| `--phthalo` | `#0C3B30` | **assinatura** — verde phthalo profundo |
-| `--jade` | `#124A3B` | phthalo mais claro — washes de seção |
-| `--teal` | `#0A6A5A` | ponte viva — borda ativa, stop de gradiente, filete de tópico |
-| `--accent` | `#9FCBB4` | menta suave (acento único) |
-| `--accent-hi` | `#C7E3D4` | hover do acento |
-| `--text-hi` | `#F2F7F3` · `--text` `#DCE8E1` · `--text-mute` `#7C938A` | texto |
-| `--hairline` | `rgba(159,203,180,.14)` | bordas 1px |
+| Token | Valor | Uso |
+|-------|-------|-----|
+| `--bg` | `#070707` | fundo (near-black quente) |
+| `--bg-soft` | `#0c0c0c` | cards de vídeo |
+| `--surface` | `rgba(244,242,236,0.03)` | cards |
+| `--surface-hover` | `rgba(167,246,197,0.055)` | hover de card |
+| `--card-border` | `rgba(244,242,236,0.08)` | borda de card |
+| `--hairline` | `rgba(244,242,236,0.065)` | divisor de seção |
+| `--accent` | `#A7F6C5` | acento único (menta) |
+| `--accent-hi` | `#D8FCE5` | hover do acento |
+| `--text-hi` | `#F4F2EC` | títulos (ivory quente) |
+| `--text` `#C9D0CB` · `--text-dim` `#9AA39D` · `--text-mute` `#8A918C` · `--edge` `#6E756F` | texto |
 
-`section--jade` = wash phthalo `#082019 → #05130F`.
-
-**Gradiente iridescente / motion colors** (`--iridescent`): cônico
-`#0C3B30 → #0A6A5A → #6F7FB6 (lavanda) → #E3B78F (pêssego) → #A7D8C2 → #0C3B30`.
-Usado: **borrado** em orbes (hero, contato) e **nítido** nos tiles da seção Motion Color.
-
-Tema **dark único**.
-
-> Nota do usuário: a paleta do mockup de identidade foi exploratória; a direção real é
-> **Phthalo Green**. Ajustada nesta v2.1.
+- **Glow** (`--glow`): `radial-gradient(60% 55% at 50% 42%, rgba(167,246,197,0.09), transparent 70%)` — Hero, Contact.
+- **Waves** (`--waves`): SVG de 3 linhas de onda, `stroke-opacity 0.055` — textura de fundo.
+- Tema dark único.
 
 ---
 
-## 2. Tipografia — Satoshi, família única
+## 2. Tipografia — Poppins, pesos leves
 
-- **Satoshi** (self-hosted `public/fonts/`, `next/font/local`, pesos 400/500/700/900).
-  Sistema de **uma família só** — Inter removida (fonte "default" demais; `frontend-design`
-  + `ui-ux-pro-max` recomendam single-family precision system aqui).
-- Ladder: **900** hero · **700** títulos de seção · **500** labels/eyebrow · **400** corpo.
-- `--font-display` = `--font-body` = Satoshi.
-- Contraste editorial: display gigante e apertado (tracking −2 a −3px) vs eyebrow minúsculo
-  espaçado (+3px, caixa alta). `text-wrap: balance` em títulos, `pretty` em parágrafos.
-
----
-
-## 3. Estilo circular (o que o usuário pediu mais)
-
-- **`.b-mark`** — B em círculo com borda menta. Header + footer.
-- **`.icon-badge`** — círculo `--surface-2` + borda hairline, ícone de linha menta centrado.
-  Usado no What I Do.
-- **`.orb`** — círculo com `--iridescent` borrado. Hero (bleed pela direita), Contact (atrás
-  do título).
-- **`.play-ring`** / play dos cards — círculo com anel menta.
-- Raios maiores: `--r-card: 22px`, `--r-lg: 30px`, pills em tudo.
-
-## 3b. Ícones (set do mockup — `components/icons.tsx`)
-
-Traço 1.5, grid 24, `currentColor` (menta no badge): **IconFilm** (edição/filmstrip),
-**IconColor** (color grading / círculos sobrepostos), **IconAudio** (waveform),
-**IconMotion** (sparkle). + IconFrame (direção), IconBuilding (imobiliário), IconPlay.
-
-## 3c. Separação de tópico (ref. bento do mockup)
-
-`.topic` = eyebrow (caixa alta, +3px) → `.topic__rule` (filete 48×2px, gradiente
-`accent → teal`) → `.h-section`. Aplicado em todas as seções.
-
-## 3d. Motion Color (seção nova)
-
-Faixa de 5 tiles de gradiente entre Process e About:
-verde `#0C3B30→#0A6A5A` · teal→menta · **iridescente** (animado, drift 18s) · lavanda→pêssego
-`#6F7FB6→#E3B78F` · phthalo escuro. `aria-hidden`, respeita `prefers-reduced-motion`.
+- **Poppins** (`next/font/google`, 200/300/400/500/600 + itálico 300).
+- Corpo `font-weight: 300`. Títulos `font-weight: 300`, `letter-spacing: -0.03em` (hero
+  `-0.037em`), `line-height ~1.05`, `text-wrap: balance`.
+- **Headlines em 2 tons** (ivory + `<b>` menta, ambos peso 300) — ex. "Marcas em
+  **movimento**".
+- Números de stats: `font-weight: 200`, `-0.04em`, `tabular-nums`.
 
 ---
 
-## 4. Forma e movimento
+## 3. Estruturas assinatura
 
-- Bordas antes de sombra. Cards dark separados por `--hairline`.
-- HUD de filmagem mantido (REC dot, timecode, SEQ, colchetes de enquadramento) — convive com
-  o circular.
-- Movimento contido: fade + subida no scroll, hover de card = escala + borda menta.
+- **Eyebrow** = `— LABEL` (traço curto da gabrielside via `::before`) + `letter-spacing:
+  0.22em`, caixa alta, cor menta (ou `--text-mute` com `.eyebrow--mute`).
+- **Section head** centrado: eyebrow → `h-section` fina → `lead` (`max-width ~62ch`).
+- **Stats** (`components/site/Stats.tsx` + `Counter.tsx`): 4 números com contagem animada
+  (IntersectionObserver + `requestAnimationFrame`, cúbica), `border-top` menta 0.22,
+  respeita `prefers-reduced-motion`. Dados reais do catálogo: clientes, projetos, vídeos,
+  formatos.
+- **Process** = grade de 4 (formato C.E.N.A. da `.dc.html`): `border-top` menta, número
+  fino menta, título caixa-alta pequeno, texto mudo.
+- **Botões**: `.btn--solid` (ivory → menta no hover) · `.btn--ghost` (borda hairline →
+  menta). Pills.
+- **Hero**: imagem de fundo a 0.28 + waves + glow + scrim; headline 2 tons; dual CTA;
+  indicador `SCROLL` com filete.
+- **Cards** (`.card`): `--surface` + borda hairline → hover tinta menta.
+- Raios: `--r-card 18px` · `--r-lg 22px` · pills.
 
 ---
 
-## 5. Fotografia / textura
+## 4. Base de qualidade (mantida da v2 — palette-agnostic)
 
-- `public/branding/hero.jpg` (Biro c/ câmera) — Hero + About.
-- `public/branding/filmmaker.jpg` (silhueta gimbal neon) — fundo do Process.
-- Textura de água esmeralda (ref. do usuário) — **não embutida** (sem arquivo); o mood dela
-  está na paleta v2 e nos orbes. Se o usuário mandar o arquivo, entra como fundo do Hero.
-
----
-
-## 6. Base de qualidade (aplicada — commit `2e79d0d`)
-
-Guiada por `frontend-design`, `ui-ux-pro-max` e Web Interface Guidelines (Vercel):
 `:focus-visible` global · skip link + `id="main"` · `color-scheme:dark` + `theme-color` ·
-`prefers-reduced-motion` reset global · `scroll-margin-top` nas âncoras ·
-modal com focus trap + restauração + `aria-labelledby` + `overscroll-behavior` + trava de
-scroll · filtros com `aria-pressed` / `aria-live` / URL em query params · thumbs `<img
-loading=lazy>` · `translate="no"` na marca. Removido: linha falsa de câmera no Hero
-("data slop"); índice numérico dos cards (não era sequência) → tag de formato.
+`prefers-reduced-motion` reset · `scroll-margin-top` · modal `/work` com focus trap +
+restauração + `aria-labelledby` + `overscroll-behavior` · filtros com `aria-pressed` /
+`aria-live` / URL query params · thumbs `<img loading=lazy>` · `translate="no"` na marca.
 
-## 7. Pendências
+---
 
-- Monograma/logo novo em vetor (hoje `.b-mark` é CSS).
-- Textura de água esmeralda em alta (fundo do Hero).
-- Contraste "card claro sobre o dark" do bento — não aplicado.
-- `/work/[slug]` estático + VideoObject no modal (SEO por vídeo).
-- Curadoria + textos ([colchetes]).
+## 5. Fotografia
+
+`public/branding/hero.jpg` (Biro c/ câmera) — Hero (fundo a 0.28) + About.
+`public/branding/filmmaker.jpg` — reserva.
+
+---
+
+## 6. Pendências
+
+- `/work` e `/cases` ainda no CSS da v2 — restilizar para a linguagem v3.
+- Contadores: definir os números "oficiais" (hoje = contagem do catálogo).
+- Logo/wordmark em vetor.
+- Textura de água esmeralda (se ainda quiser) em alta.
+- Curadoria + textos `[colchetes]`.
