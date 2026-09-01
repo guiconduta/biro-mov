@@ -1,29 +1,24 @@
-import Image from "next/image";
 import { site } from "@/lib/catalog";
 
 export function Process() {
   return (
-    <section className="section process" id="process">
-      <div className="process__bg">
-        <Image src="/branding/filmmaker.jpg" alt="" fill sizes="100vw" style={{ objectFit: "cover" }} />
-      </div>
-      <div className="process__scrim" />
-
-      <div className="process__inner wrap">
-        <div className="topic" style={{ marginBottom: 52 }}>
-          <span className="eyebrow">Process</span>
-          <span className="topic__rule" />
-          <h2 className="h-section">Como o projeto acontece</h2>
+    <section className="section" id="process">
+      <div className="wrap">
+        <div className="sec-head">
+          <span className="eyebrow eyebrow--center">Antes da câmera</span>
+          <h2 className="h-section">Todo vídeo começa com uma decisão.</h2>
+          <p className="lead">
+            Antes de gravar, definimos o que a peça precisa fazer e como ela chega até o
+            público certo.
+          </p>
         </div>
 
-        <div>
+        <div className="process__grid">
           {site.process.map((s) => (
             <div className="step" key={s.step}>
-              <div className="step__n">{s.step}</div>
-              <div>
-                <div className="step__t">{s.title}</div>
-                <div className="step__d">Você recebe: {s.deliverable}</div>
-              </div>
+              <div className="step__n" translate="no">{s.step}</div>
+              <span className="step__t">{s.title}</span>
+              <div className="step__d">{s.deliverable}</div>
             </div>
           ))}
         </div>

@@ -10,15 +10,12 @@ export function SelectedWork() {
   return (
     <section className="section" id="selected">
       <div className="wrap">
-        <div className="sec-head">
-          <div className="topic">
-            <span className="eyebrow">Selected Work — SEQ. 01</span>
-            <span className="topic__rule" />
-            <h2 className="h-section">Trabalhos selecionados</h2>
+        <div className="reel-head">
+          <div className="reel-head__l">
+            <span className="eyebrow">Portfólio</span>
+            <h2 className="h-section">Trabalhos selecionados.</h2>
           </div>
-          <Link className="link-accent" href="/work">
-            VER BIBLIOTECA →
-          </Link>
+          <Link className="link-cta" href="/work">Ver biblioteca completa →</Link>
         </div>
 
         <div className="reel-grid">
@@ -33,8 +30,7 @@ export function SelectedWork() {
 
         {!isCurated && (
           <p className="note">
-            Prévia automática — os 6–12 vídeos de destaque entram quando você marcar o tier
-            <code> selected</code> na curadoria. Posters verticais próprios idem.
+            Prévia automática — os 6–12 vídeos de destaque entram na curadoria.
           </p>
         )}
       </div>

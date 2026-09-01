@@ -1,12 +1,4 @@
 import { getCapabilities } from "@/lib/catalog";
-import { IconFrame, IconMotion, IconAudio, IconBuilding } from "@/components/icons";
-
-const ICONS: Record<string, React.ReactNode> = {
-  direcao: <IconFrame size={24} />,
-  "social-films": <IconMotion size={24} />,
-  "edicao-ritmo": <IconAudio size={24} />,
-  imobiliario: <IconBuilding size={24} />,
-};
 
 export function WhatIDo() {
   const caps = getCapabilities();
@@ -14,18 +6,17 @@ export function WhatIDo() {
   return (
     <section className="section" id="what-i-do">
       <div className="wrap">
-        <div className="topic" style={{ marginBottom: 46 }}>
-          <span className="eyebrow">What I Do</span>
-          <span className="topic__rule" />
-          <h2 className="h-section">Áreas de capacidade</h2>
+        <div className="sec-head">
+          <span className="eyebrow eyebrow--center">O que eu faço</span>
+          <h2 className="h-section">Direção do conceito à entrega.</h2>
+          <p className="lead">
+            Cada peça começa por uma decisão: apresentar, explicar, posicionar ou vender.
+          </p>
         </div>
 
         <div className="cap-grid">
           {caps.map((cap, i) => (
-            <div className="cap" key={cap.id}>
-              <span className="icon-badge" aria-hidden>
-                {ICONS[cap.id] ?? <IconFrame size={24} />}
-              </span>
+            <div className="card cap" key={cap.id}>
               <span className="cap__n">{String(i + 1).padStart(2, "0")}</span>
               <span className="cap__t">{cap.label}</span>
               <p>{cap.intent}</p>
