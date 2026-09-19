@@ -341,7 +341,7 @@ a.pf__media-link:hover .pf__cta, a.pf__media-link:focus-visible .pf__cta { opaci
 .about__headline { font-size: clamp(38px, 5.6vw, 104px); font-weight: 200; letter-spacing: -0.05em; line-height: 0.98; color: var(--text-hi); }
 .about__text { display: grid; gap: 1em; max-width: 46ch; font-size: clamp(16px, 1.25vw, 19px); font-weight: 300; line-height: 1.65; color: var(--text); }
 .about__photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; }
-.about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 40%; filter: saturate(0.85) contrast(1.05); }
+.about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 40%; filter: brightness(0.78) contrast(1.08); }
 .about__photo::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, transparent 45%, rgba(3, 8, 7, 0.72) 100%), radial-gradient(80% 60% at 0% 100%, rgba(23, 101, 76, 0.35), transparent 70%);

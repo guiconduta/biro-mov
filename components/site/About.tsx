@@ -10,10 +10,7 @@ export function About() {
       <div className="about__grid">
         <div className="about__copy">
           <Reveal>
-            <h2 id="sobre-label" className="label">SOBRE</h2>
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="about__headline">{SOBRE_HEADLINE || <span className="todo">[SOBRE_HEADLINE]</span>}</p>
+            <h2 id="sobre-label" className="about__headline">{SOBRE_HEADLINE || <span className="todo">[SOBRE_HEADLINE]</span>}</h2>
           </Reveal>
           <Reveal delay={200}>
             <div className="about__text">

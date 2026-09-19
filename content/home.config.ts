@@ -123,14 +123,14 @@ export const FEATURED_WORKS: [Work, Work, Work] = [
 ];
 
 /* ----------------------------------------------------------------- sobre */
-export const SOBRE_HEADLINE = ""; // [SOBRE_HEADLINE] headline grande
+export const SOBRE_HEADLINE = "Sobre"; // headline grande (definido pelo autor)
 export const SOBRE_TEXT = ""; // [SOBRE_TEXT] texto pessoal — separe parágrafos com linha em branco
 
 export const ABOUT = {
-  photo: "/branding/hero.jpg", // provisório — troque pela foto definitiva
+  photo: "/branding/sobre.jpg",
   photoAlt: "Biro filmando com uma câmera mirrorless",
-  photoWidth: 1600,
-  photoHeight: 900,
+  photoWidth: 2000,
+  photoHeight: 1335,
   roles: ["Videomaker", "Criação", "Direção", "Edição"],
 } as const;
 
