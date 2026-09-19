@@ -1,50 +1,51 @@
 import Image from "next/image";
-import { site } from "@/lib/catalog";
+import { ABOUT, SOBRE_HEADLINE, SOBRE_TEXT } from "@/content/home.config";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function About() {
-  const { text, photo } = site.about;
-  return (
-    <section className="section" id="about">
-      <div className="wrap about-grid">
-        <Image
-          src={photo}
-          alt="Biro"
-          width={440}
-          height={300}
-          sizes="(max-width:800px) 100vw, 440px"
-          style={{ width: "100%", height: "auto" }}
-        />
-        <div className="about__body">
-          <span className="eyebrow"><span className="eyebrow__n">06</span>Sobre</span>
-          <h2>Faço conteúdo comercial parecer cinema — e ainda vender.</h2>
-          {text ? (
-            text.split("\n\n").map((para, i) => <p key={i}>{para}</p>)
-          ) : (
-            <>
-              <p>
-                [texto em 1ª pessoa — pendente. Visão sobre imagem e narrativa, curto, sem bio
-                genérica de currículo.]
-              </p>
-              <p>[segunda linha — o que te move como diretor.]</p>
-            </>
-          )}
+  const paragraphs = SOBRE_TEXT.trim() ? SOBRE_TEXT.trim().split(/\n\s*\n/) : [];
 
-          <dl className="about__meta">
-            <div>
-              <dt>Papéis</dt>
-              <dd>Direção · Edição · Cor</dd>
+  return (
+    <section id="sobre" className="about" aria-labelledby="sobre-label">
+      <div className="about__grid">
+        <div className="about__copy">
+          <Reveal>
+            <h2 id="sobre-label" className="label">SOBRE</h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="about__headline">{SOBRE_HEADLINE || <span className="todo">[SOBRE_HEADLINE]</span>}</p>
+          </Reveal>
+          <Reveal delay={200}>
+            <div className="about__text">
+              {paragraphs.length > 0 ? (
+                paragraphs.map((p, i) => <p key={i}>{p}</p>)
+              ) : (
+                <p className="todo">[SOBRE_TEXT]</p>
+              )}
             </div>
-            <div>
-              <dt>Base</dt>
-              <dd translate="no">Joinville, SC</dd>
-            </div>
-            <div>
-              <dt>Foco</dt>
-              <dd>Social · Comercial · Imobiliário</dd>
-            </div>
-          </dl>
+          </Reveal>
         </div>
+
+        <Reveal className="about__photo-wrap" delay={150}>
+          <div className="about__photo">
+            <Image
+              src={ABOUT.photo}
+              alt={ABOUT.photoAlt}
+              width={ABOUT.photoWidth}
+              height={ABOUT.photoHeight}
+              sizes="(min-width: 900px) 44vw, 100vw"
+            />
+          </div>
+        </Reveal>
       </div>
+
+      <Reveal>
+        <ul className="about__roles" aria-label="Atuação">
+          {ABOUT.roles.map((r) => (
+            <li key={r}>{r}</li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   );
 }

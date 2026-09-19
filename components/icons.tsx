@@ -1,89 +1,83 @@
-// Ícones de linha — set do mockup de identidade (film / color / audio / motion),
-// traço fino, grid 24, centrados em .icon-badge circular. Nunca emoji.
+// Ícones minimalistas (traço fino, grid 24). Sempre decorativos: quem usa dá o aria-label ao link.
 
-type P = { size?: number };
-const base = (size = 24) => ({
+type P = { size?: number; className?: string };
+const base = (size = 20) => ({
   width: size,
   height: size,
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.5,
+  strokeWidth: 1.4,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
+  "aria-hidden": true as const,
+  focusable: false as const,
 });
 
-/** Edição — filmstrip */
-export function IconFilm({ size }: P) {
+export function IconInstagram({ size, className }: P) {
   return (
-    <svg {...base(size)} aria-hidden>
-      <rect x="3" y="4" width="18" height="16" rx="2" />
-      <path d="M3 9h18M3 15h18M9 4v16M15 4v16" />
+    <svg {...base(size)} className={className}>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+      <circle cx="12" cy="12" r="3.9" />
+      <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
     </svg>
   );
 }
 
-/** Color grading — círculos que se sobrepõem */
-export function IconColor({ size }: P) {
+export function IconVimeo({ size, className }: P) {
   return (
-    <svg {...base(size)} aria-hidden>
-      <circle cx="9" cy="10" r="5" />
-      <circle cx="15" cy="10" r="5" />
-      <circle cx="12" cy="15" r="5" />
+    <svg {...base(size)} className={className}>
+      <path d="M3 8.6c1.6-1.5 2.6-2.3 3-2.4 1.5-.5 2.4 1.1 2.8 4.6.3 2.4.6 3.9 1 4.6.6 1 1.3.9 2.2-.2 1-1.2 1.9-2.6 2.1-3.6.4-1.7-.7-2.2-2.5-1.1.9-3.7 3.4-5.4 6.5-4.7 1.9.5 1.9 2.6 1.1 5.1-.8 2.5-2.1 4.7-4 6.7-2 2-3.9 2.8-5.7 2.3-1.5-.4-2.3-2.3-3-5.2-.4-1.6-.8-3.4-1.2-4.6-.4-1.1-.9-1.6-1.5-1.5-.4.1-.9.4-1.5 1z" />
     </svg>
   );
 }
 
-/** Áudio — waveform */
-export function IconAudio({ size }: P) {
+export function IconMail({ size, className }: P) {
   return (
-    <svg {...base(size)} aria-hidden>
-      <path d="M4 10v4M8 6v12M12 3v18M16 7v10M20 10v4" />
+    <svg {...base(size)} className={className}>
+      <rect x="3" y="5.5" width="18" height="13" rx="2" />
+      <path d="M3.6 7.2 12 13l8.4-5.8" />
     </svg>
   );
 }
 
-/** Motion — sparkle */
-export function IconMotion({ size }: P) {
+export function IconPhone({ size, className }: P) {
   return (
-    <svg {...base(size)} aria-hidden>
-      <path d="M13 3l1.8 4.7L19.5 9.5 14.8 11.3 13 16l-1.8-4.7L6.5 9.5l4.7-1.8z" />
-      <path d="M18 15l.7 1.8L20.5 17.5l-1.8.7L18 20l-.7-1.8L15.5 17.5l1.8-.7z" />
+    <svg {...base(size)} className={className}>
+      <path d="M5.5 4h3l1.5 4-2 1.3a10 10 0 0 0 5.7 5.7L15 13l4 1.5v3A2 2 0 0 1 17 19.5 13.5 13.5 0 0 1 4.5 7 2 2 0 0 1 5.5 4z" />
     </svg>
   );
 }
 
-/** Direção — frame / enquadramento */
-export function IconFrame({ size }: P) {
+export function IconArrow({ size, className }: P) {
   return (
-    <svg {...base(size)} aria-hidden>
-      <path d="M4 4h4M16 4h4M4 20h4M16 20h4M4 4v4M20 4v4M4 20v-4M20 20v-4" />
-      <circle cx="12" cy="12" r="2.6" />
+    <svg {...base(size)} className={className}>
+      <path d="M4 12h16M14 6l6 6-6 6" />
     </svg>
   );
 }
 
-/** Imobiliário — edifício */
-export function IconBuilding({ size }: P) {
+export function IconMouse({ size = 26, className }: P) {
   return (
-    <svg {...base(size)} aria-hidden>
-      <path d="M4 20V9l8-5 8 5v11" />
-      <path d="M3 20h18" />
-      <rect x="10" y="13" width="4" height="7" />
-      <path d="M8 10h.01M16 10h.01" />
+    <svg {...base(size)} viewBox="0 0 24 32" className={className}>
+      <rect x="4" y="2" width="16" height="28" rx="8" />
+      <path className="mouse__wheel" d="M12 8v5" />
     </svg>
   );
 }
 
-/** Play */
-export function IconPlay({ size }: P) {
+export function IconPlay({ size = 22, className }: P) {
   return (
-    <svg {...base(size)} aria-hidden>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M10 8.5l6 3.5-6 3.5z" fill="currentColor" stroke="none" />
+    <svg {...base(size)} className={className}>
+      <path d="M8.5 5.5v13l10-6.5z" fill="currentColor" stroke="none" />
     </svg>
   );
 }
 
-// aliases retrocompat
-export { IconFilm as IconSequence };
+export function IconClose({ size, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M6 6l12 12M18 6 6 18" />
+    </svg>
+  );
+}

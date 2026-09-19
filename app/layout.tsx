@@ -1,30 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
+import { Archivo, Hanken_Grotesk } from "next/font/google";
 import { site } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
 import "./globals.css";
 
-const outfit = Outfit({
-  weight: ["400", "500", "600", "700", "800", "900"],
+// Display: Archivo com eixo de largura (BIRO expandido/pesado) — font-stretch 125% + peso 900.
+const archivo = Archivo({
   subsets: ["latin"],
+  axes: ["wdth"],
   variable: "--font-display",
   display: "swap",
 });
-const inter = Inter({
-  weight: ["300", "400", "500", "600"],
+
+// Texto e navegação: grotesca contemporânea, pesos finos.
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600"],
   variable: "--font-body",
-  display: "swap",
-});
-const mono = JetBrains_Mono({
-  weight: ["400", "500"],
-  subsets: ["latin"],
-  variable: "--font-mono",
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#020202",
+  themeColor: "#030807",
 };
 
 export const metadata: Metadata = {
@@ -44,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${outfit.variable} ${inter.variable} ${mono.variable}`}>
+    <html lang="pt-BR" className={`${archivo.variable} ${hanken.variable}`}>
       <body>
         <a className="skip-link" href="#main">Pular para o conteúdo</a>
         {children}

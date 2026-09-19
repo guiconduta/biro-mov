@@ -1,45 +1,48 @@
-import { site } from "@/lib/catalog";
+import { COPY, CONTACT, mailUrl, whatsappUrl } from "@/content/home.config";
+import { Reveal } from "@/components/ui/Reveal";
+import { Magnetic } from "@/components/ui/Magnetic";
+import { IconArrow } from "@/components/icons";
 
 export function Contact() {
-  const { whatsapp, instagram, email } = site.contact;
-
-  const waDigits = whatsapp.replace(/\D/g, "");
-  const waE164 =
-    waDigits && !waDigits.startsWith("55") && waDigits.length <= 11 ? `55${waDigits}` : waDigits;
-  const wa = waE164 ? `https://wa.me/${waE164}` : undefined;
-  const ig = instagram ? `https://instagram.com/${instagram.replace(/^@/, "")}` : undefined;
-  const mail = email ? `mailto:${email}` : undefined;
-
   return (
-    <section className="section contact" id="contact">
-      <div className="glow" aria-hidden />
-      <span className="ring contact__ring" aria-hidden />
-      <div className="contact__inner">
-        <span className="eyebrow eyebrow--center">
-          <span className="eyebrow__n">07</span>Vamos conversar
-        </span>
-        <h2>
-          Sua próxima ideia<br />já pode entrar em <b>cena</b>.
-        </h2>
-        <p className="lead">
-          Me conta o que sua marca precisa comunicar. A gente define o objetivo, encontra o
-          formato e coloca a produção em movimento.
-        </p>
-        <div className="contact__links">
-          <a className="btn btn--solid" href={wa ?? "#"}>
-            {whatsapp ? `WhatsApp · ${whatsapp}` : "[WhatsApp]"}
+    <section id="contato" className="contact" aria-labelledby="contato-label">
+      <div className="contact__glow" aria-hidden />
+      <Reveal>
+        <h2 id="contato-label" className="label">CONTATO</h2>
+      </Reveal>
+
+      <Reveal delay={100}>
+        <p className="contact__headline">{COPY.contactHeadline}</p>
+      </Reveal>
+
+      <Reveal delay={200} className="contact__actions">
+        <Magnetic>
+          <a href={whatsappUrl} className="btn btn--solid btn--lg" target="_blank" rel="noopener noreferrer">
+            {COPY.cta}
+            <IconArrow size={20} />
           </a>
-          <a className="btn btn--ghost" href={ig ?? "#"} translate="no">
-            {instagram || "@biro.mov"}
-          </a>
-          <a className="btn btn--ghost" href={mail ?? "#"}>
-            {email || "[e-mail]"}
-          </a>
-        </div>
-        <p className="contact__credit" translate="no">
-          Guilherme Conduta Araujo · Joinville/SC · 2026.2
-        </p>
-      </div>
+        </Magnetic>
+        <ul className="contact__links">
+          <li>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact__link">
+              <span className="contact__k">WhatsApp</span>
+              <span>{CONTACT.phoneDisplay}</span>
+            </a>
+          </li>
+          <li>
+            <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" className="contact__link">
+              <span className="contact__k">Instagram</span>
+              <span>{CONTACT.instagramHandle}</span>
+            </a>
+          </li>
+          <li>
+            <a href={mailUrl} className="contact__link">
+              <span className="contact__k">E-mail</span>
+              <span>{CONTACT.email}</span>
+            </a>
+          </li>
+        </ul>
+      </Reveal>
     </section>
   );
 }

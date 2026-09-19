@@ -69,7 +69,7 @@ export function LiteYouTube({
           width: 64,
           height: 64,
           borderRadius: "50%",
-          border: "1.5px solid rgba(167,246,197,.7)",
+          border: "1.5px solid rgba(31,143,106,.7)",
           background: "rgba(5,13,10,.35)",
           display: "flex",
           alignItems: "center",
@@ -81,7 +81,7 @@ export function LiteYouTube({
             width: 0,
             height: 0,
             marginLeft: 5,
-            borderLeft: "17px solid #9fcbb4",
+            borderLeft: "17px solid #f2f4f1",
             borderTop: "11px solid transparent",
             borderBottom: "11px solid transparent",
           }}

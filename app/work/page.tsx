@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./work.css";
-import { Header } from "@/components/site/Header";
+import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
 import { WorkBrowser } from "@/components/work/WorkBrowser";
 import { getLibrary, getCategories, getClients } from "@/lib/catalog";
@@ -19,7 +19,7 @@ export default function WorkPage() {
 
   return (
     <>
-      <Header />
+      <Navigation />
       <main id="main" className="wrap">
         <div className="work-head">
           <span className="eyebrow">Biblioteca — SEQ. 02</span>

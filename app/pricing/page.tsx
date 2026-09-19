@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { site } from "@/lib/catalog";
-import { Header } from "@/components/site/Header";
+import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
 
 // Rota existe, mas fica fora do índice e do menu enquanto pricingEnabled=false.
@@ -15,7 +15,7 @@ export default function PricingPage() {
 
   return (
     <>
-      <Header />
+      <Navigation />
       <main id="main" className="wrap section">
         <span className="eyebrow">Pricing</span>
         <h1 className="h-section" style={{ marginTop: 14 }}>Pacotes</h1>

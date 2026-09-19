@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/site/Header";
+import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
 import { LiteYouTube } from "@/components/LiteYouTube";
 import { getCase, getFeaturedCases, getVideo, getVideosOfProject } from "@/lib/catalog";
@@ -35,7 +35,7 @@ export default async function CasePage({
 
   return (
     <>
-      <Header />
+      <Navigation />
       <main id="main" className="wrap section">
         <span className="eyebrow">Case</span>
         <h1 className="h-section" style={{ marginTop: 14 }}>{c.title}</h1>

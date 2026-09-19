@@ -1,27 +1,28 @@
 import "./home.css";
-import { Header } from "@/components/site/Header";
+import { SHOWREEL } from "@/content/home.config";
+import { Navigation } from "@/components/site/Navigation";
 import { Hero } from "@/components/site/Hero";
-import { Stats } from "@/components/site/Stats";
-import { SelectedWork } from "@/components/site/SelectedWork";
-import { Clients } from "@/components/site/Clients";
-import { WhatIDo } from "@/components/site/WhatIDo";
-import { Process } from "@/components/site/Process";
+import { Showreel } from "@/components/site/Showreel";
+import { SelectedWorks } from "@/components/site/SelectedWorks";
 import { About } from "@/components/site/About";
+import { Clients } from "@/components/site/Clients";
+import { Workflow } from "@/components/site/Workflow";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
 
+// Ordem fixa da Home: 01 Hero · 02 Showreel · 03 Trabalhos · 04 Sobre ·
+// 05 Clientes e experiências · 06 Como trabalho · 07 Contato
 export default function HomePage() {
   return (
     <>
-      <Header />
+      <Navigation />
       <main id="main">
         <Hero />
-        <Stats />
-        <SelectedWork />
-        <Clients />
-        <WhatIDo />
-        <Process />
+        <Showreel config={SHOWREEL} />
+        <SelectedWorks />
         <About />
+        <Clients />
+        <Workflow />
         <Contact />
       </main>
       <Footer />
