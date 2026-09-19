@@ -13,11 +13,12 @@
 }
 
 /* ------------------------------------------------------------ reveal (scroll) */
-.reveal[data-reveal="hidden"] { opacity: 0; transform: translate3d(0, 32px, 0); }
+.reveal[data-reveal="hidden"] { opacity: 0; filter: blur(18px); transform: translate3d(0, 32px, 0) scale(1.06); }
 .reveal[data-reveal="in"] {
   opacity: 1;
+  filter: none;
   transform: none;
-  transition: opacity 1s var(--ease) var(--rv-delay, 0ms), transform 1s var(--ease) var(--rv-delay, 0ms);
+  transition: opacity 1.4s var(--ease) var(--rv-delay, 0ms), filter 1.8s var(--ease) var(--rv-delay, 0ms), transform 1.8s var(--ease) var(--rv-delay, 0ms);
 }
 .magnetic { display: inline-block; transition: transform 0.35s var(--ease); }
 
@@ -136,7 +137,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   letter-spacing: -0.02em;
   color: var(--text-hi);
 }
-.hero__biro { display: block; white-space: nowrap; animation: brand-in 1.3s var(--ease) 0.05s both; }
+.hero__biro { display: block; white-space: nowrap; animation: brand-in 1.9s var(--ease) 0.05s both; }
 .ltr { display: inline-block; }
 .ltr--i { margin-right: var(--gap-i, 0em); }
 .hero__mov {
@@ -148,7 +149,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   line-height: 1;
   letter-spacing: -0.03em;
   margin: 0.17em 0.02em 0 0;
-  animation: fade-up 1s var(--ease) 0.75s both;
+  animation: fade-up 1.6s var(--ease) 0.75s both;
 }
 
 /* retrato recortado + luz Phthalo nas bordas */
@@ -159,7 +160,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
 }
 .hero__figure {
   height: 100%;
-  animation: fig-in 1.6s var(--ease) 0.1s both;
+  animation: fig-in 2s var(--ease) 0.1s both;
 }
 .hero__figure img { height: 100%; width: auto; max-width: none; }
 .hero__fade { position: absolute; left: 0; right: 0; bottom: 0; height: 24%; z-index: 4; background: linear-gradient(180deg, transparent, var(--bg) 94%); pointer-events: none; }
@@ -174,7 +175,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   color: var(--text-hi);
   white-space: nowrap;
 }
-.hero__cta { margin-top: clamp(26px, 6.4svh, 58px); animation: fade-up 1s var(--ease) 1.05s both; }
+.hero__cta { margin-top: clamp(26px, 6.4svh, 58px); animation: fade-up 1.6s var(--ease) 1.05s both; }
 .hero__cta .btn { font-size: clamp(14px, 1.15vw, 17px); padding: 15px 26px; }
 
 .hero__statement {
@@ -193,7 +194,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   position: absolute; z-index: 6; left: var(--pad); bottom: 4.6svh;
   display: inline-flex; align-items: center; gap: 14px;
   font-size: 15px; font-weight: 300; color: var(--text); letter-spacing: -0.005em;
-  animation: fade-up 1s var(--ease) 1.4s both;
+  animation: fade-up 1.6s var(--ease) 1.4s both;
   transition: color 0.3s var(--ease);
 }
 .hero__scroll:hover { color: var(--text-hi); }
@@ -201,12 +202,12 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
 .mouse__wheel { animation: wheel 2s ease-in-out infinite; }
 
 .line { display: block; overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
-.line > span { display: block; animation: line-up 1s var(--ease) both; animation-delay: calc(0.6s + var(--i, 0) * 0.09s); }
+.line > span { display: block; animation: line-up 1.5s var(--ease) both; animation-delay: calc(0.6s + var(--i, 0) * 0.09s); }
 
-@keyframes fig-in { from { opacity: 0; transform: translate3d(0, 34px, 0) scale(1.035); } to { opacity: 1; transform: none; } }
-@keyframes brand-in { from { clip-path: inset(-12% 0 112% 0); transform: translate3d(0, 10%, 0); } to { clip-path: inset(-12% 0 -12% 0); transform: none; } }
-@keyframes line-up { from { transform: translate3d(0, 112%, 0); } to { transform: none; } }
-@keyframes fade-up { from { opacity: 0; transform: translate3d(0, 16px, 0); } to { opacity: 1; transform: none; } }
+@keyframes fig-in { from { opacity: 0; filter: blur(24px); transform: translate3d(0, 34px, 0) scale(1.14); } 55% { opacity: 1; } to { opacity: 1; filter: none; transform: none; } }
+@keyframes brand-in { from { clip-path: inset(-12% 0 112% 0); filter: blur(28px); transform: translate3d(0, 10%, 0) scale(1.12); } 60% { filter: blur(6px); } to { clip-path: inset(-12% 0 -12% 0); filter: none; transform: none; } }
+@keyframes line-up { from { filter: blur(12px); transform: translate3d(0, 112%, 0) scale(1.05); } to { filter: none; transform: none; } }
+@keyframes fade-up { from { opacity: 0; filter: blur(14px); transform: translate3d(0, 16px, 0) scale(1.06); } to { opacity: 1; filter: none; transform: none; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes wheel { 0%, 100% { transform: translateY(0); opacity: 1; } 55% { transform: translateY(6px); opacity: 0.2; } }
 
