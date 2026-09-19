@@ -94,7 +94,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
 
 /* ------------------------------------------------------------ 01 hero */
 .hero {
-  --brand-top: 26%;
+  --brand-top: 14%;
   position: relative;
   height: 100svh;
   min-height: 640px;
@@ -123,7 +123,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   position: absolute; left: 0; right: 0; top: var(--brand-top); z-index: 2;
   display: flex; justify-content: center;
   /* -2.7svh: recentraliza o nome para que o "I" termine junto à orelha do retrato */
-  transform: translate3d(-2.7svh, calc(var(--hero-p, 0) * -7svh), 0);
+  transform: translate3d(-2.9svh, calc(var(--hero-p, 0) * -7svh), 0);
 }
 .hero__brand {
   --gap-i: 0.71em; /* vão entre "I" e "R": fica escondido atrás do rosto */
@@ -131,7 +131,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   font-family: var(--font-d);
   font-stretch: 112%;
   font-weight: 900;
-  font-size: min(38.5svh, 24.6vw);
+  font-size: min(41.5svh, 26.6vw);
   line-height: 0.74;
   letter-spacing: -0.02em;
   color: var(--text-hi);
@@ -179,7 +179,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
 
 .hero__statement {
   position: absolute; z-index: 6; right: var(--pad); bottom: 5svh;
-  font-size: clamp(34px, 4.6vw, 88px);
+  font-size: clamp(30px, 3.5vw, 66px);
   font-weight: 300;
   line-height: 1.02;
   letter-spacing: -0.04em;
