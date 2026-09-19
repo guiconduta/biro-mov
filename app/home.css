@@ -107,8 +107,8 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
 .hero__bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(30% 62% at 36% 50%, rgba(31, 143, 106, 0.3) 0%, transparent 70%),
-    radial-gradient(30% 62% at 64% 48%, rgba(31, 143, 106, 0.24) 0%, transparent 70%),
+    radial-gradient(30% 62% at 36% 50%, rgba(31, 143, 106, 0.15) 0%, transparent 70%),
+    radial-gradient(30% 62% at 64% 48%, rgba(31, 143, 106, 0.12) 0%, transparent 70%),
     radial-gradient(70% 50% at 8% 62%, rgba(18, 53, 36, 0.7) 0%, transparent 70%),
     radial-gradient(70% 55% at 96% 40%, rgba(10, 42, 32, 0.8) 0%, transparent 70%),
     linear-gradient(180deg, #030807 0%, #04100c 60%, #030807 100%);
@@ -160,7 +160,6 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
 .hero__figure {
   height: 100%;
   animation: fig-in 1.6s var(--ease) 0.1s both;
-  filter: drop-shadow(0 0 1.5px rgba(120, 235, 190, 0.55)) drop-shadow(0 0 44px rgba(31, 143, 106, 0.42));
 }
 .hero__figure img { height: 100%; width: auto; max-width: none; }
 .hero__fade { position: absolute; left: 0; right: 0; bottom: 0; height: 24%; z-index: 4; background: linear-gradient(180deg, transparent, var(--bg) 94%); pointer-events: none; }
