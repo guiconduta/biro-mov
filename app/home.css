@@ -124,10 +124,10 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   position: absolute; left: 0; right: 0; top: var(--brand-top); z-index: 2;
   display: flex; justify-content: center;
   /* -2.7svh: recentraliza o nome para que o "I" termine junto à orelha do retrato */
-  transform: translate3d(-2.9svh, calc(var(--hero-p, 0) * -7svh), 0);
+  transform: translate3d(-0.8svh, calc(var(--hero-p, 0) * -7svh), 0);
 }
 .hero__brand {
-  --gap-i: 0.6em; /* vão entre "I" e "R": fica escondido atrás do rosto */
+  --gap-i: 0.5em; /* vão entre "I" e "R": fica escondido atrás do rosto */
   display: grid; justify-items: end; width: max-content; margin: 0;
   font-family: var(--font-d);
   font-stretch: 112%;
