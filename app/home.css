@@ -91,7 +91,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 
 /* ------------------------------------------------------------ 01 hero */
 .hero {
-  --brand-top: 26%;
+  --brand-top: 16%;
   position: relative;
   height: 100svh;
   min-height: 640px;
