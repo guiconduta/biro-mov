@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Hanken_Grotesk } from "next/font/google";
+import { Archivo, Onest } from "next/font/google";
 import { site } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
 import "./globals.css";
@@ -12,10 +12,9 @@ const archivo = Archivo({
   display: "swap",
 });
 
-// Texto e navegação: grotesca contemporânea, pesos finos.
-const hanken = Hanken_Grotesk({
+// Texto e navegação: Onest (regular / semibold).
+const onest = Onest({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600"],
   variable: "--font-body",
   display: "swap",
 });
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${archivo.variable} ${hanken.variable}`}>
+    <html lang="pt-BR" className={`${archivo.variable} ${onest.variable}`}>
       <body>
         <a className="skip-link" href="#main">Pular para o conteúdo</a>
         {children}

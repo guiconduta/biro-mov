@@ -12,8 +12,9 @@ Cinematográfico, contemporâneo, humano, preciso, imersivo, sensorial, autoral.
 - Tipografia: off-white (`--text-hi #f2f4f1`).
 
 ## Tipografia
-- Display (BIRO, títulos grandes): **Archivo**, eixo `wdth` (`font-stretch:112%`, peso 900 no BIRO).
-- Corpo/UI: **Hanken Grotesk**, pesos finos (300) na navegação e nos textos editoriais.
+- Display (BIRO): **Archivo** expandido (`font-stretch:125%`, peso 900) — referência "ONEST" do quadro de tipografia.
+- Corpo/UI: **Onest** (regular / semibold) — referência "CLIMATE CRISIS".
+- Opções selecionáveis (nav, redes, telefone, chips, links CTA): "círculo de blur" — pílula de vidro fosco (`backdrop-filter`, borda 1px clara, brilho interno); regra única no fim de `app/globals.css`.
 - Ambas via `next/font/google` em `app/layout.tsx`.
 
 ## Hero em camadas (`components/site/Hero.tsx` + `app/home.css`)
