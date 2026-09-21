@@ -30,7 +30,7 @@ export const COPY = {
     "experiências imersivas,",
     "marcando sua presença digital.",
   ],
-  heroStatement: ["Reimaginando", "com visual,", "som e ritmo."],
+  heroStatement: ["Reimaginando", "com visual, som e ritmo."],
   cta: "Começar um projeto",
   scroll: "Role para explorar",
   contactHeadline: "Vamos conversar?",
