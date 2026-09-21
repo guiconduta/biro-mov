@@ -133,7 +133,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   letter-spacing: -0.02em;
   color: var(--text-hi);
   /* abertura: o nome nasce maior e, depois de ~2s, dá um zoom-out e assenta ao fundo */
-  animation: brand-settle 1.3s cubic-bezier(0.65, 0, 0.35, 1) 2s both;
+  animation: brand-settle 1.5s cubic-bezier(0.65, 0, 0.35, 1) 2s both;
 }
 .hero__biro { display: block; white-space: nowrap; animation: brand-in 1.9s var(--ease) 0.05s both; }
 .ltr { display: inline-block; }
@@ -158,7 +158,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 }
 .hero__figure {
   height: 100%;
-  animation: fig-in 2s var(--ease) 2.1s both;
+  animation: fig-in 1.3s var(--ease) 2.15s both;
 }
 .hero__figure img { height: 100%; width: auto; max-width: none; }
 .hero__fade { position: absolute; left: 0; right: 0; bottom: 0; height: 24%; z-index: 4; background: linear-gradient(180deg, transparent, var(--bg) 94%); pointer-events: none; }
@@ -202,9 +202,10 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .line { display: block; overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
 .line > span { display: block; animation: line-up 1.5s var(--ease) both; animation-delay: calc(2.8s + var(--i, 0) * 0.1s); }
 
-@keyframes fig-in { from { opacity: 0; filter: blur(24px); transform: translate3d(0, 34px, 0) scale(1.14); } 55% { opacity: 1; } to { opacity: 1; filter: none; transform: none; } }
+@keyframes fig-in { from { opacity: 0; filter: blur(24px); transform: translate3d(0, 34px, 0) scale(1.14); } 50% { opacity: 1; } to { opacity: 1; filter: none; transform: none; } }
 @keyframes brand-in { from { clip-path: inset(-12% 0 112% 0); filter: blur(28px); transform: translate3d(0, 10%, 0) scale(1.12); } 60% { filter: blur(6px); } to { clip-path: inset(-12% 0 -12% 0); filter: none; transform: none; } }
-@keyframes brand-settle { from { transform: scale(var(--settle, 1.16)); } to { transform: none; } }
+/* zoom-out com blur out/in: o nome desfoca enquanto a foto entra e volta ao foco assentado ao fundo */
+@keyframes brand-settle { 0% { transform: scale(var(--settle, 1.16)); filter: blur(0); } 45% { filter: blur(14px); } 100% { transform: none; filter: blur(0); } }
 @keyframes line-up { from { opacity: 0; filter: blur(12px); transform: translate3d(0, 112%, 0) scale(1.05); } to { opacity: 1; filter: none; transform: none; } }
 @keyframes fade-up { from { opacity: 0; filter: blur(14px); transform: translate3d(0, 16px, 0) scale(1.06); } to { opacity: 1; filter: none; transform: none; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
