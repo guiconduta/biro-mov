@@ -102,8 +102,7 @@ export function Navigation() {
     <>
       <header className={"nav" + (hidden && !open ? " nav--hidden" : "")}>
         <nav aria-label="Principal" className="nav__cols">
-          <NavColumn links={NAV.col1} />
-          <NavColumn links={NAV.col2} />
+          <NavColumn links={[...NAV.col1, ...NAV.col2]} />
         </nav>
 
         <button

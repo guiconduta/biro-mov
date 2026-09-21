@@ -35,7 +35,8 @@
 .nav--hidden { transform: translateY(-110%); }
 .nav:focus-within { transform: none; }
 
-.nav__cols { display: flex; gap: clamp(10px, 1.2vw, 18px); }
+/* 3 colunas x 2 linhas, lidas da esquerda para a direita na ordem da Home */
+.nav__cols .nav__col { grid-template-columns: repeat(3, auto); gap: 8px; }
 .nav__col { display: grid; gap: 8px; align-content: start; justify-items: start; }
 .nav__link {
   display: inline-block;
