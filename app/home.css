@@ -122,12 +122,12 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   transform: translate3d(-0.8svh, calc(var(--hero-p, 0) * -7svh), 0);
 }
 .hero__brand {
-  --gap-i: 0.5em; /* vão entre "I" e "R": fica escondido atrás do rosto */
+  --gap-i: 0em; /* BIRO sempre inteiro; o rosto é que esconde parte das letras */
   display: grid; justify-items: end; width: max-content; margin: 0;
   font-family: var(--font-d);
   font-stretch: 125%;
   font-weight: 900;
-  font-size: min(39.5svh, 25vw);
+  font-size: min(44.5svh, 28.5vw);
   line-height: 0.74;
   letter-spacing: -0.02em;
   color: var(--text-hi);
@@ -136,8 +136,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 }
 .hero__biro { display: block; white-space: nowrap; animation: brand-in 1.9s var(--ease) 0.05s both; }
 .ltr { display: inline-block; }
-/* abertura: BIRO nasce inteiro e o vão do "I" só abre depois, escondido pela foto */
-.ltr--i { margin-right: var(--gap-i, 0em); animation: gap-open 1.3s cubic-bezier(0.65, 0, 0.35, 1) 2s both; }
+.ltr--i { margin-right: var(--gap-i, 0em); }
 .hero__mov {
   display: block;
   font-family: var(--font-b);
@@ -205,7 +204,6 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 @keyframes fig-in { from { opacity: 0; filter: blur(24px); transform: translate3d(0, 34px, 0) scale(1.14); } 55% { opacity: 1; } to { opacity: 1; filter: none; transform: none; } }
 @keyframes brand-in { from { clip-path: inset(-12% 0 112% 0); filter: blur(28px); transform: translate3d(0, 10%, 0) scale(1.12); } 60% { filter: blur(6px); } to { clip-path: inset(-12% 0 -12% 0); filter: none; transform: none; } }
 @keyframes brand-settle { from { transform: scale(var(--settle, 1.16)); } to { transform: none; } }
-@keyframes gap-open { from { margin-right: 0; } to { margin-right: var(--gap-i, 0em); } }
 @keyframes line-up { from { opacity: 0; filter: blur(12px); transform: translate3d(0, 112%, 0) scale(1.05); } to { opacity: 1; filter: none; transform: none; } }
 @keyframes fade-up { from { opacity: 0; filter: blur(14px); transform: translate3d(0, 16px, 0) scale(1.06); } to { opacity: 1; filter: none; transform: none; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
