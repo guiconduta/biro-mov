@@ -277,6 +277,7 @@ button.showreel__play:hover { border-color: var(--phthalo-lit); box-shadow: 0 0 
 .works__all .link-cta { display: inline-flex; align-items: center; gap: 12px; }
 
 .pf__media-link { display: block; }
+button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .pf__media { position: relative; overflow: hidden; background: #030807; }
 .pf__img { object-fit: cover; transition: transform 1.4s var(--ease); }
 .pf__placeholder {
@@ -288,8 +289,8 @@ button.showreel__play:hover { border-color: var(--phthalo-lit); box-shadow: 0 0 
   transition: transform 1.4s var(--ease);
 }
 .pf__placeholder span { font-size: clamp(90px, 15vw, 260px); font-weight: 200; letter-spacing: -0.06em; color: rgba(242, 244, 241, 0.06); }
-a.pf__media-link:hover .pf__img, a.pf__media-link:hover .pf__placeholder,
-a.pf__media-link:focus-visible .pf__img, a.pf__media-link:focus-visible .pf__placeholder { transform: scale(1.035); }
+.pf__media-link:hover .pf__img, .pf__media-link:hover .pf__placeholder,
+.pf__media-link:focus-visible .pf__img, .pf__media-link:focus-visible .pf__placeholder { transform: scale(1.035); }
 .pf__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: fade-in 0.5s both; }
 .pf__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 58%, rgba(3, 8, 7, 0.5) 100%); }
 .pf__cta {
@@ -300,7 +301,7 @@ a.pf__media-link:focus-visible .pf__img, a.pf__media-link:focus-visible .pf__pla
   opacity: 0; transform: translateY(8px);
   transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-a.pf__media-link:hover .pf__cta, a.pf__media-link:focus-visible .pf__cta { opacity: 1; transform: none; box-shadow: 0 0 34px rgba(31, 143, 106, 0.5); }
+.pf__media-link:hover .pf__cta, .pf__media-link:focus-visible .pf__cta { opacity: 1; transform: none; box-shadow: 0 0 34px rgba(31, 143, 106, 0.5); }
 
 .pf__meta { display: grid; gap: 6px; padding-top: 20px; }
 .pf__n { font-size: 12px; letter-spacing: 0.22em; color: var(--text-mute); }
@@ -414,3 +415,32 @@ a.pf__media-link:hover .pf__cta, a.pf__media-link:focus-visible .pf__cta { opaci
 .ftr__links a { transition: color 0.25s var(--ease); }
 .ftr__links a:hover { color: var(--text-hi); }
 .ftr__off { opacity: 0.4; }
+
+/* ------------------------------------------------------------ tela do projeto (player) */
+.pm {
+  position: fixed; inset: 0; z-index: 300;
+  display: grid;
+  padding: clamp(14px, 3vw, 40px);
+  background: rgba(3, 8, 7, 0.86);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  overflow-y: auto; overscroll-behavior: contain;
+  animation: pm-in 0.7s var(--ease) both;
+}
+.pm__panel { position: relative; margin: auto; width: min(1180px, 100%, calc((100svh - 230px) * 16 / 9)); min-width: min(100%, 320px); animation: pm-panel 0.9s var(--ease) both; }
+.pm__close {
+  position: absolute; top: -50px; right: 0;
+  display: grid; place-items: center; width: 40px; height: 40px; cursor: pointer; color: var(--text-hi);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--r-pill);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.pm__close:hover { border-color: rgba(79, 214, 168, 0.5); box-shadow: 0 0 26px rgba(31, 143, 106, 0.35); }
+.pm__player { aspect-ratio: 16 / 9; width: 100%; background: #000; border: 1px solid var(--hairline); border-radius: 4px; overflow: hidden; }
+.pm__player--v { aspect-ratio: 9 / 16; width: auto; height: min(78svh, 720px); margin-inline: auto; }
+.pm__player iframe { width: 100%; height: 100%; border: 0; display: block; }
+.pm__meta { display: grid; gap: 6px; padding: 22px 2px 6px; }
+.pm__title { font-size: clamp(24px, 3vw, 46px); font-weight: 300; letter-spacing: -0.035em; line-height: 1.05; }
+.pm__info { display: flex; gap: 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); }
+.pm__roles { font-size: 13px; color: var(--text-mute); }
+@keyframes pm-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pm-panel { from { opacity: 0; filter: blur(16px); transform: scale(1.05); } to { opacity: 1; filter: none; transform: none; } }

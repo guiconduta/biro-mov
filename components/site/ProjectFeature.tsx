@@ -2,13 +2,21 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import type { Work } from "@/content/home.config";
 import { COPY } from "@/content/home.config";
+import { ProjectModal } from "@/components/site/ProjectModal";
 
 type Variant = "wide" | "asym" | "full";
 
-function Wrapper({ href, className, children }: { href: string; className: string; children: ReactNode }) {
+function Wrapper({ href, className, children, onOpen }: { href: string; className: string; children: ReactNode; onOpen?: () => void }) {
+  if (onOpen) {
+    return (
+      <button type="button" className={className} onClick={onOpen} aria-haspopup="dialog">
+        {children}
+      </button>
+    );
+  }
   if (!href) return <div className={className}>{children}</div>;
   if (href.startsWith("/")) {
     return (
@@ -27,6 +35,8 @@ function Wrapper({ href, className, children }: { href: string; className: strin
 export function ProjectFeature({ work, index, variant }: { work: Work; index: number; variant: Variant }) {
   const [hover, setHover] = useState(false);
   const [canHover, setCanHover] = useState(false);
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
     setCanHover(window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches);
@@ -39,7 +49,7 @@ export function ProjectFeature({ work, index, variant }: { work: Work; index: nu
 
   return (
     <article className={`pf pf--${variant}`}>
-      <Wrapper href={work.projectUrl} className="pf__media-link">
+      <Wrapper href={work.projectUrl} className="pf__media-link" onOpen={work.youtubeId ? () => setOpen(true) : undefined}>
         <div
           className="pf__media"
           onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)}
@@ -54,7 +64,7 @@ export function ProjectFeature({ work, index, variant }: { work: Work; index: nu
           )}
           {preview && <video className="pf__video" src={work.videoPreview} muted loop playsInline autoPlay preload="none" />}
           <div className="pf__shade" aria-hidden />
-          {work.projectUrl && <span className="pf__cta">{COPY.seeProject}</span>}
+          {(work.projectUrl || work.youtubeId) && <span className="pf__cta">{COPY.seeProject}</span>}
         </div>
       </Wrapper>
 
@@ -68,6 +78,7 @@ export function ProjectFeature({ work, index, variant }: { work: Work; index: nu
         </p>
         <p className="pf__roles">{work.roles.join(" · ")}</p>
       </div>
+      {open && work.youtubeId && <ProjectModal work={work} onClose={close} />}
     </article>
   );
 }
