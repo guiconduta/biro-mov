@@ -94,31 +94,31 @@ export type Work = {
 
 export const FEATURED_WORKS: [Work, Work, Work] = [
   {
-    title: "[TÍTULO DO PROJETO 01]",
-    category: "[CATEGORIA]",
-    year: "[ANO]",
-    roles: ["[FUNÇÃO]"],
-    poster: "",
+    title: "Encerramento do Pátio",
+    category: "Documental",
+    year: "2025",
+    roles: ["Editor"],
+    poster: "https://i.ytimg.com/vi/JRONQF6-Mlw/maxresdefault.jpg", // capa automática do YouTube; troque por imagem própria se quiser
     videoPreview: "",
-    projectUrl: "",
+    projectUrl: "https://www.youtube.com/watch?v=JRONQF6-Mlw",
   },
   {
-    title: "[TÍTULO DO PROJETO 02]",
-    category: "[CATEGORIA]",
-    year: "[ANO]",
-    roles: ["[FUNÇÃO]"],
-    poster: "",
+    title: "Festival de Dança Joinville",
+    category: "Documental",
+    year: "2026",
+    roles: ["Editor"],
+    poster: "https://i.ytimg.com/vi/hWx64S44OUY/maxresdefault.jpg", // capa automática do YouTube; troque por imagem própria se quiser
     videoPreview: "",
-    projectUrl: "",
+    projectUrl: "https://www.youtube.com/watch?v=hWx64S44OUY",
   },
   {
-    title: "[TÍTULO DO PROJETO 03]",
-    category: "[CATEGORIA]",
-    year: "[ANO]",
-    roles: ["[FUNÇÃO]"],
-    poster: "",
+    title: "Olá 2026",
+    category: "Showreel",
+    year: "2026",
+    roles: ["Editor"],
+    poster: "https://i.ytimg.com/vi/Tzgx0OJyYv0/maxresdefault.jpg", // capa automática do YouTube; troque por imagem própria se quiser
     videoPreview: "",
-    projectUrl: "",
+    projectUrl: "https://www.youtube.com/watch?v=Tzgx0OJyYv0",
   },
 ];
 
