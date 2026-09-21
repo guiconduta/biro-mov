@@ -95,7 +95,7 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
 
 /* ------------------------------------------------------------ 01 hero */
 .hero {
-  --brand-top: 14%;
+  --brand-top: 26%;
   position: relative;
   height: 100svh;
   min-height: 640px;
@@ -127,12 +127,12 @@ a.socials__a:hover { color: var(--phthalo-lit); filter: drop-shadow(0 0 9px rgba
   transform: translate3d(-2.9svh, calc(var(--hero-p, 0) * -7svh), 0);
 }
 .hero__brand {
-  --gap-i: 0.71em; /* vão entre "I" e "R": fica escondido atrás do rosto */
+  --gap-i: 0.6em; /* vão entre "I" e "R": fica escondido atrás do rosto */
   display: grid; justify-items: end; width: max-content; margin: 0;
   font-family: var(--font-d);
   font-stretch: 112%;
   font-weight: 900;
-  font-size: min(41.5svh, 26.6vw);
+  font-size: min(42.5svh, 27vw);
   line-height: 0.74;
   letter-spacing: -0.02em;
   color: var(--text-hi);
