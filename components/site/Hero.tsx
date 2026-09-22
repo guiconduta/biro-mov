@@ -51,31 +51,30 @@ export function Hero() {
         <div className="hero__fade" aria-hidden />
       </div>
 
-      {/* texto à esquerda + CTA + scroll: grid de 3 linhas (auto/1fr/auto) —
-          o CTA fica sempre centralizado no vão entre o parágrafo e o aviso de rolagem,
-          não importa a altura da tela. */}
-      <div className="hero__left">
-        <p className="hero__tagline">
-          <Lines lines={COPY.heroTagline} />
-        </p>
-        <div className="hero__cta">
-          <Magnetic>
-            <a href="#contato" className="btn btn--solid">
-              {COPY.cta}
-              <IconArrow size={18} />
-            </a>
-          </Magnetic>
-        </div>
-        <a href="#showreel" className="hero__scroll">
-          <IconMouse size={22} />
-          <span>{COPY.scroll}</span>
-        </a>
-      </div>
+      {/* texto à esquerda */}
+      <p className="hero__left hero__tagline">
+        <Lines lines={COPY.heroTagline} />
+      </p>
 
       {/* texto principal à direita */}
       <p className="hero__statement">
         <Lines lines={COPY.heroStatement} />
       </p>
+
+      {/* CTA: centralizado horizontalmente, sob o rosto */}
+      <div className="hero__cta">
+        <Magnetic>
+          <a href="#contato" className="btn btn--solid">
+            {COPY.cta}
+            <IconArrow size={18} />
+          </a>
+        </Magnetic>
+      </div>
+
+      <a href="#showreel" className="hero__scroll">
+        <IconMouse size={22} />
+        <span>{COPY.scroll}</span>
+      </a>
     </HeroParallax>
   );
 }

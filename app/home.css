@@ -165,13 +165,9 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .hero__fade { position: absolute; left: 0; right: 0; bottom: 0; height: 24%; z-index: 4; background: linear-gradient(180deg, transparent, var(--bg) 94%); pointer-events: none; }
 
 /* textos */
-/* tagline e statement ficam na mesma linha (mesmo "top"); o CTA desce sozinho, bem mais abaixo */
-/* grid de 3 linhas: o CTA (1fr, meio) fica sempre centralizado entre o parágrafo e o "role para explorar" */
+/* tagline e statement ficam na mesma linha (mesmo "top") */
 .hero__left {
-  position: absolute; z-index: 6; left: var(--pad); top: 71%; bottom: 4.6svh;
-  display: grid; grid-template-rows: auto 1fr auto; align-items: center; justify-items: start;
-}
-.hero__tagline {
+  position: absolute; z-index: 6; left: var(--pad); top: 71%;
   font-size: clamp(15px, 1.36vw, 22px);
   font-weight: 300;
   line-height: 1.32;
@@ -179,7 +175,14 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   color: var(--text-hi);
   white-space: nowrap;
 }
-.hero__cta { animation: fade-up 1.6s var(--ease) 3.3s both; }
+/* CTA: centralizado na largura toda do hero, sob o rosto — mesma altura de antes.
+   Centraliza com flex (não transform: a animação de entrada já usa transform, e os dois
+   nessa mesma propriedade se cancelariam). */
+.hero__cta {
+  position: absolute; z-index: 6; left: 0; right: 0; bottom: 13.6svh;
+  display: flex; justify-content: center;
+  animation: fade-up 1.6s var(--ease) 3.3s both;
+}
 .hero__cta .btn { font-size: clamp(14px, 1.15vw, 17px); padding: 15px 26px; }
 
 .hero__statement {
@@ -195,6 +198,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .hero__statement .line > span { animation-delay: calc(3.1s + var(--i, 0) * 0.1s); }
 
 .hero__scroll {
+  position: absolute; z-index: 6; left: var(--pad); bottom: 4.6svh;
   display: inline-flex; align-items: center; gap: 14px;
   font-size: 15px; font-weight: 300; color: var(--text); letter-spacing: -0.005em;
   animation: fade-up 1.6s var(--ease) 3.6s both;
@@ -230,11 +234,10 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   .hero__figure { height: 87%; }
   .hero__fade { display: none; }
   .hero__statement { position: static; order: 1; padding: 6px var(--pad) 0; font-size: clamp(24px, 7.2vw, 44px); text-shadow: none; }
-  .hero__left { position: static; display: block; order: 2; padding: 22px var(--pad) 0; }
-  .hero__tagline { font-size: clamp(16px, 4.4vw, 20px); white-space: normal; }
-  .hero__cta { margin-top: 24px; }
+  .hero__left { position: static; order: 2; padding: 22px var(--pad) 0; font-size: clamp(16px, 4.4vw, 20px); white-space: normal; }
+  .hero__cta { position: static; left: auto; right: auto; bottom: auto; display: block; order: 3; margin-top: 24px; padding: 0 var(--pad); }
   .hero__cta .btn { font-size: 16px; padding: 16px 28px; }
-  .hero__scroll { padding: 30px var(--pad) 34px; }
+  .hero__scroll { position: static; left: auto; bottom: auto; order: 4; padding: 30px var(--pad) 34px; }
 }
 
 /* ------------------------------------------------------------ 02 showreel */
@@ -274,11 +277,12 @@ button.showreel__play:hover { border-color: var(--phthalo-lit); box-shadow: 0 0 
 .showreel__play--off { opacity: 0.5; cursor: default; }
 
 /* ------------------------------------------------------------ 03 trabalhos */
-.works { padding: clamp(40px, 6vw, 96px) 0 clamp(72px, 10vw, 150px); }
+.works { padding: clamp(40px, 6vw, 96px) 0 clamp(32px, 4vw, 64px); }
 .works__head { padding: 0 var(--pad); margin-bottom: clamp(28px, 4vw, 56px); }
 .works__item { margin-bottom: clamp(72px, 12vw, 200px); }
+.works__item:nth-last-child(2) { margin-bottom: clamp(36px, 5vw, 72px); }
 .works__item--wide, .works__item--asym { padding: 0 var(--pad); }
-.works__all { padding: 0 var(--pad); display: flex; justify-content: flex-end; }
+.works__all { padding: 0 var(--pad); display: flex; justify-content: center; }
 .works__all .link-cta { display: inline-flex; align-items: center; gap: 12px; }
 
 .pf__media-link { display: block; }
