@@ -25,11 +25,7 @@ export const mailUrl = `mailto:${CONTACT.email}`;
 
 /* ------------------------------------------------------------- textos aprovados */
 export const COPY = {
-  heroTagline: [
-    "Transformo ideias em",
-    "experiências imersivas,",
-    "marcando sua presença digital.",
-  ],
+  heroTagline: ["Reimaginando a vida", "com visual, som e ritmo."],
   heroStatement: ["Reimaginando", "com visual, som e ritmo."],
   cta: "Começar um projeto",
   scroll: "Role para explorar",
