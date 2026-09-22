@@ -392,7 +392,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 
 /* ------------------------------------------------------------ 07 contato */
 .contact {
-  position: relative; overflow: hidden; min-height: 100svh;
+  position: relative; overflow: clip; min-height: 100svh;
   display: flex; flex-direction: column; justify-content: center;
   padding: clamp(96px, 12vw, 180px) var(--pad);
   border-top: 1px solid var(--hairline);
@@ -400,13 +400,45 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .contact__glow { position: absolute; left: 0; right: 0; bottom: -30%; height: 95%; pointer-events: none; background: radial-gradient(60% 60% at 50% 100%, rgba(23, 101, 76, 0.36), transparent 70%); }
 .contact > * { position: relative; }
 .contact > .contact__glow { position: absolute; }
-.contact__headline { margin: clamp(20px, 3vw, 40px) 0 clamp(40px, 6vw, 96px); font-size: clamp(54px, 12.6vw, 236px); font-weight: 200; letter-spacing: -0.06em; line-height: 0.9; color: var(--text-hi); }
-.contact__actions { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 44px; }
+.contact__headline { margin: clamp(20px, 3vw, 40px) 0 0; font-size: clamp(40px, 7.4vw, 108px); font-weight: 200; letter-spacing: -0.05em; line-height: 0.98; color: var(--text-hi); }
+.contact__sub { margin: clamp(14px, 1.6vw, 22px) 0 0; max-width: 46ch; font-size: clamp(15px, 1.3vw, 19px); font-weight: 300; line-height: 1.6; color: var(--text-dim); }
+.contact__actions { display: grid; grid-template-columns: minmax(0, 640px) minmax(220px, 320px); align-items: start; justify-content: space-between; gap: clamp(32px, 5vw, 72px); margin-top: clamp(48px, 6vw, 88px); }
 .btn--lg { padding: 20px 36px; font-size: clamp(16px, 1.4vw, 20px); }
-.contact__links { display: grid; gap: 0; min-width: min(100%, 360px); }
+.contact__links { display: grid; gap: 0; align-content: start; padding-top: clamp(4px, 1vw, 18px); }
 .contact__link { display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--hairline); font-weight: 300; color: var(--text-hi); transition: border-color 0.3s var(--ease), padding-left 0.3s var(--ease); }
 .contact__link:hover { border-color: var(--phthalo-glow); padding-left: 6px; }
 .contact__k { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mute); align-self: center; }
+
+/* formulário de contato — cartão de vidro fosco no padrão do site */
+.cform {
+  display: grid; gap: 22px;
+  padding: clamp(24px, 2.6vw, 36px);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--r-lg);
+  -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+.cform__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.cform__title { font-size: clamp(18px, 1.6vw, 22px); font-weight: 400; color: var(--text-hi); }
+.cform__sub { margin-top: 4px; font-size: 13px; color: var(--text-mute); font-weight: 300; }
+.cform__status { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); white-space: nowrap; }
+.cform__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--phthalo-glow); box-shadow: 0 0 10px rgba(31, 143, 106, 0.8); animation: rec 2s ease-in-out infinite; }
+.cform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cform__field { display: grid; gap: 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
+.cform__field input, .cform__field textarea {
+  font-family: var(--font-b); font-size: 14px; font-weight: 400; letter-spacing: normal; text-transform: none;
+  color: var(--text-hi); background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12); border-radius: var(--r-input);
+  padding: 13px 14px; resize: vertical;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.cform__field input::placeholder, .cform__field textarea::placeholder { color: var(--text-mute); }
+.cform__field input:focus, .cform__field textarea:focus { outline: none; border-color: var(--phthalo-glow); background: rgba(255, 255, 255, 0.06); }
+.cform__submit { justify-content: center; width: 100%; }
+.cform__note { font-size: 13px; color: var(--phthalo-lit); }
+@media (max-width: 640px) { .cform__row { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .contact__actions { grid-template-columns: 1fr; } }
 
 /* ------------------------------------------------------------ footer */
 .ftr { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; padding: 26px var(--pad) 34px; border-top: 1px solid var(--hairline); font-size: 14px; font-weight: 300; color: var(--text-mute); }

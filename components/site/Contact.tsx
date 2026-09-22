@@ -1,7 +1,6 @@
 import { COPY, CONTACT, mailUrl, whatsappUrl } from "@/content/home.config";
 import { Reveal } from "@/components/ui/Reveal";
-import { Magnetic } from "@/components/ui/Magnetic";
-import { IconArrow } from "@/components/icons";
+import { ContactForm } from "@/components/site/ContactForm";
 
 export function Contact() {
   return (
@@ -13,15 +12,12 @@ export function Contact() {
 
       <Reveal delay={100}>
         <p className="contact__headline">{COPY.contactHeadline}</p>
+        <p className="contact__sub">{COPY.contactSub}</p>
       </Reveal>
 
       <Reveal delay={200} className="contact__actions">
-        <Magnetic>
-          <a href={whatsappUrl} className="btn btn--solid btn--lg" target="_blank" rel="noopener noreferrer">
-            {COPY.cta}
-            <IconArrow size={20} />
-          </a>
-        </Magnetic>
+        <ContactForm />
+
         <ul className="contact__links">
           <li>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact__link">

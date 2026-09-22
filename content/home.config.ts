@@ -33,9 +33,24 @@ export const COPY = {
   heroStatement: ["Reimaginando", "com visual, som e ritmo."],
   cta: "Começar um projeto",
   scroll: "Role para explorar",
-  contactHeadline: "Vamos conversar?",
+  contactHeadline: "Pronto para uma imersão?",
+  contactSub: "Me diga sobre seu projeto e retornarei com um plano para trazer sua ideia à realidade.",
   seeAllWorks: "Ver todos os trabalhos",
   seeProject: "Ver projeto",
+} as const;
+
+/* ----------------------------------------------------------- formulário de contato */
+export const CONTACT_FORM = {
+  cardTitle: "Fale comigo",
+  cardSub: "Preencha o formulário e eu respondo em até 24 horas.",
+  statusLabel: "Disponível agora",
+  nameLabel: "Nome",
+  namePlaceholder: "Seu nome",
+  emailLabel: "E-mail",
+  emailPlaceholder: "seu@email.com",
+  messageLabel: "Mensagem",
+  messagePlaceholder: "Conte sobre seu projeto...",
+  submitLabel: "Enviar mensagem",
 } as const;
 
 /* --------------------------------------------------------------- navegação */
