@@ -35,17 +35,18 @@
 .nav--hidden { transform: translateY(-110%); }
 .nav:focus-within { transform: none; }
 
-/* 3 colunas x 2 linhas, lidas da esquerda para a direita na ordem da Home */
-.nav__cols .nav__col { grid-template-columns: repeat(3, auto); gap: 8px; }
-.nav__col { display: grid; gap: 8px; align-content: start; justify-items: start; }
+/* uma linha só, na ordem da Home — compacta o bastante pra caber antes da metade da página */
+.nav__cols .nav__col { grid-template-columns: repeat(6, auto); gap: 6px; }
+.nav__col { display: grid; gap: 6px; align-content: start; justify-items: start; }
 .nav__link {
   display: inline-block;
-  font-size: clamp(12px, 0.95vw, 14px);
+  font-size: clamp(10.5px, 0.72vw, 12px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.005em;
-  padding: 9px 16px;
+  padding: 8px 13px;
   color: var(--text-hi);
+  white-space: nowrap;
 }
 .nav__link:hover { transform: translateY(-1px); color: #fff; }
 
@@ -165,7 +166,11 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 
 /* textos */
 /* tagline e statement ficam na mesma linha (mesmo "top"); o CTA desce sozinho, bem mais abaixo */
-.hero__left { position: absolute; z-index: 6; left: var(--pad); top: 71%; }
+/* grid de 3 linhas: o CTA (1fr, meio) fica sempre centralizado entre o parágrafo e o "role para explorar" */
+.hero__left {
+  position: absolute; z-index: 6; left: var(--pad); top: 71%; bottom: 4.6svh;
+  display: grid; grid-template-rows: auto 1fr auto; align-items: center; justify-items: start;
+}
 .hero__tagline {
   font-size: clamp(15px, 1.36vw, 22px);
   font-weight: 300;
@@ -174,7 +179,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   color: var(--text-hi);
   white-space: nowrap;
 }
-.hero__cta { margin-top: clamp(22px, 3.4svh, 40px); animation: fade-up 1.6s var(--ease) 3.3s both; }
+.hero__cta { animation: fade-up 1.6s var(--ease) 3.3s both; }
 .hero__cta .btn { font-size: clamp(14px, 1.15vw, 17px); padding: 15px 26px; }
 
 .hero__statement {
@@ -190,7 +195,6 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .hero__statement .line > span { animation-delay: calc(3.1s + var(--i, 0) * 0.1s); }
 
 .hero__scroll {
-  position: absolute; z-index: 6; left: var(--pad); bottom: 4.6svh;
   display: inline-flex; align-items: center; gap: 14px;
   font-size: 15px; font-weight: 300; color: var(--text); letter-spacing: -0.005em;
   animation: fade-up 1.6s var(--ease) 3.6s both;
@@ -226,11 +230,11 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   .hero__figure { height: 87%; }
   .hero__fade { display: none; }
   .hero__statement { position: static; order: 1; padding: 6px var(--pad) 0; font-size: clamp(24px, 7.2vw, 44px); text-shadow: none; }
-  .hero__left { position: static; order: 2; padding: 22px var(--pad) 0; }
+  .hero__left { position: static; display: block; order: 2; padding: 22px var(--pad) 0; }
   .hero__tagline { font-size: clamp(16px, 4.4vw, 20px); white-space: normal; }
   .hero__cta { margin-top: 24px; }
   .hero__cta .btn { font-size: 16px; padding: 16px 28px; }
-  .hero__scroll { position: static; order: 3; padding: 30px var(--pad) 34px; }
+  .hero__scroll { padding: 30px var(--pad) 34px; }
 }
 
 /* ------------------------------------------------------------ 02 showreel */
@@ -327,6 +331,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 
 .pf__meta { display: grid; gap: 16px; padding-top: 22px; }
 .pf__title { font-size: clamp(24px, 2.8vw, 46px); font-weight: 300; letter-spacing: -0.035em; line-height: 1.05; }
+.pf__desc { max-width: 62ch; font-size: clamp(14px, 1.15vw, 16px); font-weight: 300; line-height: 1.6; color: var(--text-dim); }
 
 /* ficha técnica em rótulo + valor — o "Industry / Style / Tone / Format" da referência */
 .pf__row { display: grid; grid-template-columns: repeat(4, auto); gap: clamp(20px, 3vw, 48px); }
@@ -334,7 +339,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .pf__row dd { margin: 0; font-size: 14px; font-weight: 400; color: var(--text-hi); }
 
 /* 01 — horizontal grande: mídia e ficha coladas num só cartão de vidro */
-.pf--wide { width: 84%; }
+.pf--wide { width: 84%; margin-inline: auto; }
 .pf__card {
   border-radius: var(--r-lg); overflow: hidden;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.01));

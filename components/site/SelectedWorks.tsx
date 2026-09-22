@@ -4,7 +4,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { IconArrow } from "@/components/icons";
 import { ProjectFeature } from "./ProjectFeature";
 
-const VARIANTS = ["wide", "asym", "full"] as const;
+// os 3 cards usam o mesmo molde (mídia + ficha coladas, card centralizado) — uniforme por enquanto
+const VARIANTS = ["wide", "wide", "wide"] as const;
 
 export function SelectedWorks() {
   return (

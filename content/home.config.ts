@@ -99,6 +99,7 @@ export const SHOWREEL: ShowreelConfig = {
 /* ------------------------------------------------- trabalhos em destaque (3) */
 export type Work = {
   title: string;
+  description?: string; // 1-2 frases sobre o projeto (vazio = placeholder)
   category: string;
   year: string;
   roles: string[];

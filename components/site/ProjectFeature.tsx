@@ -108,6 +108,11 @@ export function ProjectFeature({ work, index, variant }: { work: Work; index: nu
           {media}
           <div className="pf__meta">
             <h3 className="pf__title">{work.title}</h3>
+            {work.description ? (
+              <p className="pf__desc">{work.description}</p>
+            ) : (
+              <p className="pf__desc todo">[DESCRIÇÃO DO PROJETO]</p>
+            )}
             <MetaRow work={work} n={n} />
           </div>
         </div>
@@ -116,6 +121,11 @@ export function ProjectFeature({ work, index, variant }: { work: Work; index: nu
           {media}
           <div className="pf__meta">
             <h3 className="pf__title">{work.title}</h3>
+            {work.description ? (
+              <p className="pf__desc">{work.description}</p>
+            ) : (
+              <p className="pf__desc todo">[DESCRIÇÃO DO PROJETO]</p>
+            )}
             <MetaRow work={work} n={n} />
           </div>
         </>
