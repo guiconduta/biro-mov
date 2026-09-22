@@ -1,11 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ShowreelConfig } from "@/content/home.config";
 import { Reveal } from "@/components/ui/Reveal";
 import { IconPlay } from "@/components/icons";
+import { nudgeYouTubeQuality, ytEmbedSrc } from "@/lib/youtube";
 
 function Player({ cfg, title }: { cfg: ShowreelConfig; title: string }) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  useEffect(() => {
+    if (cfg.provider === "youtube") return nudgeYouTubeQuality(iframeRef.current);
+  }, [cfg.provider]);
+
   if (cfg.provider === "vimeo") {
     return (
       <iframe
@@ -20,8 +26,9 @@ function Player({ cfg, title }: { cfg: ShowreelConfig; title: string }) {
   if (cfg.provider === "youtube") {
     return (
       <iframe
+        ref={iframeRef}
         className="showreel__media"
-        src={`https://www.youtube-nocookie.com/embed/${cfg.youtubeId}?autoplay=1&playsinline=1&rel=0`}
+        src={ytEmbedSrc(cfg.youtubeId)}
         title={title}
         allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
         allowFullScreen

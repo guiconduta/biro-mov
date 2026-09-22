@@ -4,11 +4,15 @@ import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import type { Work } from "@/content/home.config";
 import { IconClose } from "@/components/icons";
+import { nudgeYouTubeQuality, ytEmbedSrc } from "@/lib/youtube";
 
 /** Tela do projeto: player do YouTube (só carrega ao abrir) + ficha. Esc, clique fora e o botão fecham. */
 export function ProjectModal({ work, onClose }: { work: Work; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => nudgeYouTubeQuality(iframeRef.current), []);
 
   useEffect(() => {
     const prevFocus = document.activeElement as HTMLElement | null;
@@ -52,7 +56,8 @@ export function ProjectModal({ work, onClose }: { work: Work; onClose: () => voi
         </button>
         <div className={`pm__player${vertical ? " pm__player--v" : ""}`}>
           <iframe
-            src={`https://www.youtube-nocookie.com/embed/${work.youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
+            ref={iframeRef}
+            src={ytEmbedSrc(work.youtubeId!)}
             title={work.title}
             allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
             allowFullScreen

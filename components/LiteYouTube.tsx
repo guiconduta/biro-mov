@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { nudgeYouTubeQuality, ytEmbedSrc } from "@/lib/youtube";
 
 /**
  * Facade do YouTube: mostra o poster primeiro; o iframe só entra no play.
@@ -19,14 +20,20 @@ export function LiteYouTube({
   className?: string;
 }) {
   const [play, setPlay] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const thumb = poster || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+
+  useEffect(() => {
+    if (play) return nudgeYouTubeQuality(iframeRef.current);
+  }, [play]);
 
   if (play) {
     return (
       <iframe
+        ref={iframeRef}
         className={className}
         style={{ width: "100%", height: "100%", border: 0, display: "block" }}
-        src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0`}
+        src={ytEmbedSrc(id)}
         title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
