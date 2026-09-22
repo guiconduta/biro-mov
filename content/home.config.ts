@@ -116,7 +116,7 @@ export const FEATURED_WORKS: [Work, Work, Work] = [
     category: "Documental",
     year: "2025",
     roles: ["Editor"],
-    poster: "https://i.ytimg.com/vi/JRONQF6-Mlw/maxresdefault.jpg", // capa automática do YouTube; troque por imagem própria se quiser
+    poster: "https://i.ytimg.com/vi/JRONQF6-Mlw/maxresdefault.jpg?v=20260922", // capa automática do YouTube (?v= força o cache a buscar de novo quando a capa mudar no canal)
     videoPreview: "",
     projectUrl: "https://www.youtube.com/watch?v=JRONQF6-Mlw",
     youtubeId: "JRONQF6-Mlw",
@@ -126,7 +126,7 @@ export const FEATURED_WORKS: [Work, Work, Work] = [
     category: "Documental",
     year: "2026",
     roles: ["Editor"],
-    poster: "https://i.ytimg.com/vi/hWx64S44OUY/maxresdefault.jpg", // capa automática do YouTube; troque por imagem própria se quiser
+    poster: "https://i.ytimg.com/vi/hWx64S44OUY/maxresdefault.jpg?v=20260922", // capa automática do YouTube (?v= força o cache a buscar de novo quando a capa mudar no canal)
     videoPreview: "",
     projectUrl: "https://www.youtube.com/watch?v=hWx64S44OUY",
     youtubeId: "hWx64S44OUY",
