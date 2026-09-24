@@ -409,15 +409,20 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
   mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 .marquee__track {
-  display: flex; flex: none; min-width: 100%; align-items: flex-start; justify-content: space-around;
+  display: flex; flex: none; min-width: 100%; align-items: center; justify-content: space-around;
   gap: clamp(40px, 6vw, 110px); padding-right: clamp(40px, 6vw, 110px);
   animation: marquee 90s linear infinite;
 }
 .marquee:hover .marquee__track, .marquee:focus-within .marquee__track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-100%); } }
-.clients__item { display: grid; gap: 8px; white-space: nowrap; }
+.clients__item { display: grid; gap: 8px; justify-items: center; white-space: nowrap; }
 .clients__name { font-size: clamp(30px, 4.4vw, 72px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; color: var(--text-hi); }
-.clients__logo { height: 40px; width: auto; opacity: 0.85; filter: grayscale(1) brightness(1.6); }
+/* logos já vêm brancos sobre transparente (public/clients/); --ls compensa a proporção de cada um */
+.clients__logo {
+  height: calc(var(--ls, 1) * clamp(38px, 3.8vw, 58px)); width: auto; max-width: none;
+  opacity: 0.72; transition: opacity 0.4s var(--ease), filter 0.4s var(--ease);
+}
+.clients__item:hover .clients__logo { opacity: 1; filter: drop-shadow(0 0 18px rgba(79, 214, 168, 0.45)); }
 .clients__meta { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mute); }
 @media (prefers-reduced-motion: reduce) {
   .marquee { -webkit-mask-image: none; mask-image: none; }

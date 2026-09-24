@@ -158,18 +158,20 @@ export const ABOUT = {
 /* -------------------------------------------------- clientes e experiências */
 export type ClientItem = {
   name: string;
-  project: string;
-  year: string;
-  logo: string; // vazio = mostra o nome
+  project: string; // vazio = não mostra
+  year: string; // vazio = não mostra
+  logo: string; // vazio = mostra o nome. Logos em public/clients/, já em branco sobre transparente
+  logoWidth?: number;
+  logoHeight?: number;
 };
 
 export const CLIENTS: ClientItem[] = [
-  { name: "[CLIENTE 01]", project: "[PROJETO]", year: "[ANO]", logo: "" },
-  { name: "[CLIENTE 02]", project: "[PROJETO]", year: "[ANO]", logo: "" },
-  { name: "[CLIENTE 03]", project: "[PROJETO]", year: "[ANO]", logo: "" },
-  { name: "[CLIENTE 04]", project: "[PROJETO]", year: "[ANO]", logo: "" },
-  { name: "[CLIENTE 05]", project: "[PROJETO]", year: "[ANO]", logo: "" },
-  { name: "[CLIENTE 06]", project: "[PROJETO]", year: "[ANO]", logo: "" },
+  { name: "Amendonça Concretos", project: "", year: "", logo: "/clients/amendonca.webp", logoWidth: 590, logoHeight: 214 },
+  { name: "Festival Parental", project: "", year: "", logo: "/clients/festival-parental.webp", logoWidth: 720, logoHeight: 225 },
+  { name: "Our Team Basketball Joinville", project: "", year: "", logo: "/clients/our-team.webp", logoWidth: 164, logoHeight: 240 },
+  { name: "Halsten", project: "", year: "", logo: "/clients/halsten.webp", logoWidth: 720, logoHeight: 70 },
+  { name: "Maquiare", project: "", year: "", logo: "/clients/maquiare.webp", logoWidth: 474, logoHeight: 149 },
+  { name: "Matilha Equilibrada", project: "", year: "", logo: "/clients/matilha-equilibrada.webp", logoWidth: 244, logoHeight: 240 },
 ];
 
 /* --------------------------------------------------------- como trabalho */
