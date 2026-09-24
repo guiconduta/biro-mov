@@ -24,10 +24,11 @@ export function IconInstagram({ size, className }: P) {
   );
 }
 
-export function IconVimeo({ size, className }: P) {
+export function IconYoutube({ size, className }: P) {
   return (
     <svg {...base(size)} className={className}>
-      <path d="M3 8.6c1.6-1.5 2.6-2.3 3-2.4 1.5-.5 2.4 1.1 2.8 4.6.3 2.4.6 3.9 1 4.6.6 1 1.3.9 2.2-.2 1-1.2 1.9-2.6 2.1-3.6.4-1.7-.7-2.2-2.5-1.1.9-3.7 3.4-5.4 6.5-4.7 1.9.5 1.9 2.6 1.1 5.1-.8 2.5-2.1 4.7-4 6.7-2 2-3.9 2.8-5.7 2.3-1.5-.4-2.3-2.3-3-5.2-.4-1.6-.8-3.4-1.2-4.6-.4-1.1-.9-1.6-1.5-1.5-.4.1-.9.4-1.5 1z" />
+      <rect x="2.5" y="5.5" width="19" height="13" rx="4" />
+      <path d="M10.2 9.4v5.2l4.5-2.6z" fill="currentColor" stroke="none" />
     </svg>
   );
 }

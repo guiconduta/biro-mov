@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CONTACT, NAV, mailUrl, telUrl } from "@/content/home.config";
-import { IconClose, IconInstagram, IconMail, IconVimeo } from "@/components/icons";
+import { IconClose, IconInstagram, IconMail, IconYoutube } from "@/components/icons";
 
 type NavLink = { label: string; href: string };
 
@@ -30,15 +30,9 @@ export function Socials({ className = "" }: { className?: string }) {
         </a>
       </li>
       <li>
-        {CONTACT.vimeoUrl ? (
-          <a href={CONTACT.vimeoUrl} target="_blank" rel="noopener noreferrer" aria-label="Vimeo" className="socials__a">
-            <IconVimeo />
-          </a>
-        ) : (
-          <span className="socials__a socials__a--off" role="img" aria-label="Vimeo (link ainda não configurado)">
-            <IconVimeo />
-          </span>
-        )}
+        <a href={CONTACT.youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="socials__a">
+          <IconYoutube />
+        </a>
       </li>
       <li>
         <a href={mailUrl} aria-label={`E-mail: ${CONTACT.email}`} className="socials__a">

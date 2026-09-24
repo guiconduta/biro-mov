@@ -10,11 +10,7 @@ export function Footer() {
           <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a>
         </li>
         <li>
-          {CONTACT.vimeoUrl ? (
-            <a href={CONTACT.vimeoUrl} target="_blank" rel="noopener noreferrer">Vimeo</a>
-          ) : (
-            <span className="ftr__off" title="Vimeo: defina em content/home.config.ts">Vimeo</span>
-          )}
+          <a href={CONTACT.youtubeUrl} target="_blank" rel="noopener noreferrer">YouTube</a>
         </li>
         <li>
           <a href={mailUrl}>E-mail</a>

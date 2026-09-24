@@ -16,7 +16,7 @@ export const CONTACT = {
   email: "gconduta.araujo@gmail.com",
   instagramUrl: "https://instagram.com/biro.mov",
   instagramHandle: "@biro.mov",
-  vimeoUrl: "", // [VIMEO] ex.: "https://vimeo.com/seu-usuario" — vazio = ícone desativado
+  youtubeUrl: "https://www.youtube.com/@otiobiro",
 } as const;
 
 export const whatsappUrl = `https://wa.me/${CONTACT.phoneE164}`;
