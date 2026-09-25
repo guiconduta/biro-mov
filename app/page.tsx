@@ -16,7 +16,7 @@ import { Footer } from "@/components/site/Footer";
 export default function HomePage() {
   return (
     <>
-      <Navigation />
+      <Navigation intro />
       <main id="main">
         <Hero />
         <Showreel config={SHOWREEL} />

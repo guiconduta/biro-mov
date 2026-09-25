@@ -84,6 +84,15 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .menu__nav .nav__link:hover { background: none; box-shadow: none; transform: translateX(5px); }
 .menu__foot { display: flex; flex-direction: column; gap: 22px; }
 
+/* home: o menu se materializa junto com a foto (a abertura começa só com o BIRO na tela).
+   fill-mode "backwards": segura o estado inicial durante o atraso e depois solta, para não
+   travar o hover (animação com "both" prenderia o transform). */
+.nav--intro .nav__link { animation: nav-in 1.2s var(--ease) calc(2.35s + var(--i, 0) * 0.07s) backwards; }
+.nav--intro .nav__toggle { animation: nav-in 1.2s var(--ease) 2.35s backwards; }
+.nav--intro .nav__phone { animation: nav-in 1.2s var(--ease) 2.6s backwards; }
+.nav--intro .socials__a { animation: nav-in 1.2s var(--ease) calc(2.7s + var(--i, 0) * 0.07s) backwards; }
+@keyframes nav-in { from { opacity: 0; filter: blur(10px); transform: translateY(-8px) scale(0.92); } }
+
 @media (max-width: 820px) {
   .nav__cols { display: none; }
   .nav__toggle { display: inline-flex; }

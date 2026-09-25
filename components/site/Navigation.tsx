@@ -10,8 +10,8 @@ type NavLink = { label: string; href: string };
 function NavColumn({ links, onClick }: { links: readonly NavLink[]; onClick?: () => void }) {
   return (
     <ul className="nav__col">
-      {links.map((l) => (
-        <li key={l.href}>
+      {links.map((l, i) => (
+        <li key={l.href} style={{ ["--i" as string]: i }}>
           <Link href={l.href} className="nav__link" onClick={onClick}>
             <span>{l.label}</span>
           </Link>
@@ -24,17 +24,17 @@ function NavColumn({ links, onClick }: { links: readonly NavLink[]; onClick?: ()
 export function Socials({ className = "" }: { className?: string }) {
   return (
     <ul className={`socials ${className}`.trim()}>
-      <li>
+      <li style={{ ["--i" as string]: 0 }}>
         <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="socials__a">
           <IconInstagram />
         </a>
       </li>
-      <li>
+      <li style={{ ["--i" as string]: 1 }}>
         <a href={CONTACT.youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="socials__a">
           <IconYoutube />
         </a>
       </li>
-      <li>
+      <li style={{ ["--i" as string]: 2 }}>
         <a href={mailUrl} aria-label={`E-mail: ${CONTACT.email}`} className="socials__a">
           <IconMail />
         </a>
@@ -43,7 +43,8 @@ export function Socials({ className = "" }: { className?: string }) {
   );
 }
 
-export function Navigation() {
+/** intro: na home, o menu só se materializa quando a abertura (BIRO → foto) chega nele. */
+export function Navigation({ intro = false }: { intro?: boolean }) {
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -94,7 +95,7 @@ export function Navigation() {
 
   return (
     <>
-      <header className={"nav" + (hidden && !open ? " nav--hidden" : "")}>
+      <header className={"nav" + (intro ? " nav--intro" : "") + (hidden && !open ? " nav--hidden" : "")}>
         <nav aria-label="Principal" className="nav__cols">
           <NavColumn links={[...NAV.col1, ...NAV.col2]} />
         </nav>
