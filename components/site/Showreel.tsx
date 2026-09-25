@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import type { ShowreelConfig } from "@/content/home.config";
 import { Reveal } from "@/components/ui/Reveal";
 import { IconPlay } from "@/components/icons";
-import { MeshBackdrop } from "@/components/ui/MeshBackdrop";
 import { nudgeYouTubeQuality, ytEmbedSrc } from "@/lib/youtube";
 
 function Player({ cfg, title }: { cfg: ShowreelConfig; title: string }) {
@@ -103,8 +102,8 @@ export function Showreel({ config }: { config: ShowreelConfig }) {
           </div>
         ) : (
           <div className="showreel__frame showreel__frame--empty" role="img" aria-label="Espaço reservado para o showreel (vídeo ainda não adicionado)">
-            {/* TESTE: mesh gradient enquanto o showreel não chega */}
-            <MeshBackdrop intensity="vivid" radius="28px" style={{ position: "absolute", inset: 0 }} />
+            <div className="showreel__placeholder" aria-hidden />
+            <div className="showreel__sweep" aria-hidden />
             <span className="showreel__play showreel__play--off" aria-hidden>
               <IconPlay size={26} />
             </span>
