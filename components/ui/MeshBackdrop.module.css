@@ -12,6 +12,7 @@
   overflow: hidden;
   border-radius: var(--r);
   background: #030605;
+  contain: paint; /* o que acontece aqui dentro não força repintar o resto da página */
 }
 
 .vivid {
@@ -20,18 +21,20 @@
   --grain: 0.2;
 }
 
-/* camada das manchas */
+/* camada das manchas. SEM filter aqui: desfocar uma camada cujos filhos se movem obriga o
+   navegador a refazer o desfoque a cada quadro (era o que deixava o site pesado). */
 .field {
   position: absolute;
   inset: -20%;
-  filter: blur(28px) saturate(1.15);
 }
 
 .blob {
   position: absolute;
   border-radius: 50%;
-  mix-blend-mode: screen;
   opacity: var(--op);
+  /* desfoque na PRÓPRIA mancha: como ela só muda de posição (transform), o navegador desfoca uma
+     vez, guarda a imagem e só a desliza — névoa macia sem custo por quadro */
+  filter: blur(26px);
   will-change: transform;
 }
 
@@ -83,24 +86,14 @@
 }
 
 /* grão cinematográfico */
+/* grão fixo (animado ele repintava a área inteira várias vezes por segundo) */
 .grain {
   position: absolute;
-  inset: -50%;
-  opacity: var(--grain);
-  mix-blend-mode: overlay;
+  inset: 0;
+  opacity: calc(var(--grain) * 0.4); /* sem blend-mode: não precisa recombinar com o fundo a cada quadro */
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain 1.2s steps(6) infinite;
 }
-@keyframes grain {
-  0% { transform: translate(0, 0); }
-  20% { transform: translate(-3%, 2%); }
-  40% { transform: translate(2%, -3%); }
-  60% { transform: translate(-2%, -1%); }
-  80% { transform: translate(3%, 3%); }
-  100% { transform: translate(0, 0); }
-}
-.still .grain { animation: none; }
 
 /* borda interna fina + brilho sutil de topo, acima de tudo */
 .root::after {
@@ -118,5 +111,5 @@
 .content { position: relative; z-index: 1; }
 
 @media (prefers-reduced-motion: reduce) {
-  .blob, .grain { animation: none; }
+  .blob { animation: none; }
 }

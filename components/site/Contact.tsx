@@ -17,7 +17,7 @@ export function Contact() {
       </Reveal>
 
       {/* TESTE: mesh gradient atrás do formulário (o vidro fosco do cartão pega a cor) */}
-      <MeshBackdrop intensity="subtle" className="contact__panel">
+      <MeshBackdrop intensity="subtle" animated={false} className="contact__panel">
         <Reveal delay={200} className="contact__actions">
           <ContactForm />
 
