@@ -139,18 +139,20 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .hero__biro { display: block; white-space: nowrap; animation: brand-in 1.9s var(--ease) 0.05s both; }
 .ltr { display: inline-block; }
 .ltr--i { margin-right: var(--gap-i, 0em); }
-/* descritor: ocupa exatamente a largura do "RO" (tinta do R até a tinta do O) — em em do BIRO, escala junto */
+/* descritor: 1ª palavra alinhada à tinta do B, 2ª ocupando exatamente a largura do O
+   (o rosto fica no meio). Tudo em em do BIRO, então escala junto em qualquer tela. */
 .hero__desc {
-  display: block;
+  justify-self: stretch;
+  display: flex; justify-content: space-between; align-items: baseline;
   font-family: var(--font-b);
   font-stretch: 100%;
   font-weight: 400;
-  font-size: 0.1843em;
+  font-size: 0.1164em;
   line-height: 1;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
-  margin: 0.2em 0.035em 0 0;
+  margin: -0.11em 0.024em 0 0.472em; /* cola no BIRO; laterais = tinta do B e do O */
   animation: fade-up 1.6s var(--ease) 0.75s both;
 }
 

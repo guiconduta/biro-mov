@@ -72,7 +72,8 @@ export const HERO = {
   /** Recorte do retrato (PNG/WebP transparente). Troque o arquivo em public/branding/. */
   figure: "/branding/biro-cutout.webp",
   figureAlt: "Retrato de Biro",
-  descriptor: "Direção visual", // linha abaixo do BIRO (exibida em caixa alta)
+  /** Linha abaixo do BIRO (caixa alta): 1ª palavra sob o B, 2ª sob o O — o rosto fica no meio. */
+  descriptor: ["Direção", "Audiovisual"] as const,
   figureWidth: 1260,
   figureHeight: 1123,
 } as const;
