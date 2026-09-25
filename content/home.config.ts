@@ -72,6 +72,7 @@ export const HERO = {
   /** Recorte do retrato (PNG/WebP transparente). Troque o arquivo em public/branding/. */
   figure: "/branding/biro-cutout.webp",
   figureAlt: "Retrato de Biro",
+  descriptor: "Direção visual", // linha abaixo do BIRO (exibida em caixa alta)
   figureWidth: 1260,
   figureHeight: 1123,
 } as const;
@@ -152,7 +153,7 @@ export const ABOUT = {
   photoAlt: "Biro filmando com uma câmera mirrorless",
   photoWidth: 2000,
   photoHeight: 1335,
-  roles: ["Videomaker", "Criação", "Direção", "Edição"],
+  roles: ["Criação", "Direção", "Edição"],
 } as const;
 
 /* -------------------------------------------------- clientes e experiências */

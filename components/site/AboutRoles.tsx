@@ -54,7 +54,7 @@ export function AboutRoles({ roles }: { roles: readonly string[] }) {
       cur.x += (target.x - cur.x) * k;
       cur.y += (target.y - cur.y) * k;
 
-      const unit = list.clientWidth / (words.length > 2 && list.clientWidth > 700 ? 4 : 2);
+      const unit = list.clientWidth / words.length;
       for (const w of words) {
         const c = centerOf(w);
         const d = Math.hypot(c.x - cur.x, (c.y - cur.y) * 1.6) / unit;

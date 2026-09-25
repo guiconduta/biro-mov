@@ -26,11 +26,11 @@ export function Hero() {
         <div className="hero__grain" aria-hidden />
 
         <div className="hero__brand-wrap">
-          <h1 className="hero__brand" aria-label="BIRO.mov">
+          <h1 className="hero__brand" aria-label={`BIRO — ${HERO.descriptor}`}>
             <span className="hero__biro" aria-hidden>
               <span className="ltr">B</span><span className="ltr ltr--i">I</span><span className="ltr">R</span><span className="ltr">O</span>
             </span>
-            <span className="hero__mov" aria-hidden>.mov</span>
+            <span className="hero__desc" aria-hidden>{HERO.descriptor}</span>
           </h1>
         </div>
 

@@ -139,15 +139,18 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .hero__biro { display: block; white-space: nowrap; animation: brand-in 1.9s var(--ease) 0.05s both; }
 .ltr { display: inline-block; }
 .ltr--i { margin-right: var(--gap-i, 0em); }
-.hero__mov {
+/* descritor: ocupa exatamente a largura do "RO" (tinta do R até a tinta do O) — em em do BIRO, escala junto */
+.hero__desc {
   display: block;
   font-family: var(--font-b);
   font-stretch: 100%;
-  font-weight: 300;
-  font-size: 0.27em;
+  font-weight: 400;
+  font-size: 0.1843em;
   line-height: 1;
-  letter-spacing: -0.03em;
-  margin: -0.29em 0.095em 0 0; /* cola o .mov na base do BIRO e alinha a tinta do "v" com a do "O" */
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin: 0.2em 0.035em 0 0;
   animation: fade-up 1.6s var(--ease) 0.75s both;
 }
 
@@ -391,7 +394,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, transparent 45%, rgba(3, 8, 7, 0.72) 100%), radial-gradient(80% 60% at 0% 100%, rgba(23, 101, 76, 0.35), transparent 70%);
 }
-.about__roles { margin-top: clamp(56px, 9vw, 140px); display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--hairline); }
+.about__roles { margin-top: clamp(56px, 9vw, 140px); display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--hairline); }
 .about__roles li { padding: clamp(18px, 2vw, 30px) 0 0; font-size: clamp(22px, 3.6vw, 62px); font-weight: 200; letter-spacing: -0.045em; color: var(--text-hi); }
 /* rack focus: filtro, opacidade e brilho de cada palavra vêm do AboutRoles, quadro a quadro */
 .about__word { display: inline-block; will-change: filter, opacity; }
@@ -405,7 +408,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 @media (max-width: 820px) {
   .about__grid { grid-template-columns: 1fr; }
   .about__photo-wrap { order: -1; }
-  .about__roles { grid-template-columns: repeat(2, 1fr); }
+
 }
 
 /* ------------------------------------------------------------ por que me escolher */
