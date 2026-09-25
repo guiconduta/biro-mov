@@ -147,12 +147,12 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   font-family: var(--font-b);
   font-stretch: 100%;
   font-weight: 400;
-  font-size: 0.1164em;
+  font-size: 0.1142em;
   line-height: 1;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
-  margin: -0.11em 0.024em 0 0.472em; /* cola no BIRO; laterais = tinta do B e do O */
+  margin: -0.11em 0.059em 0 0.547em; /* cola no BIRO; laterais = tinta do B e do O */
   animation: fade-up 1.6s var(--ease) 0.75s both;
 }
 
