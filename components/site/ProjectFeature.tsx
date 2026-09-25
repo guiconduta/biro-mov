@@ -7,7 +7,6 @@ import type { Work } from "@/content/home.config";
 import { COPY } from "@/content/home.config";
 import { ProjectModal } from "@/components/site/ProjectModal";
 import { IconPlay } from "@/components/icons";
-import { sound } from "@/lib/sound";
 
 type Variant = "wide" | "asym" | "full";
 
@@ -89,10 +88,7 @@ export function ProjectFeature({ work, index, variant }: { work: Work; index: nu
     const x = Math.min(0.9999, Math.max(0, (e.clientX - r.left) / r.width));
     e.currentTarget.style.setProperty("--sx", x.toFixed(4));
     const i = Math.floor(x * frames.length);
-    if (i !== frame) {
-      if (frame !== -1) sound.play("frame");
-      setFrame(i);
-    }
+    if (i !== frame) setFrame(i);
   };
   const sizes =
     variant === "full" ? "100vw" : variant === "asym" ? "(min-width: 900px) 52vw, 100vw" : "(min-width: 900px) 84vw, 100vw";

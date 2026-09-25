@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState, type PointerEvent as RPointerEvent } from "react";
-import { sound } from "@/lib/sound";
 
 const FPS = 24;
 const PX_PER_FRAME = 6; // rolar 6px = avançar 1 quadro: a velocidade do scroll vira a velocidade do timecode
@@ -64,7 +63,6 @@ export function ScrollTimecode() {
     let lastText = "";
     let lastIdx = -1;
     let lastShow: boolean | null = null;
-    let lastWhoosh = 0;
 
     const update = () => {
       raf = 0;
@@ -82,11 +80,6 @@ export function ScrollTimecode() {
         if (m.at * max <= y + vh * 0.4) idx = i; // a seção "entra" quando o topo passa de 40% da tela
       });
       if (idx !== lastIdx) {
-        const now = performance.now();
-        if (lastIdx !== -1 && now - lastWhoosh > 700) {
-          sound.play("whoosh");
-          lastWhoosh = now;
-        }
         lastIdx = idx;
         setCurrent(idx);
       }

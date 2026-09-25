@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { WORKFLOW_DATA } from "@/content/home.config";
-import { sound } from "@/lib/sound";
 
 const FPS = 24;
 const SECONDS_PER_STEP = 8; // só visual: cada etapa "dura" 8s na régua
@@ -66,7 +65,6 @@ export function Workflow() {
       if (tcRef.current) tcRef.current.textContent = timecode(Math.round(p * n * SECONDS_PER_STEP * FPS));
       const idx = Math.min(n - 1, Math.floor(p * n));
       if (idx !== last) {
-        if (last !== -1 && r.top <= 0 && r.bottom >= window.innerHeight) sound.play("clip");
         last = idx;
         setActive(idx);
       }
