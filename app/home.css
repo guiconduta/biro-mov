@@ -127,7 +127,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
    Duas variantes geradas: --wide (desktop, letras espaçadas em volta do rosto) e --tight (celular). */
 .hero__brand {
   --brand-h: 50svh; /* casa com BRAND_DESK_H_SVH no script: o descritor foi dimensionado para isso */
-  --ar: var(--ar-wide, 2.9);
+  --ar: var(--ar-wide, 3.2);
   display: grid; margin: 0;
   width: min(92vw, calc(var(--brand-h) * var(--ar)));
   color: var(--text-hi);
@@ -250,6 +250,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   background: linear-gradient(100deg, transparent 42%, rgba(79, 214, 168, 0.07) 50%, transparent 58%);
   animation: sweep 10s ease-in-out infinite;
 }
+.showreel__frame--empty { border: 0; border-radius: 28px; } /* TESTE mesh */
 @keyframes sweep { 0% { transform: translateX(-30%); } 50% { transform: translateX(30%); } 100% { transform: translateX(-30%); } }
 .showreel__poster, .showreel__preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .showreel__preview { animation: fade-in 0.5s both; }
@@ -540,6 +541,9 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .contact__headline { margin: clamp(20px, 3vw, 40px) 0 0; font-size: clamp(40px, 7.4vw, 108px); font-weight: 200; letter-spacing: -0.05em; line-height: 0.98; color: var(--text-hi); }
 .contact__sub { margin: clamp(14px, 1.6vw, 22px) 0 0; max-width: 46ch; font-size: clamp(15px, 1.3vw, 19px); font-weight: 300; line-height: 1.6; color: var(--text-dim); }
 .contact__actions { display: grid; grid-template-columns: minmax(0, 640px) minmax(220px, 320px); align-items: start; justify-content: space-between; gap: clamp(32px, 5vw, 72px); margin-top: clamp(48px, 6vw, 88px); }
+/* TESTE mesh: painel com gradiente atrás do formulário */
+.contact__panel { margin-top: clamp(48px, 6vw, 88px); }
+.contact__panel .contact__actions { margin-top: 0; padding: clamp(18px, 4vw, 56px); }
 .btn--lg { padding: 20px 36px; font-size: clamp(16px, 1.4vw, 20px); }
 .contact__links { display: grid; gap: 0; align-content: start; padding-top: clamp(4px, 1vw, 18px); }
 .contact__link { display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--hairline); font-weight: 300; color: var(--text-hi); transition: border-color 0.3s var(--ease), padding-left 0.3s var(--ease); }

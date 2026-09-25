@@ -65,19 +65,40 @@ function pathData(text, size, track, dx, dy) {
  * descSize null  -> AUDIOVISUAL ocupa exatamente a tinta do O (tamanho resolvido)
  * descSize número -> tamanho fixo; DIREÇÃO na tinta do B, AUDIOVISUAL terminando na tinta do O
  */
-function variant(track, descSize) {
+/** Aplica esticamento horizontal (sx) nos comandos de um path, a partir de x0. */
+function stretch(path, sx, x0) {
+  for (const c of path.commands) {
+    for (const k of ["x", "x1", "x2"]) if (k in c) c[k] = x0 + (c[k] - x0) * sx;
+  }
+  return path;
+}
+
+/**
+ * Uma variante do BIRO. Modificar os caracteres como desenho é permitido pela EULA (item 5):
+ * - track: espaço entre letras (unidades);
+ * - sx: esticamento horizontal (letra mais larga, "estendida");
+ * - stroke: contorno da mesma cor em volta da letra (engrossa = mais bold).
+ * O viewBox já inclui o contorno: borda da tinta visível = borda do SVG.
+ * descSize null -> AUDIOVISUAL ocupa exatamente a tinta do O; número -> tamanho fixo,
+ * DIREÇÃO começando na tinta do B e AUDIOVISUAL terminando na tinta do O.
+ */
+function variant({ track, sx, stroke, descSize }) {
   const word = font.stringToGlyphs(WORD);
   const box0 = inkBox(WORD, UPM, 0);
+  const pad = stroke / 2;
   const letters = [];
   let x = 0;
   word.forEach((g, i) => {
-    const b = g.getPath(x, 0, UPM).getBoundingBox();
-    letters.push({ d: g.getPath(x - box0.x1, -box0.y1, UPM).toPathData(2), x1: b.x1 - box0.x1, x2: b.x2 - box0.x1 });
-    x += g.advanceWidth + track;
+    const raw = g.getPath(0, 0, UPM).getBoundingBox();
+    const ox = x * sx - box0.x1 * sx + pad; // origem da letra já esticada e deslocada
+    const p = stretch(g.getPath(0, -box0.y1 + pad, UPM), sx, 0);
+    for (const c of p.commands) for (const k of ["x", "x1", "x2"]) if (k in c) c[k] += ox;
+    letters.push({ d: p.toPathData(2), x1: ox + raw.x1 * sx - pad, x2: ox + raw.x2 * sx + pad });
+    x += g.advanceWidth + track / sx;
     if (i < word.length - 1) x += font.getKerningValue(g, word[i + 1]);
   });
   const W = letters[letters.length - 1].x2;
-  const H = box0.y2 - box0.y1;
+  const H = box0.y2 - box0.y1 + stroke;
   const B = letters[0];
   const O = letters[letters.length - 1];
 
@@ -89,25 +110,24 @@ function variant(track, descSize) {
   const bottom = Math.max(a.y2, b.y2);
   const baseY = GAP - top;
   return {
-    W: r(W), H: r(H), descSize: r(size), descH: r(baseY + bottom),
+    W: r(W), H: r(H), stroke, descSize: r(size), descH: r(baseY + bottom),
     letters: letters.map((l) => l.d),
     desc: [pathData(DESC_A, size, TRACK, B.x1 - a.x1, baseY), pathData(DESC_B, size, TRACK, O.x2 - b.x2, baseY)],
   };
 }
 
-// celular: BIRO junto (o rosto fica abaixo do nome, nada é coberto)
-const tight = variant(0, null);
-// desktop: letras espaçadas para o I e o R aparecerem nas bordas do rosto; o descritor
-// mantém o tamanho visual que tinha (79,26u com o BIRO a 42svh -> BIRO agora a DESK_H svh)
-const DESK_TRACK = 220;
+// celular: BIRO junto e um pouco mais largo/grosso (o rosto fica abaixo do nome)
+const tight = variant({ track: 20, sx: 1.12, stroke: 16, descSize: null });
+// desktop: largo e bold, com espaço moderado entre as letras; o descritor mantém o
+// tamanho visual que tinha (79,26u com o BIRO a 42svh -> BIRO agora a DESK_H svh)
 const DESK_H = 50;
-const wide = variant(DESK_TRACK, 79.26 * (42 / DESK_H));
+const wide = variant({ track: 110, sx: 1.4, stroke: 26, descSize: 79.26 * (42 / DESK_H) });
 
 const out = `// GERADO por scripts/build-brandmark.mjs — não edite à mão.
 // Contornos da American Captain (fonte NÃO incluída no repositório; ver o script).
 
 export type BrandVariant = {
-  W: number; H: number; descSize: number; descH: number;
+  W: number; H: number; stroke: number; descSize: number; descH: number;
   letters: readonly string[]; desc: readonly [string, string];
 };
 export const DESC_WORDS = ${JSON.stringify([DESC_A, DESC_B])} as const;

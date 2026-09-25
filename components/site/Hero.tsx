@@ -10,8 +10,9 @@ function Mark({ v, className }: { v: BrandVariant; className: string }) {
   return (
     <span className={`hero__mark ${className}`}>
       <svg className="hero__biro" viewBox={`0 0 ${v.W} ${v.H}`} aria-hidden focusable="false">
+        {/* o contorno da mesma cor engrossa a letra (versão "bold" da American Captain) */}
         {v.letters.map((d, i) => (
-          <path key={i} d={d} />
+          <path key={i} d={d} stroke="currentColor" strokeWidth={v.stroke} strokeLinejoin="miter" />
         ))}
       </svg>
       <svg className="hero__desc" viewBox={`0 0 ${v.W} ${v.descH}`} aria-hidden focusable="false">
