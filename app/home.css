@@ -20,7 +20,8 @@
   transform: none;
   transition: opacity 1.4s var(--ease) var(--rv-delay, 0ms), filter 1.8s var(--ease) var(--rv-delay, 0ms), transform 1.8s var(--ease) var(--rv-delay, 0ms);
 }
-.magnetic { display: inline-block; transition: transform 0.35s var(--ease); }
+.magnetic, .magnetic__inner { display: inline-block; }
+.magnetic__inner { will-change: transform; } /* posição vem do Magnetic, quadro a quadro */
 
 /* ------------------------------------------------------------ navegação */
 .nav {
