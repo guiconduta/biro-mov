@@ -110,6 +110,12 @@ export type Work = {
   projectUrl: string; // vazio = card sem link (sem youtubeId, abre este link)
   youtubeId?: string; // com ID: o clique abre o vídeo numa tela dentro do site
   aspect?: "16:9" | "9:16"; // formato do vídeo (padrão 16:9)
+  /**
+   * Quadros do vídeo para o "scrub" (passar o mouse no card roda o vídeo quadro a quadro).
+   * Vazio = usa os 3 quadros que o YouTube gera sozinho. Para ter mais (uns 12), rode
+   * `node scripts/extract-frames.mjs <vídeo.mp4> <nome-curto>` e cole a lista que ele imprimir.
+   */
+  frames?: string[];
 };
 
 export const FEATURED_WORKS: [Work, Work, Work] = [
@@ -198,5 +204,15 @@ export const WHY_ME = {
 /* --------------------------------------------------------- como trabalho */
 export type WorkflowStep = { title: string; text: string };
 
-/** [WORKFLOW_DATA] — vazio por enquanto. Cada item vira uma etapa. */
-export const WORKFLOW_DATA: WorkflowStep[] = [];
+/**
+ * Cada item vira um clipe na timeline do "Como trabalho", na ordem.
+ * Títulos = sugestão inicial (troque à vontade). text vazio = aparece [TEXTO DA ETAPA].
+ */
+export const WORKFLOW_DATA: WorkflowStep[] = [
+  { title: "Pré-produção", text: "" },
+  { title: "Captação", text: "" },
+  { title: "Edição", text: "" },
+  { title: "Cor", text: "" },
+  { title: "Som", text: "" },
+  { title: "Entrega", text: "" },
+];

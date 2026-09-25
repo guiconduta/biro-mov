@@ -182,7 +182,7 @@ section[id], [id]:target { scroll-margin-top: 0; }
 main.wrap.section { padding-top: clamp(130px, 13vw, 170px); }
 
 /* ===== "círculo de blur" — vidro fosco com o texto dentro (opções selecionáveis) ===== */
-.nav__link, .nav__phone, .nav__toggle, a.socials__a, .socials__a--off, .link-cta, .link-accent, .chip, .btn--ghost {
+.nav__link, .nav__phone, .nav__toggle, .sound, a.socials__a, .socials__a--off, .link-cta, .link-accent, .chip, .btn--ghost {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   backdrop-filter: blur(16px) saturate(150%);
@@ -191,7 +191,7 @@ main.wrap.section { padding-top: clamp(130px, 13vw, 170px); }
   border-radius: var(--r-pill);
   transition: background 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease), color 0.3s var(--ease), transform 0.35s var(--ease);
 }
-.nav__link:hover, .nav__phone:hover, .nav__toggle:hover, a.socials__a:hover, .link-cta:hover, .link-accent:hover, .chip:hover, .btn--ghost:hover {
+.nav__link:hover, .nav__phone:hover, .nav__toggle:hover, .sound:hover, a.socials__a:hover, .link-cta:hover, .link-accent:hover, .chip:hover, .btn--ghost:hover {
   background: linear-gradient(135deg, rgba(79, 214, 168, 0.22), rgba(31, 143, 106, 0.08));
   border-color: rgba(79, 214, 168, 0.5);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 30px rgba(31, 143, 106, 0.35);

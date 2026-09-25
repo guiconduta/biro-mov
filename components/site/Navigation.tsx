@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CONTACT, NAV, mailUrl, telUrl } from "@/content/home.config";
 import { IconClose, IconInstagram, IconMail, IconYoutube } from "@/components/icons";
+import { SoundToggle } from "@/components/ui/SoundToggle";
 
 type NavLink = { label: string; href: string };
 
@@ -113,6 +114,7 @@ export function Navigation({ intro = false }: { intro?: boolean }) {
         </button>
 
         <div className="nav__contact">
+          <SoundToggle />
           <a href={telUrl} className="nav__phone">{CONTACT.phoneDisplay}</a>
           <Socials />
         </div>
