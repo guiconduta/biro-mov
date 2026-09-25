@@ -123,15 +123,19 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   /* -2.7svh: recentraliza o nome para que o "I" termine junto à orelha do retrato */
   transform: translate3d(0, calc(var(--hero-p, 0) * -7svh), 0);
 }
-/* BIRO e o descritor são SVG (contornos da American Captain): largura dada pela altura desejada */
+/* BIRO e o descritor são SVG (contornos da American Captain): largura dada pela altura desejada.
+   Duas variantes geradas: --wide (desktop, letras espaçadas em volta do rosto) e --tight (celular). */
 .hero__brand {
-  --brand-h: 42svh;
+  --brand-h: 50svh; /* casa com BRAND_DESK_H_SVH no script: o descritor foi dimensionado para isso */
+  --ar: var(--ar-wide, 2.9);
   display: grid; margin: 0;
-  width: min(90vw, calc(var(--brand-h) * var(--ar, 2)));
+  width: min(92vw, calc(var(--brand-h) * var(--ar)));
   color: var(--text-hi);
   /* abertura: o nome nasce maior e, depois de ~2s, dá um zoom-out e assenta ao fundo */
   animation: brand-settle 1.5s cubic-bezier(0.65, 0, 0.35, 1) 2s both;
 }
+.hero__mark { display: grid; }
+.hero__mark--tight { display: none; }
 .hero__biro, .hero__desc { display: block; width: 100%; height: auto; fill: currentColor; overflow: visible; }
 .hero__biro { animation: brand-in 1.9s var(--ease) 0.05s both; }
 .hero__desc { animation: fade-up 1.6s var(--ease) 0.75s both; }
@@ -214,7 +218,9 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
     mask-image: linear-gradient(180deg, #000 84%, transparent);
   }
   .hero__brand-wrap { transform: translate3d(0, calc(var(--hero-p, 0) * -4svh), 0); }
-  .hero__brand { --settle: 1.04; --brand-h: 24svh; width: min(92vw, calc(var(--brand-h) * var(--ar, 2))); }
+  .hero__brand { --settle: 1.04; --brand-h: 24svh; --ar: var(--ar-tight, 2); }
+  .hero__mark--wide { display: none; }
+  .hero__mark--tight { display: grid; }
   .hero__figure-wrap { align-items: flex-end; }
   .hero__figure { height: 87%; }
   .hero__fade { display: none; }

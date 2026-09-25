@@ -60,48 +60,61 @@ function pathData(text, size, track, dx, dy) {
   return parts.map(({ g, x }) => g.getPath(x + dx, dy, size).toPathData(2)).join("");
 }
 
-// ---- BIRO: uma path por letra (dá para animar letra a letra depois)
-const word = font.stringToGlyphs(WORD);
-const wordBox = inkBox(WORD, UPM, 0);
-const letters = [];
-{
+/**
+ * Uma variante = BIRO com certo espaçamento entre letras (em unidades) + descritor.
+ * descSize null  -> AUDIOVISUAL ocupa exatamente a tinta do O (tamanho resolvido)
+ * descSize número -> tamanho fixo; DIREÇÃO na tinta do B, AUDIOVISUAL terminando na tinta do O
+ */
+function variant(track, descSize) {
+  const word = font.stringToGlyphs(WORD);
+  const box0 = inkBox(WORD, UPM, 0);
+  const letters = [];
   let x = 0;
   word.forEach((g, i) => {
-    const p = g.getPath(x - wordBox.x1, 0 - wordBox.y1, UPM);
     const b = g.getPath(x, 0, UPM).getBoundingBox();
-    letters.push({ d: p.toPathData(2), x1: b.x1 - wordBox.x1, x2: b.x2 - wordBox.x1 });
-    x += g.advanceWidth;
+    letters.push({ d: g.getPath(x - box0.x1, -box0.y1, UPM).toPathData(2), x1: b.x1 - box0.x1, x2: b.x2 - box0.x1 });
+    x += g.advanceWidth + track;
     if (i < word.length - 1) x += font.getKerningValue(g, word[i + 1]);
   });
-}
-const W = wordBox.x2 - wordBox.x1;
-const H = wordBox.y2 - wordBox.y1; // base do BIRO = y H
-const B = letters[0];
-const O = letters[letters.length - 1];
+  const W = letters[letters.length - 1].x2;
+  const H = box0.y2 - box0.y1;
+  const B = letters[0];
+  const O = letters[letters.length - 1];
 
-// ---- descritor: AUDIOVISUAL ocupa a tinta do O; o tamanho vale para as duas palavras
-const probe = inkBox(DESC_B, 100, TRACK);
-const size = 100 * ((O.x2 - O.x1) / (probe.x2 - probe.x1));
-const a = inkBox(DESC_A, size, TRACK);
-const b = inkBox(DESC_B, size, TRACK);
-const top = Math.min(a.y1, b.y1); // tilde do Ã fica acima da linha de capitular
-const bottom = Math.max(a.y2, b.y2); // cedilha fica abaixo da base
-const baseY = GAP - top; // base do descritor dentro do viewBox dele
-const descH = baseY + bottom;
-const dA = pathData(DESC_A, size, TRACK, B.x1 - a.x1, baseY);
-const dB = pathData(DESC_B, size, TRACK, O.x2 - b.x2, baseY);
+  const probe = inkBox(DESC_B, 100, TRACK);
+  const size = descSize ?? 100 * ((O.x2 - O.x1) / (probe.x2 - probe.x1));
+  const a = inkBox(DESC_A, size, TRACK);
+  const b = inkBox(DESC_B, size, TRACK);
+  const top = Math.min(a.y1, b.y1);
+  const bottom = Math.max(a.y2, b.y2);
+  const baseY = GAP - top;
+  return {
+    W: r(W), H: r(H), descSize: r(size), descH: r(baseY + bottom),
+    letters: letters.map((l) => l.d),
+    desc: [pathData(DESC_A, size, TRACK, B.x1 - a.x1, baseY), pathData(DESC_B, size, TRACK, O.x2 - b.x2, baseY)],
+  };
+}
+
+// celular: BIRO junto (o rosto fica abaixo do nome, nada é coberto)
+const tight = variant(0, null);
+// desktop: letras espaçadas para o I e o R aparecerem nas bordas do rosto; o descritor
+// mantém o tamanho visual que tinha (79,26u com o BIRO a 42svh -> BIRO agora a DESK_H svh)
+const DESK_TRACK = 220;
+const DESK_H = 50;
+const wide = variant(DESK_TRACK, 79.26 * (42 / DESK_H));
 
 const out = `// GERADO por scripts/build-brandmark.mjs — não edite à mão.
 // Contornos da American Captain (fonte NÃO incluída no repositório; ver o script).
 
-export const BRAND_W = ${r(W)};
-export const BRAND_H = ${r(H)};
-export const BRAND_LETTERS = ${JSON.stringify(letters.map((l) => l.d), null, 2)} as const;
-
-export const DESC_H = ${r(descH)};
+export type BrandVariant = {
+  W: number; H: number; descSize: number; descH: number;
+  letters: readonly string[]; desc: readonly [string, string];
+};
 export const DESC_WORDS = ${JSON.stringify([DESC_A, DESC_B])} as const;
-export const DESC_PATHS = ${JSON.stringify([dA, dB], null, 2)} as const;
+/** desktop: altura do BIRO pensada para ${DESK_H}svh */
+export const BRAND_DESK_H_SVH = ${DESK_H};
+export const BRAND_WIDE: BrandVariant = ${JSON.stringify(wide, null, 2)};
+export const BRAND_TIGHT: BrandVariant = ${JSON.stringify(tight, null, 2)};
 `;
 fs.writeFileSync(new URL("../components/site/brandmark.generated.ts", import.meta.url), out);
-console.log(`ok · BIRO ${r(W)}x${r(H)} · descritor ${r(size)}u (${((size / H) * 100).toFixed(1)}% da altura) · altura ${r(descH)}`);
-console.log(`B tinta ${r(B.x1)}–${r(B.x2)} | O tinta ${r(O.x1)}–${r(O.x2)}`);
+console.log(`ok · wide ${wide.W}x${wide.H} (desc ${wide.descSize}u) · tight ${tight.W}x${tight.H} (desc ${tight.descSize}u)`);

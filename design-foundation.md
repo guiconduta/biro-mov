@@ -12,7 +12,7 @@ Cinematográfico, contemporâneo, humano, preciso, imersivo, sensorial, autoral.
 - Tipografia: off-white (`--text-hi #f2f4f1`).
 
 ## Tipografia
-- Display (BIRO): **Archivo** expandido (`font-stretch:125%`, peso 900) — referência "ONEST" do quadro de tipografia.
+- Marca (BIRO + DIREÇÃO / AUDIOVISUAL): **American Captain**, como **contornos SVG** gerados por `scripts/build-brandmark.mjs` (licença gratuita é de uso pessoal e proíbe distribuir o arquivo → o `.ttf` nunca entra no repo nem no site). Desktop: letras espaçadas em volta do rosto; celular: BIRO junto. Para mudar o texto, edite o script e rode de novo. Para uso comercial, comprar a licença em thefontry.com.
 - Corpo/UI: **Onest** (regular / semibold) — referência "CLIMATE CRISIS".
 - Opções selecionáveis (nav, redes, telefone, chips, links CTA): "círculo de blur" — pílula de vidro fosco (`backdrop-filter`, borda 1px clara, brilho interno); regra única no fim de `app/globals.css`.
 - Ambas via `next/font/google` em `app/layout.tsx`.

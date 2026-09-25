@@ -3,7 +3,25 @@ import { COPY, HERO } from "@/content/home.config";
 import { HeroParallax } from "@/components/ui/HeroParallax";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { IconArrow, IconMouse } from "@/components/icons";
-import { BRAND_H, BRAND_LETTERS, BRAND_W, DESC_H, DESC_PATHS, DESC_WORDS } from "@/components/site/brandmark.generated";
+import { BRAND_TIGHT, BRAND_WIDE, DESC_WORDS, type BrandVariant } from "@/components/site/brandmark.generated";
+
+/** BIRO + descritor de uma variante; os dois SVGs têm a mesma largura de viewBox = alinhamento exato. */
+function Mark({ v, className }: { v: BrandVariant; className: string }) {
+  return (
+    <span className={`hero__mark ${className}`}>
+      <svg className="hero__biro" viewBox={`0 0 ${v.W} ${v.H}`} aria-hidden focusable="false">
+        {v.letters.map((d, i) => (
+          <path key={i} d={d} />
+        ))}
+      </svg>
+      <svg className="hero__desc" viewBox={`0 0 ${v.W} ${v.descH}`} aria-hidden focusable="false">
+        {v.desc.map((d, i) => (
+          <path key={i} d={d} />
+        ))}
+      </svg>
+    </span>
+  );
+}
 
 /** Linha com máscara: o texto sobe de dentro dela (reveal). */
 function Lines({ lines }: { lines: readonly string[] }) {
@@ -28,18 +46,17 @@ export function Hero() {
 
         <div className="hero__brand-wrap">
           {/* contornos (não texto): mesmo viewBox de largura nos dois SVGs = alinhamento exato */}
-          <h1 className="hero__brand" style={{ ["--ar" as string]: BRAND_W / BRAND_H }}>
+          <h1
+            className="hero__brand"
+            style={{
+              ["--ar-wide" as string]: BRAND_WIDE.W / BRAND_WIDE.H,
+              ["--ar-tight" as string]: BRAND_TIGHT.W / BRAND_TIGHT.H,
+            }}
+          >
             <span className="sr-only">BIRO — {DESC_WORDS.join(" ").toLowerCase()}</span>
-            <svg className="hero__biro" viewBox={`0 0 ${BRAND_W} ${BRAND_H}`} aria-hidden focusable="false">
-              {BRAND_LETTERS.map((d, i) => (
-                <path key={i} d={d} />
-              ))}
-            </svg>
-            <svg className="hero__desc" viewBox={`0 0 ${BRAND_W} ${DESC_H}`} aria-hidden focusable="false">
-              {DESC_PATHS.map((d, i) => (
-                <path key={i} d={d} />
-              ))}
-            </svg>
+            {/* desktop: letras espaçadas em volta do rosto · celular: BIRO junto */}
+            <Mark v={BRAND_WIDE} className="hero__mark--wide" />
+            <Mark v={BRAND_TIGHT} className="hero__mark--tight" />
           </h1>
         </div>
 
