@@ -82,3 +82,57 @@ export function IconClose({ size, className }: P) {
     </svg>
   );
 }
+
+/* ---- "Por que me escolher?" ---- */
+export function IconUsers({ size, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <circle cx="9" cy="8.5" r="3.2" />
+      <path d="M3.5 19c.6-3.1 2.8-5 5.5-5s4.9 1.9 5.5 5" />
+      <path d="M15.5 5.6a3 3 0 0 1 0 5.8M17.5 14.3c1.7.6 2.8 2.2 3.1 4.7" />
+    </svg>
+  );
+}
+export function IconPalette({ size, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.3 0 1.9-.8 1.9-1.7 0-1.3-1.2-1.6-1.2-2.8 0-1 .8-1.7 1.8-1.7h2.2a3.8 3.8 0 0 0 3.8-3.8c0-3.9-3.8-7-8.5-7z" />
+      <circle cx="7.8" cy="11" r=".9" fill="currentColor" stroke="none" />
+      <circle cx="10" cy="7.3" r=".9" fill="currentColor" stroke="none" />
+      <circle cx="14.4" cy="7.3" r=".9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+export function IconEye({ size, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M2.5 12S5.8 5.8 12 5.8 21.5 12 21.5 12 18.2 18.2 12 18.2 2.5 12 2.5 12z" />
+      <circle cx="12" cy="12" r="2.8" />
+    </svg>
+  );
+}
+export function IconSparkle({ size, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M11 3.5c.5 4.1 2 5.6 6.1 6.1-4.1.5-5.6 2-6.1 6.1-.5-4.1-2-5.6-6.1-6.1 4.1-.5 5.6-2 6.1-6.1z" />
+      <path d="M18 14.5c.2 1.8.9 2.5 2.7 2.7-1.8.2-2.5.9-2.7 2.7-.2-1.8-.9-2.5-2.7-2.7 1.8-.2 2.5-.9 2.7-2.7z" />
+    </svg>
+  );
+}
+export function IconChart({ size, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <path d="M4 4.5v15h16" />
+      <path d="M8.5 16v-4M12.5 16V8.5M16.5 16v-6" />
+    </svg>
+  );
+}
+export function IconClipboard({ size, className }: P) {
+  return (
+    <svg {...base(size)} className={className}>
+      <rect x="5" y="5" width="14" height="15.5" rx="2.5" />
+      <path d="M9 5V3.8h6V5" />
+      <path d="m9 12.8 2 2 4-4.3" />
+    </svg>
+  );
+}

@@ -174,6 +174,25 @@ export const CLIENTS: ClientItem[] = [
   { name: "Matilha Equilibrada", project: "", year: "", logo: "/clients/matilha-equilibrada.webp", logoWidth: 244, logoHeight: 240 },
 ];
 
+/* ------------------------------------------------------ por que me escolher */
+export type WhyIcon = "users" | "palette" | "eye" | "sparkle" | "chart" | "clipboard";
+export type WhyItem = { kicker: string; title: string; text: string; icon: WhyIcon };
+
+/** Tradução da seção de referência. [N] = número real que você ainda precisa preencher. */
+export const WHY_ME = {
+  eyebrow: "POR QUE EU",
+  title: "Por que me escolher?",
+  sub: "Veja por que sou a escolha certa para inovar na sua marca.",
+  items: [
+    { kicker: "COLABORAÇÃO", title: "Colaboração sem atrito", text: "Mais de [N] projetos entregues com resultados concretos para empresas.", icon: "users" },
+    { kicker: "DESIGN", title: "Soluções de design", text: "Mais de [N] experiências aprimoradas para a satisfação do cliente.", icon: "palette" },
+    { kicker: "VISIBILIDADE", title: "Mais visibilidade para a marca", text: "[N]% de satisfação dos clientes.", icon: "eye" },
+    { kicker: "IMPACTO", title: "Impacto de marca", text: "Crio experiências de marca memoráveis, que conectam com o público.", icon: "sparkle" },
+    { kicker: "DADOS", title: "Decisões guiadas por dados", text: "Analiso o comportamento do público para chegar a [N]% mais engajamento.", icon: "chart" },
+    { kicker: "GESTÃO", title: "Gestão ágil", text: "Conduzo equipes para cumprir cada etapa antes do prazo.", icon: "clipboard" },
+  ] satisfies WhyItem[],
+};
+
 /* --------------------------------------------------------- como trabalho */
 export type WorkflowStep = { title: string; text: string };
 
