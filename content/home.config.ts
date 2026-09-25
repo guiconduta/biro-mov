@@ -72,8 +72,8 @@ export const HERO = {
   /** Recorte do retrato (PNG/WebP transparente). Troque o arquivo em public/branding/. */
   figure: "/branding/biro-cutout.webp",
   figureAlt: "Retrato de Biro",
-  /** Linha abaixo do BIRO (caixa alta): 1ª palavra sob o B, 2ª sob o O — o rosto fica no meio. */
-  descriptor: ["Direção", "Audiovisual"] as const,
+  // BIRO + descritor (DIREÇÃO / AUDIOVISUAL) são contornos da American Captain gerados por
+  // scripts/build-brandmark.mjs — para mudar o texto, edite o script e rode de novo.
   figureWidth: 1260,
   figureHeight: 1123,
 } as const;

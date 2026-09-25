@@ -3,6 +3,7 @@ import { COPY, HERO } from "@/content/home.config";
 import { HeroParallax } from "@/components/ui/HeroParallax";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { IconArrow, IconMouse } from "@/components/icons";
+import { BRAND_H, BRAND_LETTERS, BRAND_W, DESC_H, DESC_PATHS, DESC_WORDS } from "@/components/site/brandmark.generated";
 
 /** Linha com máscara: o texto sobe de dentro dela (reveal). */
 function Lines({ lines }: { lines: readonly string[] }) {
@@ -26,14 +27,19 @@ export function Hero() {
         <div className="hero__grain" aria-hidden />
 
         <div className="hero__brand-wrap">
-          <h1 className="hero__brand" aria-label={`BIRO — ${HERO.descriptor.join(" ")}`}>
-            <span className="hero__biro" aria-hidden>
-              <span className="ltr">B</span><span className="ltr ltr--i">I</span><span className="ltr">R</span><span className="ltr">O</span>
-            </span>
-            <span className="hero__desc" aria-hidden>
-              <span>{HERO.descriptor[0]}</span>
-              <span>{HERO.descriptor[1]}</span>
-            </span>
+          {/* contornos (não texto): mesmo viewBox de largura nos dois SVGs = alinhamento exato */}
+          <h1 className="hero__brand" style={{ ["--ar" as string]: BRAND_W / BRAND_H }}>
+            <span className="sr-only">BIRO — {DESC_WORDS.join(" ").toLowerCase()}</span>
+            <svg className="hero__biro" viewBox={`0 0 ${BRAND_W} ${BRAND_H}`} aria-hidden focusable="false">
+              {BRAND_LETTERS.map((d, i) => (
+                <path key={i} d={d} />
+              ))}
+            </svg>
+            <svg className="hero__desc" viewBox={`0 0 ${BRAND_W} ${DESC_H}`} aria-hidden focusable="false">
+              {DESC_PATHS.map((d, i) => (
+                <path key={i} d={d} />
+              ))}
+            </svg>
           </h1>
         </div>
 

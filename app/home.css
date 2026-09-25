@@ -121,40 +121,20 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
   position: absolute; left: 0; right: 0; top: var(--brand-top); z-index: 2;
   display: flex; justify-content: center;
   /* -2.7svh: recentraliza o nome para que o "I" termine junto à orelha do retrato */
-  transform: translate3d(-0.8svh, calc(var(--hero-p, 0) * -7svh), 0);
+  transform: translate3d(0, calc(var(--hero-p, 0) * -7svh), 0);
 }
+/* BIRO e o descritor são SVG (contornos da American Captain): largura dada pela altura desejada */
 .hero__brand {
-  --gap-i: 0em; /* BIRO sempre inteiro; o rosto é que esconde parte das letras */
-  display: grid; justify-items: end; width: max-content; margin: 0;
-  font-family: var(--font-d);
-  font-stretch: 125%;
-  font-weight: 900;
-  font-size: min(44.5svh, 28.5vw);
-  line-height: 0.74;
-  letter-spacing: -0.02em;
+  --brand-h: 42svh;
+  display: grid; margin: 0;
+  width: min(90vw, calc(var(--brand-h) * var(--ar, 2)));
   color: var(--text-hi);
   /* abertura: o nome nasce maior e, depois de ~2s, dá um zoom-out e assenta ao fundo */
   animation: brand-settle 1.5s cubic-bezier(0.65, 0, 0.35, 1) 2s both;
 }
-.hero__biro { display: block; white-space: nowrap; animation: brand-in 1.9s var(--ease) 0.05s both; }
-.ltr { display: inline-block; }
-.ltr--i { margin-right: var(--gap-i, 0em); }
-/* descritor: 1ª palavra alinhada à tinta do B, 2ª ocupando exatamente a largura do O
-   (o rosto fica no meio). Tudo em em do BIRO, então escala junto em qualquer tela. */
-.hero__desc {
-  justify-self: stretch;
-  display: flex; justify-content: space-between; align-items: baseline;
-  font-family: var(--font-b);
-  font-stretch: 100%;
-  font-weight: 400;
-  font-size: 0.1142em;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  margin: -0.11em 0.059em 0 0.547em; /* cola no BIRO; laterais = tinta do B e do O */
-  animation: fade-up 1.6s var(--ease) 0.75s both;
-}
+.hero__biro, .hero__desc { display: block; width: 100%; height: auto; fill: currentColor; overflow: visible; }
+.hero__biro { animation: brand-in 1.9s var(--ease) 0.05s both; }
+.hero__desc { animation: fade-up 1.6s var(--ease) 0.75s both; }
 
 /* retrato recortado + luz Phthalo nas bordas */
 .hero__figure-wrap {
@@ -234,7 +214,7 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
     mask-image: linear-gradient(180deg, #000 84%, transparent);
   }
   .hero__brand-wrap { transform: translate3d(0, calc(var(--hero-p, 0) * -4svh), 0); }
-  .hero__brand { --gap-i: 0em; --settle: 1.04; font-size: min(30vw, 24svh); }
+  .hero__brand { --settle: 1.04; --brand-h: 24svh; width: min(92vw, calc(var(--brand-h) * var(--ar, 2))); }
   .hero__figure-wrap { align-items: flex-end; }
   .hero__figure { height: 87%; }
   .hero__fade { display: none; }
