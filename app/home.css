@@ -346,20 +346,6 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .pf__placeholder span { font-size: clamp(90px, 15vw, 260px); font-weight: 200; letter-spacing: -0.06em; color: rgba(242, 244, 241, 0.06); }
 .pf__media-link:hover .pf__img, .pf__media-link:hover .pf__placeholder,
 .pf__media-link:focus-visible .pf__img, .pf__media-link:focus-visible .pf__placeholder { transform: scale(1.035); }
-/* scrub: quadros do vídeo empilhados; o mouse escolhe qual aparece (troca instantânea, sem piscar) */
-.pf__frames { position: absolute; inset: 0; transition: transform 1.4s var(--ease); }
-.pf__frames img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
-.pf__frames img[data-on] { opacity: 1; }
-.pf__media-link:hover .pf__frames { transform: scale(1.035); }
-.pf__scrub { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; height: 3px; background: rgba(242, 244, 241, 0.12); opacity: 0; transition: opacity 0.3s var(--ease); }
-.pf__scrub i { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(3, 8, 7, 0.8); }
-.pf__scrub::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--sx, 0) * 100%); background: linear-gradient(90deg, var(--phthalo-glow), var(--phthalo-lit)); }
-.pf__scrub::after {
-  content: ""; position: absolute; top: -5px; bottom: 0; left: calc(var(--sx, 0) * 100%); width: 2px; margin-left: -1px;
-  background: var(--phthalo-lit); box-shadow: 0 0 10px rgba(79, 214, 168, 0.9);
-}
-.pf__media[data-scrub] .pf__scrub { opacity: 1; }
-.pf__media[data-scrub] .pf__yt { bottom: 20px; }
 .pf__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: fade-in 0.5s both; }
 .pf__shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 58%, rgba(3, 8, 7, 0.5) 100%); }
 .pf__cta {
