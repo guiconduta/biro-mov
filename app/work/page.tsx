@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import "../home.css";
 import "./work.css";
 import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
-import { WorkBrowser } from "@/components/work/WorkBrowser";
+import { WorkStage } from "@/components/work/WorkStage";
 import { getLibrary, getCategories, getClients } from "@/lib/catalog";
 
 export const metadata: Metadata = {
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function WorkPage() {
-  const videos = getLibrary();
+  // o palco 3D é só para os vídeos em pé; os deitados ficam fora daqui por enquanto
+  const videos = getLibrary().filter((v) => v.format === "9:16");
   const usedClientIds = new Set(videos.map((v) => v.clientId).filter(Boolean));
   const clients = getClients()
     .filter((c) => usedClientIds.has(c.id))
@@ -20,12 +22,8 @@ export default function WorkPage() {
   return (
     <>
       <Navigation />
-      <main id="main" className="wrap">
-        <div className="work-head">
-          <span className="eyebrow">Biblioteca — SEQ. 02</span>
-          <h1>Work</h1>
-        </div>
-        <WorkBrowser videos={videos} categories={getCategories()} clients={clients} />
+      <main id="main">
+        <WorkStage videos={videos} categories={getCategories()} clients={clients} />
       </main>
       <Footer />
     </>
