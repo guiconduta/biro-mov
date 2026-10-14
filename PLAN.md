@@ -18,7 +18,7 @@ Este PLAN.md **não altera** o briefing — consolida, audita e estende onde voc
 | Stack | **Next.js** (App Router) | §8.5 — confirmado |
 | Catálogo | **JSON versionado no repo** — **sem CMS, nunca no v1**; todo conteúdo editado via Claude Code | risco #4 — confirmado 2026-08-27 |
 | Inventário | **Você manda o export/lista** dos vídeos do canal | risco #1, opção (b) |
-| Repositório | **Novo repo git nesta pasta** (`Desktop\portifólio`) | confirmado |
+| Repositório | **Novo repo git nesta pasta** (`Desktop\Claude\Projetos Code\portifólio`) | confirmado |
 | Marca | **BIRO.MOV** · Poppins · paleta jade-preto + menta `#A7F6C5` · dark único · HUD de filmagem | `design-foundation.md` |
 | Edição de conteúdo | Sempre via Claude Code (o usuário pede aqui). Deploy automático a cada mudança. | confirmado 2026-08-27 |
 
