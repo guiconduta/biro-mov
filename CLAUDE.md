@@ -26,7 +26,7 @@ direção cinematográfica que converte. Canal de origem dos vídeos: `youtube.c
 | `PLAN.md` | roteiro por fases (aprovado em 2026-08-27) |
 | `fase-1-arquitetura-informacao.md` | entrega da Fase 1 (IA, sitemap) |
 | `fase-2-inventario.md` | inventário mestre dos vídeos (§3, V01–V63) e taxonomia |
-| `design-foundation.md` | sistema visual (atenção: pode estar atrás do v4, ver seção 5) |
+| `design-foundation.md` | sistema visual do v4 (paleta, tipografia, hero, círculo de blur) |
 | `README.md` | como rodar, scripts e deploy |
 
 ## 3. Regras não-negociáveis
@@ -66,7 +66,21 @@ Next.js 15 (App Router, TypeScript, Tailwind 4), `zod` pra validar o catálogo.
 Comandos: `npm run dev` (porta 3000, `.claude/launch.json`), `npm run build`,
 `npm run seed`, `npm run validate:catalog`, `npm run typecheck`.
 
-## 5. Estado atual do design (v4)
+## 5. Publicação (deploy)
+
+Fluxo usado até hoje:
+
+1. Trabalhar na branch `redesign/v4`.
+2. `git push origin redesign/v4` → gera uma **prévia** na Vercel (protegida por login).
+   Não mexe no site no ar.
+3. `git push origin redesign/v4:main` → **publica em produção** (biro-mov.vercel.app).
+   Só com pedido explícito (regra 3).
+4. Depois do push, conferir o deploy pela API de deployments do GitHub:
+   `https://api.github.com/repos/guiconduta/biro-mov/deployments?sha=<SHA>` e depois
+   `/deployments/<id>/statuses`, olhando `state` (tem que chegar em `success`) e
+   `environment_url`.
+
+## 6. Estado atual do design (v4)
 
 O v4 substituiu todas as versões anteriores (v2 circular, v3.1 estilo gabrielside,
 polimento Nguyan). Peças antigas são recuperáveis pelo git, não reintroduzir sem pedido.
@@ -83,12 +97,16 @@ polimento Nguyan). Peças antigas são recuperáveis pelo git, não reintroduzir
   `format === "9:16"`). Capas do YouTube `oar2.jpg` com fallback maxres/sd/hq.
 - Clientes: logos brancos em `public/clients/`, marquee que não pausa no hover.
 - Contatos: WhatsApp, e-mail e YouTube (sem Vimeo).
+- Opções selecionáveis (navegação, redes, telefone, chips, links de CTA) usam o
+  "círculo de blur": pílula de vidro fosco (`backdrop-filter`, borda 1px clara, brilho
+  interno). É uma regra única no fim de `app/globals.css` — elemento novo clicável entra
+  na lista de seletores dela, não ganha estilo próprio.
 - Acessibilidade mantida: `:focus-visible`, skip link, reduced-motion, modal com focus trap.
 
 Testados e **removidos a meu pedido** (não trazer de volta): scrub de quadros nos cards,
 botão de som / qualquer áudio no site.
 
-## 6. Pendências
+## 7. Pendências
 
 - **Minhas (conteúdo):** showreel, escolha dos trabalhos e de quais vídeos entram no
   `/work`, texto do Sobre, textos das etapas do Como trabalho, títulos "a confirmar",
@@ -101,7 +119,7 @@ botão de som / qualquer áudio no site.
   último quadro escuro perto de `#030807`, sem som.
 - `/cases` ainda no visual antigo. Domínio próprio (opcional).
 
-## 7. Armadilhas conhecidas
+## 8. Armadilhas conhecidas
 
 - **Windows + Next:** não rodar `npm run build` com o `dev` ligado — corrompe `.next`
   (ENOENT `_buildManifest.js.tmp`). Parar o dev, apagar `.next`, reiniciar.
@@ -114,7 +132,7 @@ botão de som / qualquer áudio no site.
 - **Branches:** o trabalho acontece em `redesign/v4`, que é o que está em `origin/main`
   (produção). A `main` local está desatualizada — não partir dela.
 
-## 8. Como trabalhar comigo
+## 9. Como trabalhar comigo
 
 - Sou editor de vídeo, não engenheiro. Explique trade-offs pela consequência prática.
 - Uma fase/pedido por vez. Antes de mudança grande, apresente o plano e espere aprovação.
