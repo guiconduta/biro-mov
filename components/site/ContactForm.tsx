@@ -51,6 +51,24 @@ export function ContactForm() {
         </label>
       </div>
 
+      <div className="cform__row">
+        <label className="cform__field">
+          <span>{CONTACT_FORM.typeLabel}</span>
+          <select name="type" defaultValue="">
+            <option value="">{CONTACT_FORM.typePlaceholder}</option>
+            {CONTACT_FORM.typeOptions.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="cform__field">
+          <span>{CONTACT_FORM.whatsappLabel}</span>
+          <input type="tel" name="whatsapp" placeholder={CONTACT_FORM.whatsappPlaceholder} autoComplete="tel" inputMode="tel" />
+        </label>
+      </div>
+
       <label className="cform__field">
         <span>{CONTACT_FORM.messageLabel}</span>
         <textarea name="message" placeholder={CONTACT_FORM.messagePlaceholder} rows={5} required />

@@ -48,6 +48,11 @@ export const CONTACT_FORM = {
   namePlaceholder: "Seu nome",
   emailLabel: "E-mail",
   emailPlaceholder: "seu@email.com",
+  typeLabel: "Tipo de projeto", // opcional; vai no assunto do e-mail
+  typePlaceholder: "Selecione",
+  typeOptions: ["Conteúdo para redes", "Vídeo institucional", "Evento / documental", "Imóveis", "Outro"],
+  whatsappLabel: "WhatsApp (opcional)",
+  whatsappPlaceholder: "(47) 99999-9999",
   messageLabel: "Mensagem",
   messagePlaceholder: "Conte sobre seu projeto...",
   submitLabel: "Enviar mensagem",

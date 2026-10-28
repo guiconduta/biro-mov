@@ -672,7 +672,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .cform__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--phthalo-glow); box-shadow: 0 0 10px rgba(31, 143, 106, 0.8); animation: rec 2s ease-in-out infinite; }
 .cform__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .cform__field { display: grid; gap: 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
-.cform__field input, .cform__field textarea {
+.cform__field input, .cform__field textarea, .cform__field select {
   font-family: var(--font-b); font-size: 14px; font-weight: 400; letter-spacing: normal; text-transform: none;
   color: var(--text-hi); background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.12); border-radius: var(--r-input);
@@ -680,7 +680,14 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
   transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
 }
 .cform__field input::placeholder, .cform__field textarea::placeholder { color: var(--text-mute); }
-.cform__field input:focus, .cform__field textarea:focus { outline: none; border-color: var(--phthalo-glow); background: rgba(255, 255, 255, 0.06); }
+.cform__field select {
+  appearance: none; cursor: pointer; padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23f2f4f1' stroke-width='1.6'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.cform__field select:has(option[value=""]:checked) { color: var(--text-mute); }
+.cform__field select option { color: var(--text-hi); background: #0b1311; }
+.cform__field input:focus, .cform__field textarea:focus, .cform__field select:focus { outline: none; border-color: var(--phthalo-glow); background-color: rgba(255, 255, 255, 0.06); }
 .cform__submit { justify-content: center; width: 100%; }
 .cform__note { font-size: 13px; color: var(--phthalo-lit); }
 @media (max-width: 640px) { .cform__row { grid-template-columns: 1fr; } }
