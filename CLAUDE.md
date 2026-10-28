@@ -46,7 +46,8 @@ direção cinematográfica que converte. Canal de origem dos vídeos: `youtube.c
 
 ## 4. Stack e estrutura
 
-Next.js 15 (App Router, TypeScript, Tailwind 4), `zod` pra validar o catálogo.
+Next.js 15 (App Router, TypeScript, Tailwind 4), `zod` pra validar o catálogo,
+`@vercel/analytics` (contador de visitas sem cookies, em `app/layout.tsx`; aprovado em 2026-10-28).
 
 - `app/` — rotas: `/` (Home), `/work`, `/cases`, `/cases/[slug]`, `/pricing` (escondida
   enquanto `pricingEnabled=false`, `noindex`), `robots.ts`, `sitemap.ts`, `not-found.tsx`.
@@ -91,8 +92,16 @@ polimento Nguyan). Peças antigas são recuperáveis pelo git, não reintroduzir
   Desktop com letras espaçadas; no celular, BIRO junto. Alinhar texto medindo a tinta pixel
   a pixel — a caixa do canvas erra em algumas fontes.
 - Ordem da Home: Hero → Showreel → Trabalhos → Sobre → Clientes → Como trabalho → Contato.
-- "Como trabalho" = timeline de editor, sticky. Timecode fixo no pé da tela (some no hero e
-  dentro do Como trabalho).
+- "Como trabalho" = timeline de editor com 6 etapas, **navegada por clique** (clipes, setas
+  ‹ ›, teclado, arrastar no celular). Uma tela de altura, **sem rolagem presa** (o sticky
+  antigo foi removido a meu pedido). Timecode fixo no pé da tela (some no hero e quando o
+  Como trabalho cruza o meio da tela).
+- Sobre: texto + foto. O bloco "Criação / Direção / Edição" com rack focus foi removido a
+  meu pedido.
+- "Por que me escolher": 6 cartões sem números inventados; `kicker` vazio esconde a
+  etiqueta pequena.
+- Formulário de contato (`mailto:`): Nome, E-mail, Tipo de projeto (opcional, vai no
+  assunto), WhatsApp (opcional), Mensagem.
 - `/work` = palco 3D de cartões 9:16 flutuando, **só vídeos verticais** (a página filtra
   `format === "9:16"`). Capas do YouTube `oar2.jpg` com fallback maxres/sd/hq.
 - Clientes: logos brancos em `public/clients/`, marquee que não pausa no hover.
@@ -109,7 +118,8 @@ botão de som / qualquer áudio no site.
 ## 7. Pendências
 
 - **Minhas (conteúdo):** showreel, escolha dos trabalhos e de quais vídeos entram no
-  `/work`, texto do Sobre, textos das etapas do Como trabalho, títulos "a confirmar",
+  `/work`, revisar o texto do Sobre (entrou como rascunho meu em 2026-10-28), título e
+  subtítulo do "Por que me escolher" (ainda os da referência), títulos "a confirmar",
   categorias em inglês, cliente dos vídeos imobiliários avulsos, logo em vetor.
 - **Intro em vídeo (combinada em 2026-09-24, aguardando meu vídeo):** 3–5s em tela cheia,
   mudo, antes do hero; no fim dissolve "em areia" feito em código (WebGL: noise threshold +
@@ -118,6 +128,8 @@ botão de som / qualquer áudio no site.
   reduced-motion pula. Specs: MP4 H.264 1920×1080 (opcional 1080×1920), ação no centro,
   último quadro escuro perto de `#030807`, sem som.
 - `/cases` ainda no visual antigo. Domínio próprio (opcional).
+- Ligar o Analytics no painel da Vercel (projeto → Analytics → Enable); só conta visitas
+  depois de publicado.
 
 ## 8. Armadilhas conhecidas
 
