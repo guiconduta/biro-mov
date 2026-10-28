@@ -3,8 +3,8 @@
 Contexto permanente do projeto. Leia antes de qualquer tarefa.
 Se uma decisão aqui conflitar com um pedido meu, **avise antes de codar**.
 
-Este projeto não tem nada a ver com o Earshot (`Desktop\Earshot\MD`). Regras de lá
-não valem aqui.
+Este projeto faz parte do ambiente BIRO.MOV (regras gerais da marca em `..\CLAUDE.md`).
+Não tem nada a ver com o Earshot nem com outros ambientes; regras de lá não valem aqui.
 
 ---
 
