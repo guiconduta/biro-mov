@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Onest } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/config";
 import "./globals.css";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a className="skip-link" href="#main">Pular para o conteúdo</a>
         {children}
+        <Analytics />
       </body>
     </html>
   );
