@@ -107,7 +107,7 @@ export function WhyMe() {
                   <span className="why__icon">
                     <Icon size={20} />
                   </span>
-                  <span className="why__kicker">{it.kicker}</span>
+                  {it.kicker && <span className="why__kicker">{it.kicker}</span>}
                   <h3 className="why__card-title">{it.title}</h3>
                   <p className="why__text">{withPlaceholders(it.text)}</p>
                 </div>

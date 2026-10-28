@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ABOUT, SOBRE_HEADLINE, SOBRE_TEXT } from "@/content/home.config";
 import { Reveal } from "@/components/ui/Reveal";
-import { AboutRoles } from "@/components/site/AboutRoles";
 
 export function About() {
   const paragraphs = SOBRE_TEXT.trim() ? SOBRE_TEXT.trim().split(/\n\s*\n/) : [];
@@ -36,10 +35,6 @@ export function About() {
           </div>
         </Reveal>
       </div>
-
-      <Reveal>
-        <AboutRoles roles={ABOUT.roles} />
-      </Reveal>
     </section>
   );
 }

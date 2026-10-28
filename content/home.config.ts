@@ -147,14 +147,14 @@ export const FEATURED_WORKS: [Work, Work, Work] = [
 
 /* ----------------------------------------------------------------- sobre */
 export const SOBRE_HEADLINE = "Sobre"; // headline grande (definido pelo autor)
-export const SOBRE_TEXT = ""; // [SOBRE_TEXT] texto pessoal — separe parágrafos com linha em branco
+// texto pessoal — separe parágrafos com linha em branco
+export const SOBRE_TEXT = `Sou o Biro, filmmaker e editor em Joinville. Venho do audiovisual e do design, e trabalho com marcas, eventos e criadores que querem conteúdo com intenção: imagem bonita, sim, mas com ritmo e história. Dirijo, filmo e edito cada projeto de perto, do roteiro à entrega.`;
 
 export const ABOUT = {
   photo: "/branding/sobre.jpg",
   photoAlt: "Biro filmando com uma câmera mirrorless",
   photoWidth: 2000,
   photoHeight: 1335,
-  roles: ["Criação", "Direção", "Edição"],
 } as const;
 
 /* -------------------------------------------------- clientes e experiências */
@@ -186,12 +186,13 @@ export const WHY_ME = {
   title: "Por que me escolher?",
   sub: "Veja por que sou a escolha certa para inovar na sua marca.",
   items: [
-    { kicker: "COLABORAÇÃO", title: "Colaboração sem atrito", text: "Mais de [N] projetos entregues com resultados concretos para empresas.", icon: "users" },
-    { kicker: "DESIGN", title: "Soluções de design", text: "Mais de [N] experiências aprimoradas para a satisfação do cliente.", icon: "palette" },
-    { kicker: "VISIBILIDADE", title: "Mais visibilidade para a marca", text: "[N]% de satisfação dos clientes.", icon: "eye" },
-    { kicker: "IMPACTO", title: "Impacto de marca", text: "Crio experiências de marca memoráveis, que conectam com o público.", icon: "sparkle" },
-    { kicker: "DADOS", title: "Decisões guiadas por dados", text: "Analiso o comportamento do público para chegar a [N]% mais engajamento.", icon: "chart" },
-    { kicker: "GESTÃO", title: "Gestão ágil", text: "Conduzo equipes para cumprir cada etapa antes do prazo.", icon: "clipboard" },
+    // kicker vazio = não mostra a etiqueta pequena acima do título
+    { kicker: "", title: "Um responsável do início ao fim", text: "Roteiro, câmera e edição na mesma mão. Sem ruído entre etapas.", icon: "users" },
+    { kicker: "", title: "Olhar de cinema, ritmo de redes", text: "Estética cinematográfica adaptada ao formato curto.", icon: "eye" },
+    { kicker: "", title: "Edição que segura atenção", text: "Gancho, cadência e corte pensados para retenção.", icon: "chart" },
+    { kicker: "", title: "Identidade, não template", text: "Cada marca ganha uma linguagem visual própria.", icon: "palette" },
+    { kicker: "", title: "Processo claro", text: "Etapas, prazos e aprovações combinados antes de começar.", icon: "clipboard" },
+    { kicker: "", title: "Parceria contínua", text: "Pacotes mensais para quem quer constância, não só um vídeo.", icon: "sparkle" },
   ] satisfies WhyItem[],
 };
 
@@ -203,10 +204,10 @@ export type WorkflowStep = { title: string; text: string };
  * Títulos = sugestão inicial (troque à vontade). text vazio = aparece [TEXTO DA ETAPA].
  */
 export const WORKFLOW_DATA: WorkflowStep[] = [
-  { title: "Pré-produção", text: "" },
-  { title: "Captação", text: "" },
-  { title: "Edição", text: "" },
-  { title: "Cor", text: "" },
-  { title: "Som", text: "" },
-  { title: "Entrega", text: "" },
+  { title: "Pré-produção", text: "Entendo o objetivo, defino roteiro, referências e plano de captação antes de ligar a câmera." },
+  { title: "Captação", text: "Filmagem com direção de cena, luz e enquadramento pensados para a edição." },
+  { title: "Edição", text: "Ritmo, narrativa e ganchos montados para prender atenção do primeiro ao último segundo." },
+  { title: "Cor", text: "Tratamento de cor que dá unidade e identidade visual à peça." },
+  { title: "Som", text: "Trilha, design de som e mixagem para o vídeo funcionar com e sem fone." },
+  { title: "Entrega", text: "Arquivos finais nos formatos de cada plataforma, prontos para publicar." },
 ];

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent, type TouchEvent } from "react";
 import { WORKFLOW_DATA } from "@/content/home.config";
+import { IconArrow } from "@/components/icons";
 
 const FPS = 24;
 const SECONDS_PER_STEP = 8; // só visual: cada etapa "dura" 8s na régua
@@ -37,58 +38,78 @@ function Wave({ bars }: { bars: number[] }) {
 }
 
 /**
- * "Como trabalho" como a timeline de um editor: as etapas são clipes na trilha de vídeo, a rolagem
- * move a agulha e a etapa que ela toca aparece grande no monitor. A seção é alta de propósito —
- * o palco fica preso na tela (sticky) enquanto a rolagem "toca" a timeline.
+ * "Como trabalho" como a timeline de um editor: as etapas são clipes na trilha de vídeo e a etapa
+ * sob a agulha aparece grande no monitor. A navegação é por clique (clipes, setas, teclado ou
+ * arrastar no celular) — a seção tem uma tela de altura e não prende a rolagem.
  */
 export function Workflow() {
   const steps = WORKFLOW_DATA;
   const n = steps.length;
-  const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const tcRef = useRef<HTMLSpanElement>(null);
+  const pRef = useRef(n ? 0.5 / n : 0); // posição atual da agulha (0–1)
+  const rafRef = useRef(0);
+  const swipeRef = useRef<{ x: number; y: number } | null>(null);
   const [active, setActive] = useState(0);
   const bars = useMemo(() => waveform(180), []);
 
+  const paint = (p: number) => {
+    pRef.current = p;
+    stageRef.current?.style.setProperty("--p", p.toFixed(5));
+    if (tcRef.current) tcRef.current.textContent = timecode(Math.round(p * n * SECONDS_PER_STEP * FPS));
+  };
+
   useEffect(() => {
-    const sec = sectionRef.current;
-    const stage = stageRef.current;
-    if (!sec || !stage || !n) return;
-    let raf = 0;
-    let last = -1;
-    const update = () => {
-      raf = 0;
-      const r = sec.getBoundingClientRect();
-      const total = r.height - window.innerHeight;
-      const p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
-      stage.style.setProperty("--p", p.toFixed(5));
-      if (tcRef.current) tcRef.current.textContent = timecode(Math.round(p * n * SECONDS_PER_STEP * FPS));
-      const idx = Math.min(n - 1, Math.floor(p * n));
-      if (idx !== last) {
-        last = idx;
-        setActive(idx);
-      }
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    if (n) paint(pRef.current);
+    return () => cancelAnimationFrame(rafRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [n]);
 
-  // clicar num clipe leva a agulha até o meio dele
+  // a agulha corre até o meio do clipe escolhido, como num "jump" do editor
   const goTo = (i: number) => {
-    const sec = sectionRef.current;
-    if (!sec) return;
-    const top = sec.getBoundingClientRect().top + window.scrollY;
-    const total = sec.offsetHeight - window.innerHeight;
-    window.scrollTo({ top: top + ((i + 0.5) / n) * total, behavior: "smooth" });
+    if (!n) return;
+    const idx = Math.max(0, Math.min(n - 1, i));
+    setActive(idx);
+    const from = pRef.current;
+    const to = (idx + 0.5) / n;
+    cancelAnimationFrame(rafRef.current);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || from === to) {
+      paint(to);
+      return;
+    }
+    const dur = Math.min(900, 380 + Math.abs(to - from) * n * 140);
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const k = Math.min(1, (now - t0) / dur);
+      const e = 1 - Math.pow(1 - k, 3);
+      paint(from + (to - from) * e);
+      if (k < 1) rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+  };
+
+  const onKey = (e: KeyboardEvent) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      goTo(active + 1);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      goTo(active - 1);
+    }
+  };
+
+  // celular: arrastar o dedo para o lado no monitor troca de etapa
+  const onTouchStart = (e: TouchEvent) => {
+    const t = e.touches[0];
+    swipeRef.current = { x: t.clientX, y: t.clientY };
+  };
+  const onTouchEnd = (e: TouchEvent) => {
+    const s = swipeRef.current;
+    swipeRef.current = null;
+    if (!s) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - s.x;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(t.clientY - s.y) * 1.4) goTo(active + (dx < 0 ? 1 : -1));
   };
 
   if (!n) {
@@ -104,13 +125,12 @@ export function Workflow() {
   return (
     <section
       id="como-trabalho"
-      ref={sectionRef}
       className="workflow"
       aria-labelledby="workflow-label"
       style={{ "--n": n } as CSSProperties}
       data-timeline-takeover
     >
-      <div ref={stageRef} className="workflow__stage">
+      <div ref={stageRef} className="workflow__stage" onKeyDown={onKey}>
         <div className="workflow__top">
           <h2 id="workflow-label" className="label">COMO TRABALHO</h2>
           <span className="workflow__tc" aria-hidden>
@@ -120,10 +140,18 @@ export function Workflow() {
         </div>
 
         {/* monitor: a etapa sob a agulha, grande */}
-        <div className="workflow__monitor" aria-hidden>
-          <span className="workflow__count">
-            {pad(active + 1)} <span>/ {pad(n)}</span>
-          </span>
+        <div className="workflow__monitor" aria-live="polite" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+          <div className="workflow__ctrl">
+            <button type="button" className="workflow__nav" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="Etapa anterior">
+              <IconArrow size={16} className="workflow__nav-back" />
+            </button>
+            <span className="workflow__count">
+              {pad(active + 1)} <span>/ {pad(n)}</span>
+            </span>
+            <button type="button" className="workflow__nav" onClick={() => goTo(active + 1)} disabled={active === n - 1} aria-label="Próxima etapa">
+              <IconArrow size={16} />
+            </button>
+          </div>
           <p className="workflow__title" key={`t${active}`}>{step.title}</p>
           {step.text ? (
             <p className="workflow__text" key={`x${active}`}>{step.text}</p>

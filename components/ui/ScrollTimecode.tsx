@@ -86,7 +86,7 @@ export function ScrollTimecode() {
 
       // some na abertura e enquanto a timeline do "Como trabalho" está na tela
       const r = document.querySelector("[data-timeline-takeover]")?.getBoundingClientRect();
-      const inWorkflow = !!r && r.top <= vh * 0.1 && r.bottom >= vh * 0.9;
+      const inWorkflow = !!r && r.top <= vh * 0.5 && r.bottom >= vh * 0.5;
       const show = y > vh * 0.55 && !inWorkflow;
       if (show !== lastShow) {
         lastShow = show;
