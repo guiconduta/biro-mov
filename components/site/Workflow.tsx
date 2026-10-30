@@ -140,23 +140,38 @@ export function Workflow() {
         </div>
 
         {/* monitor: a etapa sob a agulha, grande */}
-        <div className="workflow__monitor" aria-live="polite" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-          <div className="workflow__ctrl">
-            <button type="button" className="workflow__nav" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="Etapa anterior">
-              <IconArrow size={16} className="workflow__nav-back" />
-            </button>
-            <span className="workflow__count">
-              {pad(active + 1)} <span>/ {pad(n)}</span>
-            </span>
-            <button type="button" className="workflow__nav" onClick={() => goTo(active + 1)} disabled={active === n - 1} aria-label="Próxima etapa">
-              <IconArrow size={16} />
-            </button>
+        <div
+          className="workflow__monitor"
+          data-photo={step.photo ? "1" : undefined}
+          aria-live="polite"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <div className="workflow__copy">
+            <div className="workflow__ctrl">
+              <button type="button" className="workflow__nav" onClick={() => goTo(active - 1)} disabled={active === 0} aria-label="Etapa anterior">
+                <IconArrow size={16} className="workflow__nav-back" />
+              </button>
+              <span className="workflow__count">
+                {pad(active + 1)} <span>/ {pad(n)}</span>
+              </span>
+              <button type="button" className="workflow__nav" onClick={() => goTo(active + 1)} disabled={active === n - 1} aria-label="Próxima etapa">
+                <IconArrow size={16} />
+              </button>
+            </div>
+            <p className="workflow__title" key={`t${active}`}>{step.title}</p>
+            {step.text ? (
+              <p className="workflow__text" key={`x${active}`}>{step.text}</p>
+            ) : (
+              <p className="workflow__text todo" key={`x${active}`}>[TEXTO DA ETAPA]</p>
+            )}
           </div>
-          <p className="workflow__title" key={`t${active}`}>{step.title}</p>
-          {step.text ? (
-            <p className="workflow__text" key={`x${active}`}>{step.text}</p>
-          ) : (
-            <p className="workflow__text todo" key={`x${active}`}>[TEXTO DA ETAPA]</p>
+          {/* foto da etapa: o processo na tela (ex.: máscara + cor no DaVinci), inteira, ao lado do texto */}
+          {step.photo && (
+            <figure className="workflow__photo" key={`f${active}`} aria-hidden>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={step.photo} alt="" />
+            </figure>
           )}
         </div>
 

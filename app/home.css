@@ -584,6 +584,23 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .workflow__nav:disabled { opacity: 0.3; cursor: default; }
 .workflow__nav-back { transform: scaleX(-1); }
 .workflow__monitor { touch-action: pan-y; }
+/* etapa com foto: texto à esquerda, a tela do processo inteira à direita (rodas de cor, máscara, nós) */
+.workflow__monitor[data-photo] {
+  max-width: none; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); column-gap: clamp(32px, 4vw, 72px); align-items: center;
+}
+.workflow__copy { display: grid; gap: clamp(10px, 1.6vw, 20px); align-content: center; }
+.workflow__monitor[data-photo] .workflow__title { font-size: clamp(44px, 6vw, 110px); }
+.workflow__photo {
+  margin: 0; align-self: center;
+  border-radius: 6px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: wf-photo 0.9s var(--ease) 0.1s both;
+}
+.workflow__photo img { display: block; width: 100%; height: auto; opacity: 0.72; filter: saturate(0.85); }
+@keyframes wf-photo { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+@media (max-width: 820px) {
+  .workflow__monitor[data-photo] { grid-template-columns: 1fr; row-gap: clamp(10px, 1.6vw, 20px); }
+  .workflow__photo { margin-top: 8px; }
+}
 .workflow__count { font-size: 13px; letter-spacing: 0.24em; color: var(--phthalo-lit); font-variant-numeric: tabular-nums; }
 .workflow__count span { color: var(--text-mute); }
 .workflow__title { font-size: clamp(44px, 8.4vw, 150px); font-weight: 200; letter-spacing: -0.055em; line-height: 0.95; color: var(--text-hi); animation: wf-in 0.8s var(--ease) both; }

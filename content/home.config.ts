@@ -202,7 +202,8 @@ export const WHY_ME = {
 };
 
 /* --------------------------------------------------------- como trabalho */
-export type WorkflowStep = { title: string; text: string };
+/** photo (opcional): imagem em public/workflow/, aparece como detalhe sutil atrás do texto da etapa. */
+export type WorkflowStep = { title: string; text: string; photo?: string };
 
 /**
  * Cada item vira um clipe na timeline do "Como trabalho", na ordem.
@@ -212,7 +213,7 @@ export const WORKFLOW_DATA: WorkflowStep[] = [
   { title: "Pré-produção", text: "Entendo o objetivo, defino roteiro, referências e plano de captação antes de ligar a câmera." },
   { title: "Captação", text: "Filmagem com direção de cena, luz e enquadramento pensados para a edição." },
   { title: "Edição", text: "Ritmo, narrativa e ganchos montados para prender atenção do primeiro ao último segundo." },
-  { title: "Cor", text: "Tratamento de cor que dá unidade e identidade visual à peça." },
+  { title: "Cor", text: "Tratamento de cor que dá unidade e identidade visual à peça.", photo: "/workflow/cor.webp" },
   { title: "Som", text: "Trilha, design de som e mixagem para o vídeo funcionar com e sem fone." },
   { title: "Entrega", text: "Arquivos finais nos formatos de cada plataforma, prontos para publicar." },
 ];
