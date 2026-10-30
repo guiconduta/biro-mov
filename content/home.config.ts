@@ -202,8 +202,11 @@ export const WHY_ME = {
 };
 
 /* --------------------------------------------------------- como trabalho */
-/** photo (opcional): imagem em public/workflow/, aparece como detalhe sutil atrás do texto da etapa. */
-export type WorkflowStep = { title: string; text: string; photo?: string };
+/**
+ * photo (opcional): imagem em public/workflow/, ocupa o "monitor" da etapa.
+ * focus (opcional): que parte da foto fica no quadro, em CSS object-position (padrão "60% 45%").
+ */
+export type WorkflowStep = { title: string; text: string; photo?: string; focus?: string };
 
 /**
  * Cada item vira um clipe na timeline do "Como trabalho", na ordem.
@@ -211,9 +214,9 @@ export type WorkflowStep = { title: string; text: string; photo?: string };
  */
 export const WORKFLOW_DATA: WorkflowStep[] = [
   { title: "Pré-produção", text: "Entendo o objetivo, defino roteiro, referências e plano de captação antes de ligar a câmera." },
-  { title: "Captação", text: "Filmagem com direção de cena, luz e enquadramento pensados para a edição." },
-  { title: "Edição", text: "Ritmo, narrativa e ganchos montados para prender atenção do primeiro ao último segundo." },
-  { title: "Cor", text: "Tratamento de cor que dá unidade e identidade visual à peça.", photo: "/workflow/cor.webp" },
-  { title: "Som", text: "Trilha, design de som e mixagem para o vídeo funcionar com e sem fone." },
-  { title: "Entrega", text: "Arquivos finais nos formatos de cada plataforma, prontos para publicar." },
+  { title: "Captação", text: "Filmagem com direção de cena, luz e enquadramento pensados para a edição.", photo: "/workflow/captacao.webp" },
+  { title: "Edição", text: "Ritmo, narrativa e ganchos montados para prender atenção do primeiro ao último segundo.", photo: "/workflow/edicao.webp" },
+  { title: "Cor", text: "Tratamento de cor que dá unidade e identidade visual à peça.", photo: "/workflow/cor.webp", focus: "60% 100%" },
+  { title: "Som", text: "Trilha, design de som e mixagem para o vídeo funcionar com e sem fone.", photo: "/workflow/som.webp" },
+  { title: "Entrega", text: "Arquivos finais nos formatos de cada plataforma, prontos para publicar.", photo: "/workflow/entrega.webp" },
 ];
