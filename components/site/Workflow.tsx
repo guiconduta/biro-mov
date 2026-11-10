@@ -22,7 +22,8 @@ function waveform(bars: number) {
       0.3 * Math.abs(Math.sin(x * 23.1)) +
       0.2 * Math.abs(Math.sin(x * 61.7 + 1.3)) +
       0.15 * Math.abs(Math.sin(x * 139.3 + 0.4));
-    return Math.min(1, v * (0.55 + 0.45 * Math.abs(Math.sin(x * 7.3 + 0.8))));
+    // 3 casas: sem isso o último dígito difere entre servidor e navegador e a hidratação acusa erro
+    return Math.round(Math.min(1, v * (0.55 + 0.45 * Math.abs(Math.sin(x * 7.3 + 0.8)))) * 1000) / 1000;
   });
 }
 
@@ -31,7 +32,7 @@ function Wave({ bars }: { bars: number[] }) {
   return (
     <svg viewBox={`0 0 ${w} 40`} preserveAspectRatio="none" className="wtl__wave-svg">
       {bars.map((v, i) => (
-        <rect key={i} x={i * 3} y={20 - v * 18} width={1.6} height={v * 36} rx={0.8} />
+        <rect key={i} x={i * 3} y={+(20 - v * 18).toFixed(2)} width={1.6} height={+(v * 36).toFixed(2)} rx={0.8} />
       ))}
     </svg>
   );

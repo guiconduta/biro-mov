@@ -4,8 +4,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { IconArrow } from "@/components/icons";
 import { ProjectFeature } from "./ProjectFeature";
 
-// os 3 cards usam o mesmo molde (mídia + ficha coladas, card centralizado) — uniforme por enquanto
-const VARIANTS = ["wide", "wide", "wide"] as const;
+// ritmo de montagem: o 1º abre em tela cheia, os seguintes entram assimétricos, alternando o lado
+const variantFor = (i: number) => (i === 0 ? "full" : "asym");
 
 export function SelectedWorks() {
   return (
@@ -15,8 +15,8 @@ export function SelectedWorks() {
       </Reveal>
 
       {FEATURED_WORKS.map((work, i) => (
-        <Reveal key={i} className={`works__item works__item--${VARIANTS[i]}`}>
-          <ProjectFeature work={work} index={i} variant={VARIANTS[i]} />
+        <Reveal key={i} className={`works__item works__item--${variantFor(i)}`}>
+          <ProjectFeature work={work} index={i} variant={variantFor(i)} flip={i % 2 === 0} />
         </Reveal>
       ))}
 

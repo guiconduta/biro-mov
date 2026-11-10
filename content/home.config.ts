@@ -95,15 +95,16 @@ export type ShowreelConfig = {
 };
 
 export const SHOWREEL: ShowreelConfig = {
-  provider: null, // [SHOWREEL] em edição
+  // provisório: o "Olá 2026" ocupa o lugar até o showreel oficial ficar pronto (troque o youtubeId)
+  provider: "youtube",
   videoUrl: "",
   vimeoId: "",
-  youtubeId: "",
-  poster: "",
+  youtubeId: "Tzgx0OJyYv0",
+  poster: "https://i.ytimg.com/vi/Tzgx0OJyYv0/maxres1.jpg", // quadro automático do YouTube; troque por imagem própria se quiser
   previewUrl: "",
 };
 
-/* ------------------------------------------------- trabalhos em destaque (3) */
+/* ------------------------------------------------- trabalhos em destaque */
 export type Work = {
   title: string;
   description?: string; // 1-2 frases sobre o projeto (vazio = placeholder)
@@ -117,7 +118,8 @@ export type Work = {
   aspect?: "16:9" | "9:16"; // formato do vídeo (padrão 16:9)
 };
 
-export const FEATURED_WORKS: [Work, Work, Work] = [
+// o 1º entra em tela cheia, os seguintes alternam o lado da foto. ("Olá 2026" está no Showreel.)
+export const FEATURED_WORKS: Work[] = [
   {
     title: "Encerramento do Pátio",
     category: "Documental",
@@ -137,16 +139,6 @@ export const FEATURED_WORKS: [Work, Work, Work] = [
     videoPreview: "",
     projectUrl: "https://www.youtube.com/watch?v=hWx64S44OUY",
     youtubeId: "hWx64S44OUY",
-  },
-  {
-    title: "Olá 2026",
-    category: "Showreel",
-    year: "2026",
-    roles: ["Editor"],
-    poster: "https://i.ytimg.com/vi/Tzgx0OJyYv0/maxresdefault.jpg", // capa automática do YouTube; troque por imagem própria se quiser
-    videoPreview: "",
-    projectUrl: "https://www.youtube.com/watch?v=Tzgx0OJyYv0",
-    youtubeId: "Tzgx0OJyYv0",
   },
 ];
 

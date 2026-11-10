@@ -6,39 +6,47 @@ export function Contact() {
   return (
     <section id="contato" className="contact" aria-labelledby="contato-label">
       <div className="contact__glow" aria-hidden />
-      <Reveal>
-        <h2 id="contato-label" className="label">CONTATO</h2>
-      </Reveal>
 
-      <Reveal delay={100}>
-        <p className="contact__headline">{COPY.contactHeadline}</p>
-        <p className="contact__sub">{COPY.contactSub}</p>
-      </Reveal>
+      {/* duas colunas: a chamada e os contatos diretos de um lado, o formulário do outro */}
+      <div className="contact__grid">
+        <div className="contact__intro">
+          <Reveal>
+            <h2 id="contato-label" className="label">CONTATO</h2>
+          </Reveal>
 
-      <Reveal delay={200} className="contact__actions">
-        <ContactForm />
+          <Reveal delay={100}>
+            <p className="contact__headline">{COPY.contactHeadline}</p>
+            <p className="contact__sub">{COPY.contactSub}</p>
+          </Reveal>
 
-        <ul className="contact__links">
-          <li>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact__link">
-              <span className="contact__k">WhatsApp</span>
-              <span>{CONTACT.phoneDisplay}</span>
-            </a>
-          </li>
-          <li>
-            <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" className="contact__link">
-              <span className="contact__k">Instagram</span>
-              <span>{CONTACT.instagramHandle}</span>
-            </a>
-          </li>
-          <li>
-            <a href={mailUrl} className="contact__link">
-              <span className="contact__k">E-mail</span>
-              <span>{CONTACT.email}</span>
-            </a>
-          </li>
-        </ul>
-      </Reveal>
+          <Reveal delay={200}>
+            <ul className="contact__links">
+              <li>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact__link">
+                  <span className="contact__k">WhatsApp</span>
+                  <span>{CONTACT.phoneDisplay}</span>
+                </a>
+              </li>
+              <li>
+                <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" className="contact__link">
+                  <span className="contact__k">Instagram</span>
+                  <span>{CONTACT.instagramHandle}</span>
+                </a>
+              </li>
+              <li>
+                <a href={mailUrl} className="contact__link">
+                  <span className="contact__k">E-mail</span>
+                  <span>{CONTACT.email}</span>
+                </a>
+              </li>
+            </ul>
+          </Reveal>
+        </div>
+
+        <Reveal delay={250} className="contact__form">
+          <ContactForm />
+        </Reveal>
+      </div>
     </section>
   );
 }

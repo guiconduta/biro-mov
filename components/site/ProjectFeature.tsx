@@ -34,13 +34,9 @@ function Wrapper({ href, className, children, onOpen }: { href: string; classNam
 }
 
 /** Linha de ficha técnica em rótulo + valor (o "Industry / Style / Tone / Format" da referência). */
-function MetaRow({ work, n }: { work: Work; n: string }) {
+function MetaRow({ work }: { work: Work }) {
   return (
     <dl className="pf__row">
-      <div>
-        <dt>Nº</dt>
-        <dd>{n}</dd>
-      </div>
       <div>
         <dt>Categoria</dt>
         <dd>{work.category}</dd>
@@ -57,7 +53,7 @@ function MetaRow({ work, n }: { work: Work; n: string }) {
   );
 }
 
-export function ProjectFeature({ work, index, variant }: { work: Work; index: number; variant: Variant }) {
+export function ProjectFeature({ work, index, variant, flip = false }: { work: Work; index: number; variant: Variant; flip?: boolean }) {
   const [hover, setHover] = useState(false);
   const [canHover, setCanHover] = useState(false);
   const [open, setOpen] = useState(false);
@@ -100,34 +96,27 @@ export function ProjectFeature({ work, index, variant }: { work: Work; index: nu
     </Wrapper>
   );
 
+  // descrição ainda não escrita = não aparece (o campo fica vazio em home.config.ts)
+  const meta = (
+    <div className="pf__meta">
+      <h3 className="pf__title">{work.title}</h3>
+      {work.description && <p className="pf__desc">{work.description}</p>}
+      <MetaRow work={work} />
+    </div>
+  );
+
   return (
-    <article className={`pf pf--${variant}`}>
+    <article className={`pf pf--${variant}${flip ? " pf--flip" : ""}`}>
       {variant === "wide" ? (
         // caixa única: mídia e ficha coladas, como um só cartão
         <div className="pf__card">
           {media}
-          <div className="pf__meta">
-            <h3 className="pf__title">{work.title}</h3>
-            {work.description ? (
-              <p className="pf__desc">{work.description}</p>
-            ) : (
-              <p className="pf__desc todo">[DESCRIÇÃO DO PROJETO]</p>
-            )}
-            <MetaRow work={work} n={n} />
-          </div>
+          {meta}
         </div>
       ) : (
         <>
           {media}
-          <div className="pf__meta">
-            <h3 className="pf__title">{work.title}</h3>
-            {work.description ? (
-              <p className="pf__desc">{work.description}</p>
-            ) : (
-              <p className="pf__desc todo">[DESCRIÇÃO DO PROJETO]</p>
-            )}
-            <MetaRow work={work} n={n} />
-          </div>
+          {meta}
         </>
       )}
       {open && work.youtubeId && <ProjectModal work={work} onClose={close} />}

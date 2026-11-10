@@ -29,6 +29,7 @@ export default function HomePage() {
         <Contact />
       </main>
       <Footer />
+      <div className="grain" aria-hidden />
       <ScrollTimecode />
     </>
   );

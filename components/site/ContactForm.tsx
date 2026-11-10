@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CONTACT, CONTACT_FORM } from "@/content/home.config";
+import { CONTACT_FORM, whatsappUrl } from "@/content/home.config";
 import { IconArrow } from "@/components/icons";
 
 /**
  * Sem backend/CMS (ver CLAUDE.md do projeto irmão — mesma filosofia aqui: nada de servidor
- * até existir necessidade real). O envio monta um e-mail (mailto:) com os dados preenchidos
- * e abre o app de e-mail do visitante — zero infraestrutura, funciona hoje.
+ * até existir necessidade real). O envio abre o WhatsApp com a mensagem já escrita a partir
+ * dos campos — funciona em qualquer aparelho, sem depender de app de e-mail instalado.
  */
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -17,13 +17,19 @@ export function ContactForm() {
     const data = new FormData(e.currentTarget);
     const name = String(data.get("name") || "");
     const email = String(data.get("email") || "");
+    const type = String(data.get("type") || "");
     const message = String(data.get("message") || "");
 
-    const subject = `Novo projeto — ${name || "site BIRO.mov"}`;
-    const body = `Nome: ${name}\nE-mail: ${email}\n\n${message}`;
-    const href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const lines = [
+      "Novo projeto — site BIRO.mov",
+      `${CONTACT_FORM.nameLabel}: ${name}`,
+      `${CONTACT_FORM.emailLabel}: ${email}`,
+      ...(type ? [`${CONTACT_FORM.typeLabel}: ${type}`] : []),
+      "",
+      message,
+    ];
 
-    window.location.href = href;
+    window.open(`${whatsappUrl}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener");
     setSent(true);
   }
 
@@ -51,23 +57,18 @@ export function ContactForm() {
         </label>
       </div>
 
-      <div className="cform__row">
-        <label className="cform__field">
-          <span>{CONTACT_FORM.typeLabel}</span>
-          <select name="type" defaultValue="">
-            <option value="">{CONTACT_FORM.typePlaceholder}</option>
-            {CONTACT_FORM.typeOptions.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="cform__field">
-          <span>{CONTACT_FORM.whatsappLabel}</span>
-          <input type="tel" name="whatsapp" placeholder={CONTACT_FORM.whatsappPlaceholder} autoComplete="tel" inputMode="tel" />
-        </label>
-      </div>
+      {/* o campo de WhatsApp saiu: a conversa já acontece no WhatsApp de quem envia */}
+      <label className="cform__field">
+        <span>{CONTACT_FORM.typeLabel}</span>
+        <select name="type" defaultValue="">
+          <option value="">{CONTACT_FORM.typePlaceholder}</option>
+          {CONTACT_FORM.typeOptions.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <label className="cform__field">
         <span>{CONTACT_FORM.messageLabel}</span>
@@ -79,7 +80,7 @@ export function ContactForm() {
         <IconArrow size={18} />
       </button>
 
-      {sent && <p className="cform__note" role="status">Abrindo seu app de e-mail com a mensagem pronta para enviar…</p>}
+      {sent && <p className="cform__note" role="status">Abrindo o WhatsApp com a mensagem pronta para enviar…</p>}
     </form>
   );
 }
