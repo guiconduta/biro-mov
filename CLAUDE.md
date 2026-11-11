@@ -43,6 +43,8 @@ direção cinematográfica que converte. Canal de origem dos vídeos: `youtube.c
    arquivo. Nunca commitar nem servir o `.ttf`. O hero usa os contornos já convertidos em
    SVG (`scripts/build-brandmark.mjs` → `components/site/brandmark.generated.ts`).
    Recomendado comprar licença comercial (thefontry.com) antes de lançar.
+   O arquivo fica no meu disco, fora do repo: `E:\Biro.mov\Edit Tools\Fonts\American Captain.ttf`
+   (para regenerar: `node scripts/build-brandmark.mjs "<esse caminho>"`).
 
 ## 4. Stack e estrutura
 
@@ -98,6 +100,10 @@ polimento Nguyan). Peças antigas são recuperáveis pelo git, não reintroduzir
 - Hero em camadas: "BIRO" atrás do retrato recortado (`public/branding/biro-cutout.webp`).
   Desktop com letras espaçadas; no celular, BIRO junto. Alinhar texto medindo a tinta pixel
   a pixel — a caixa do canvas erra em algumas fontes.
+- Descritor do hero em **pares** (aprovado em 2026-11-11): "DIREÇÃO · PRODUÇÃO" sob o B e
+  "AUDIO · VISUAL" sob o O, cada par justificado na largura da letra (no celular, cada par
+  em duas linhas). Os pares nascem juntos e se abrem no zoom-out, quando o retrato entra —
+  o mesmo gesto do nome, que se abre em volta do rosto. O texto dos pares fica no script.
 - Ordem da Home: Hero → Showreel → Trabalhos → Sobre → Clientes → Como trabalho →
   Por que me escolher → Contato.
 - Showreel: **provisório** com o vídeo "Olá 2026" (`SHOWREEL` em `content/home.config.ts`),
