@@ -12,9 +12,10 @@
   color: var(--text-dim);
 }
 
-/* grão de película sobre a página inteira: tira o "liso digital" do fundo, sem pesar na rolagem */
+/* grão de película: um só, sobre a página inteira (o do hero saiu). Fica numa camada própria da
+   placa de vídeo (translateZ), então rolar a página não redesenha o grão. */
 .grain {
-  position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: 0.075;
+  position: fixed; inset: 0; z-index: 80; pointer-events: none; opacity: 0.085; transform: translateZ(0);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -27,6 +28,7 @@
   transform: none;
   transition: opacity 1s var(--ease) var(--rv-delay, 0ms), filter 1.25s var(--ease) var(--rv-delay, 0ms), transform 1.25s var(--ease) var(--rv-delay, 0ms);
 }
+.works__item--full.reveal[data-reveal="hidden"] { filter: none; transform: translate3d(0, 26px, 0); }
 .magnetic, .magnetic__inner { display: inline-block; }
 .magnetic__inner { will-change: transform; } /* posição vem do Magnetic, quadro a quadro */
 
@@ -127,10 +129,6 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
     radial-gradient(70% 50% at 8% 62%, rgba(18, 53, 36, 0.7) 0%, transparent 70%),
     radial-gradient(70% 55% at 96% 40%, rgba(10, 42, 32, 0.8) 0%, transparent 70%),
     linear-gradient(180deg, #030807 0%, #04100c 60%, #030807 100%);
-}
-.hero__grain {
-  position: absolute; inset: 0; opacity: 0.32; mix-blend-mode: overlay; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* BIRO + .mov: texto real, atrás do retrato */
@@ -271,8 +269,11 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 @keyframes sweep { 0% { transform: translateX(-30%); } 50% { transform: translateX(30%); } 100% { transform: translateX(-30%); } }
 .showreel__poster, .showreel__preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 /* capa um pouco mais escura e lenta no hover: o play fica legível sobre qualquer quadro */
-.showreel__poster { filter: brightness(0.74) saturate(0.95); transform: scale(1.02); transition: transform 1.6s var(--ease), filter 0.6s var(--ease); }
-.showreel__frame:hover .showreel__poster { transform: scale(1.05); filter: brightness(0.86); }
+.showreel__poster { transform: scale(1.02); transition: transform 1.6s var(--ease); }
+.showreel__frame:hover .showreel__poster { transform: scale(1.05); }
+/* camada escura por cima da capa: mesmo resultado de um filtro de brilho, sem recalcular a imagem */
+.showreel__dim { position: absolute; inset: 0; pointer-events: none; background: var(--bg); opacity: 0.26; transition: opacity 0.6s var(--ease); }
+.showreel__frame:hover .showreel__dim { opacity: 0.14; }
 .showreel__preview { animation: fade-in 0.5s both; }
 .showreel__media { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: contain; background: #000; }
 .showreel__play {
@@ -455,10 +456,11 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 /* o texto do Sobre entra como fala de abertura (grande), não como legenda no canto */
 .about__text { display: grid; gap: 1em; max-width: 27em; font-size: clamp(19px, 1.85vw, 30px); font-weight: 300; line-height: 1.42; letter-spacing: -0.015em; color: var(--text-hi); }
 .about__photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; }
-.about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 40%; filter: brightness(0.78) contrast(1.08); }
+.about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 40%; }
 .about__photo::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, transparent 45%, rgba(3, 8, 7, 0.72) 100%), radial-gradient(80% 60% at 0% 100%, rgba(23, 101, 76, 0.35), transparent 70%);
+  /* a última camada (preto a 22%) faz o papel do antigo filtro de brilho 0,78 */
+  background: linear-gradient(180deg, transparent 45%, rgba(3, 8, 7, 0.72) 100%), radial-gradient(80% 60% at 0% 100%, rgba(23, 101, 76, 0.35), transparent 70%), linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22));
 }
 @media (max-width: 820px) {
   .about__grid { grid-template-columns: 1fr; }
@@ -485,8 +487,8 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .why__card {
   position: relative; isolation: isolate; overflow: hidden; min-height: 210px;
   border-radius: 22px;
+  /* sem backdrop-filter: atrás do cartão só há fundo liso, o desfoque de vidro não aparecia e custava caro */
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  -webkit-backdrop-filter: blur(16px) saturate(150%); backdrop-filter: blur(16px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 14px 40px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), background 0.4s var(--ease);
@@ -509,7 +511,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .why__content { display: grid; align-content: start; gap: 6px; padding: clamp(22px, 2.2vw, 30px); height: 100%; }
 .why__card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 22px; }
 /* número do motivo, apagado no canto — o mesmo algarismo largo que antes ficava no véu */
-.why__n { font-family: var(--font-d); font-stretch: 125%; font-weight: 900; font-size: 30px; line-height: 1; letter-spacing: -0.02em; color: rgba(242, 244, 241, 0.14); transition: color 0.4s var(--ease); }
+.why__n { font-family: var(--font-b); font-weight: 800; font-size: 30px; line-height: 1; letter-spacing: -0.02em; color: rgba(242, 244, 241, 0.14); transition: color 0.4s var(--ease); }
 .why__icon {
   display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; color: var(--text-hi);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
@@ -583,14 +585,15 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .workflow__screen { position: absolute; inset: 0; }
 .workflow__shot {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 45%;
-  opacity: 0; transform: scale(1.06); filter: saturate(0.9) brightness(0.92);
+  opacity: 0; transform: scale(1.06);
   transition: opacity 0.9s var(--ease), transform 7s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
 .workflow__shot[data-on] { opacity: 1; transform: scale(1); }
 /* escurece da esquerda e de baixo, onde fica a legenda */
 .workflow__screen::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, rgba(3, 8, 7, 0.92) 0%, rgba(3, 8, 7, 0.62) 38%, rgba(3, 8, 7, 0.08) 72%), linear-gradient(0deg, rgba(3, 8, 7, 0.85) 0%, transparent 46%);
+  /* a última camada (preto a 8%) faz o papel do antigo filtro de brilho das fotos */
+  background: linear-gradient(90deg, rgba(3, 8, 7, 0.92) 0%, rgba(3, 8, 7, 0.62) 38%, rgba(3, 8, 7, 0.08) 72%), linear-gradient(0deg, rgba(3, 8, 7, 0.85) 0%, transparent 46%), linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08));
 }
 /* marcas de área segura nos cantos, como no monitor do editor */
 .workflow__safe {
@@ -609,7 +612,7 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .workflow__nav-back { transform: scaleX(-1); }
 @media (max-width: 820px) {
   .workflow__monitor { min-height: 62svh; grid-template-columns: 1fr; align-content: end; }
-  .workflow__screen::after { background: linear-gradient(0deg, rgba(3, 8, 7, 0.95) 0%, rgba(3, 8, 7, 0.6) 48%, rgba(3, 8, 7, 0.1) 80%); }
+  .workflow__screen::after { background: linear-gradient(0deg, rgba(3, 8, 7, 0.95) 0%, rgba(3, 8, 7, 0.6) 48%, rgba(3, 8, 7, 0.1) 80%), linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)); }
   .workflow__shot { object-position: 55% 30%; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -694,7 +697,6 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--r-lg);
-  -webkit-backdrop-filter: blur(20px) saturate(140%); backdrop-filter: blur(20px) saturate(140%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 .cform__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }

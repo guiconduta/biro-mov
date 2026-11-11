@@ -91,6 +91,7 @@ export function Showreel({ config }: { config: ShowreelConfig }) {
                 ) : (
                   <div className="showreel__placeholder" aria-hidden />
                 )}
+                <span className="showreel__dim" aria-hidden />
                 {showPreview && (
                   <video className="showreel__preview" src={config.previewUrl} muted loop playsInline autoPlay preload="none" />
                 )}

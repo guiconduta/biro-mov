@@ -43,7 +43,6 @@ export function Hero() {
       {/* palco: fundo + BIRO + retrato (camadas separadas, todas reais) */}
       <div className="hero__stage">
         <div className="hero__bg" aria-hidden />
-        <div className="hero__grain" aria-hidden />
 
         <div className="hero__brand-wrap">
           {/* contornos (não texto): mesmo viewBox de largura nos dois SVGs = alinhamento exato */}

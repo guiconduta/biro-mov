@@ -36,7 +36,7 @@
   --r-pill: 999px;
   --r-input: 8px;
 
-  --font-d: var(--font-display), "Arial Black", system-ui, sans-serif;
+  --font-d: var(--font-b); /* a Archivo saiu: era baixada (88 KB) só para seis números */
   --font-b: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-m: var(--font-b);
 
