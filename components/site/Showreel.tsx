@@ -74,7 +74,7 @@ export function Showreel({ config }: { config: ShowreelConfig }) {
         </div>
       </Reveal>
 
-      <Reveal delay={120}>
+      <Reveal delay={120} mode="wipe">
         {hasVideo ? (
           <div
             className="showreel__frame"

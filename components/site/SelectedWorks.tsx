@@ -15,7 +15,7 @@ export function SelectedWorks() {
       </Reveal>
 
       {FEATURED_WORKS.map((work, i) => (
-        <Reveal key={i} className={`works__item works__item--${variantFor(i)}`}>
+        <Reveal key={i} mode="wipe" className={`works__item works__item--${variantFor(i)}`}>
           <ProjectFeature work={work} index={i} variant={variantFor(i)} flip={i % 2 === 0} />
         </Reveal>
       ))}

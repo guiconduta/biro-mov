@@ -14,12 +14,14 @@ export function Contact() {
             <h2 id="contato-label" className="label">CONTATO</h2>
           </Reveal>
 
-          <Reveal delay={100}>
+          <Reveal delay={80} mode="mask">
             <p className="contact__headline">{COPY.contactHeadline}</p>
+          </Reveal>
+          <Reveal delay={220}>
             <p className="contact__sub">{COPY.contactSub}</p>
           </Reveal>
 
-          <Reveal delay={200}>
+          <Reveal delay={320} mode="list">
             <ul className="contact__links">
               <li>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact__link">

@@ -20,15 +20,53 @@
 }
 
 /* ------------------------------------------------------------ reveal (scroll) */
-/* puxada de foco: entra desfocado e assenta — rápido o bastante para não atrasar a leitura */
-.reveal[data-reveal="hidden"] { opacity: 0; filter: blur(14px); transform: translate3d(0, 26px, 0) scale(1.04); }
+/* Entradas por MOVIMENTO, sem desfoque: só mexem posição, opacidade e recorte, que a placa de vídeo
+   anima quase de graça. A puxada de foco (desfoque) fica só na abertura do hero, que é a assinatura.
+   Modos (prop "mode" do Reveal): rise (padrão) · mask · wipe · words · list */
+.reveal { --rv-ease: cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* rise: sobe e aparece */
+.reveal[data-reveal="hidden"] { opacity: 0; transform: translate3d(0, 38px, 0); }
 .reveal[data-reveal="in"] {
   opacity: 1;
-  filter: none;
   transform: none;
-  transition: opacity 1s var(--ease) var(--rv-delay, 0ms), filter 1.25s var(--ease) var(--rv-delay, 0ms), transform 1.25s var(--ease) var(--rv-delay, 0ms);
+  transition: opacity 0.8s var(--rv-ease) var(--rv-delay, 0ms), transform 1.1s var(--rv-ease) var(--rv-delay, 0ms);
 }
-.works__item--full.reveal[data-reveal="hidden"] { filter: none; transform: translate3d(0, 26px, 0); }
+
+/* mask: o título sobe de dentro de uma máscara, como os textos do hero */
+.reveal--mask { overflow: clip; padding-block: 0.14em; margin-block: -0.14em; }
+.reveal--mask > .reveal__in { display: block; }
+.reveal--mask[data-reveal="hidden"] { opacity: 1; transform: none; }
+.reveal--mask[data-reveal="hidden"] > .reveal__in { transform: translate3d(0, 112%, 0); }
+.reveal--mask[data-reveal="in"] > .reveal__in { transition: transform 1.15s var(--rv-ease) var(--rv-delay, 0ms); }
+
+/* wipe: a imagem é descoberta de baixo para cima, enquanto assenta de um leve zoom.
+   O recorte fica no miolo (.reveal__in), não na caixa de fora: um elemento recortado por inteiro
+   nunca "entra na tela" para o sensor de rolagem e ficaria escondido para sempre. */
+.reveal--wipe > .reveal__in { display: block; }
+.reveal--wipe[data-reveal="hidden"] { opacity: 1; transform: none; }
+.reveal--wipe[data-reveal="hidden"] > .reveal__in { transform: translate3d(0, 46px, 0); clip-path: inset(100% 0 0 0); }
+.reveal--wipe[data-reveal="in"] > .reveal__in { clip-path: inset(0); transition: clip-path 1.2s var(--rv-ease) var(--rv-delay, 0ms), transform 1.3s var(--rv-ease) var(--rv-delay, 0ms); }
+.reveal--wipe[data-reveal="hidden"] img { transform: scale(1.14); }
+.reveal--wipe[data-reveal="in"] img { transition: transform 1.7s var(--rv-ease) var(--rv-delay, 0ms); }
+
+/* words: o texto entra palavra por palavra (cada .w recebe --wi com a sua posição) */
+.reveal--words .w { display: inline-block; }
+.reveal--words[data-reveal="hidden"] { opacity: 1; transform: none; }
+.reveal--words[data-reveal="hidden"] .w { opacity: 0; transform: translate3d(0, 0.7em, 0); }
+.reveal--words[data-reveal="in"] .w {
+  transition: opacity 0.7s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--wi, 0) * 16ms), transform 0.9s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--wi, 0) * 16ms);
+}
+
+/* list: os itens da lista deslizam da esquerda, um depois do outro */
+.reveal--list[data-reveal="hidden"] { opacity: 1; transform: none; }
+.reveal--list[data-reveal="hidden"] li { opacity: 0; transform: translate3d(-22px, 0, 0); }
+.reveal--list[data-reveal="in"] li {
+  transition: opacity 0.7s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--li, 0) * 90ms), transform 0.9s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--li, 0) * 90ms);
+}
+.reveal--list li:nth-child(2) { --li: 1; }
+.reveal--list li:nth-child(3) { --li: 2; }
+.reveal--list li:nth-child(4) { --li: 3; }
 .magnetic, .magnetic__inner { display: inline-block; }
 .magnetic__inner { will-change: transform; } /* posição vem do Magnetic, quadro a quadro */
 
@@ -308,8 +346,8 @@ button.showreel__play:hover { border-color: var(--phthalo-lit); box-shadow: 0 0 
 }
 .tc__rec { width: 6px; height: 6px; border-radius: 50%; background: var(--phthalo-lit); box-shadow: 0 0 8px rgba(79, 214, 168, 0.8); animation: rec 2s ease-in-out infinite; }
 .tc__time { color: var(--text-hi); }
-.tc__sec { text-transform: uppercase; color: var(--text-mute); animation: tc-sec 0.6s var(--ease) both; }
-@keyframes tc-sec { from { opacity: 0; filter: blur(6px); } }
+.tc__sec { display: inline-block; text-transform: uppercase; color: var(--text-mute); animation: tc-sec 0.6s var(--ease) both; }
+@keyframes tc-sec { from { opacity: 0; transform: translateY(5px); } }
 .tc__bar { position: relative; width: 100%; height: 18px; cursor: ew-resize; touch-action: none; }
 .tc__track, .tc__fill { position: absolute; left: 0; right: 0; top: 50%; height: 1px; }
 .tc__track { background: rgba(242, 244, 241, 0.14); }
@@ -620,9 +658,10 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 }
 .workflow__count { font-size: 13px; letter-spacing: 0.24em; color: var(--phthalo-lit); font-variant-numeric: tabular-nums; }
 .workflow__count span { color: var(--text-mute); }
-.workflow__title { font-size: clamp(44px, 6.6vw, 116px); font-weight: 300; letter-spacing: -0.055em; line-height: 0.95; color: var(--text-hi); animation: wf-in 0.8s var(--ease) both; }
-.workflow__text { max-width: 46ch; font-size: clamp(16px, 1.3vw, 19px); font-weight: 400; line-height: 1.6; color: var(--text); animation: wf-in 0.8s var(--ease) 0.08s both; }
-@keyframes wf-in { from { opacity: 0; filter: blur(12px); transform: translateY(14px); } }
+.workflow__title { font-size: clamp(44px, 6.6vw, 116px); font-weight: 300; letter-spacing: -0.055em; line-height: 0.95; color: var(--text-hi); animation: wf-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.workflow__text { max-width: 46ch; font-size: clamp(16px, 1.3vw, 19px); font-weight: 400; line-height: 1.6; color: var(--text); animation: wf-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+/* troca de etapa: o texto sobe (sem desfoque) */
+@keyframes wf-in { from { opacity: 0; transform: translateY(26px); } }
 
 /* timeline: cabeçalhos das trilhas à esquerda, régua + trilhas à direita */
 .wtl { display: grid; grid-template-columns: 34px 1fr; gap: 0 10px; }
@@ -764,4 +803,4 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .pm__info { display: flex; gap: 10px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); }
 .pm__roles { font-size: 13px; color: var(--text-mute); }
 @keyframes pm-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes pm-panel { from { opacity: 0; filter: blur(16px); transform: scale(1.05); } to { opacity: 1; filter: none; transform: none; } }
+@keyframes pm-panel { from { opacity: 0; transform: translateY(28px) scale(0.98); } to { opacity: 1; transform: none; } }
