@@ -86,22 +86,38 @@ Fluxo usado até hoje:
 O v4 substituiu todas as versões anteriores (v2 circular, v3.1 estilo gabrielside,
 polimento Nguyan). Peças antigas são recuperáveis pelo git, não reintroduzir sem pedido.
 
-- Phthalo Green como luz, fundo `#030807`. Fontes **Archivo** (display, largo e pesado)
-  + **Onest** (corpo), ambas via `next/font/google` em `app/layout.tsx`.
+- Phthalo Green como luz, fundo `#030807`. Fonte única **Onest**, via `next/font/google` em
+  `app/layout.tsx` (a Archivo saiu em 2026-11-11: pesava 88 KB para seis números).
+- **Movimento (revisão de 2026-11-11, aprovada por mim):** a puxada de foco (desfoque) fica
+  **só na abertura do hero**. No resto do site as entradas são por movimento, sem desfoque,
+  porque desfocar área grande a cada quadro deixava o site travado. O `Reveal` tem modos:
+  `rise` (sobe), `mask` (título sobe de dentro da máscara), `wipe` (imagem descoberta de
+  baixo para cima), `words` (palavra por palavra), `list` (itens deslizam). Não voltar a
+  usar `filter: blur` em entradas nem `backdrop-filter` em áreas grandes sobre fundo liso.
+- Um grão de película só, na página inteira (`.grain` em `app/page.tsx`).
 - Hero em camadas: "BIRO" atrás do retrato recortado (`public/branding/biro-cutout.webp`).
   Desktop com letras espaçadas; no celular, BIRO junto. Alinhar texto medindo a tinta pixel
   a pixel — a caixa do canvas erra em algumas fontes.
-- Ordem da Home: Hero → Showreel → Trabalhos → Sobre → Clientes → Como trabalho → Contato.
+- Ordem da Home: Hero → Showreel → Trabalhos → Sobre → Clientes → Como trabalho →
+  Por que me escolher → Contato.
+- Showreel: **provisório** com o vídeo "Olá 2026" (`SHOWREEL` em `content/home.config.ts`),
+  até o showreel oficial ficar pronto. Por isso o "Olá 2026" não está na lista de Trabalhos.
+- Trabalhos (`FEATURED_WORKS`, hoje 2): o 1º entra em tela cheia de borda a borda, os
+  seguintes em layout assimétrico alternando o lado. Descrição vazia não aparece (nada de
+  placeholder à vista do público).
 - "Como trabalho" = timeline de editor com 6 etapas, **navegada por clique** (clipes, setas
   ‹ ›, teclado, arrastar no celular). Uma tela de altura, **sem rolagem presa** (o sticky
-  antigo foi removido a meu pedido). Timecode fixo no pé da tela (some no hero e quando o
-  Como trabalho cruza o meio da tela).
-- Sobre: texto + foto. O bloco "Criação / Direção / Edição" com rack focus foi removido a
-  meu pedido.
-- "Por que me escolher": 6 cartões sem números inventados; `kicker` vazio esconde a
-  etiqueta pequena.
-- Formulário de contato (`mailto:`): Nome, E-mail, Tipo de projeto (opcional, vai no
-  assunto), WhatsApp (opcional), Mensagem.
+  antigo foi removido a meu pedido). O "monitor" mostra a foto da etapa em tela cheia
+  (`photo` e `focus` em `WORKFLOW_DATA`, arquivos em `public/workflow/`), com o texto como
+  legenda. Timecode fixo no pé da tela (some no hero e quando o Como trabalho cruza o meio
+  da tela).
+- Sobre: texto grande + foto. O bloco "Criação / Direção / Edição" com rack focus foi
+  removido a meu pedido.
+- "Por que me escolher": 6 cartões sem números inventados, **todos visíveis** (o "clique
+  para descobrir" foi removido a meu pedido); `kicker` vazio esconde a etiqueta pequena.
+- Contato em duas colunas (chamada + contatos diretos | formulário). O formulário **envia
+  por WhatsApp** (abre `wa.me` com a mensagem pronta): Nome, E-mail, Tipo de projeto
+  (opcional), Mensagem. O campo WhatsApp saiu por ser redundante.
 - `/work` = palco 3D de cartões 9:16 flutuando, **só vídeos verticais** (a página filtra
   `format === "9:16"`). Capas do YouTube `oar2.jpg` com fallback maxres/sd/hq.
 - Clientes: logos brancos em `public/clients/`, marquee que não pausa no hover.
@@ -117,8 +133,9 @@ botão de som / qualquer áudio no site.
 
 ## 7. Pendências
 
-- **Minhas (conteúdo):** showreel, escolha dos trabalhos e de quais vídeos entram no
-  `/work`, revisar o texto do Sobre (entrou como rascunho meu em 2026-10-28), título e
+- **Minhas (conteúdo):** showreel oficial (hoje o "Olá 2026" segura o lugar), foto da etapa
+  Pré-produção do Como trabalho, descrições dos trabalhos, escolha dos trabalhos e de quais
+  vídeos entram no `/work`, revisar o texto do Sobre (entrou como rascunho meu em 2026-10-28), título e
   subtítulo do "Por que me escolher" (ainda os da referência), títulos "a confirmar",
   categorias em inglês, cliente dos vídeos imobiliários avulsos, logo em vetor.
 - **Intro em vídeo (combinada em 2026-09-24, aguardando meu vídeo):** 3–5s em tela cheia,

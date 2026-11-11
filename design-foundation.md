@@ -18,7 +18,7 @@ Cinematográfico, contemporâneo, humano, preciso, imersivo, sensorial, autoral.
 - Ambas via `next/font/google` em `app/layout.tsx`.
 
 ## Hero em camadas (`components/site/Hero.tsx` + `app/home.css`)
-1. Fundo: gradientes Phthalo + grão SVG (`.hero__bg`, `.hero__grain`).
+1. Fundo: gradientes Phthalo (`.hero__bg`). O grão de película é um só, na página inteira (`.grain`).
 2. BIRO em texto real (`<h1 aria-label="BIRO.mov">`), letra a letra (`.ltr`), atrás do retrato; `.mov` alinhado à direita.
 3. Retrato recortado (`public/branding/biro-cutout.webp`, alpha) com rim light via `drop-shadow`. **Foto original do usuário, sem alteração de rosto.**
 4. Textos, CTA, ícone de scroll — todos texto/HTML real.
@@ -29,7 +29,7 @@ Cinematográfico, contemporâneo, humano, preciso, imersivo, sensorial, autoral.
 01 Hero · 02 Showreel · 03 Trabalhos · 04 Sobre · 05 Clientes e experiências · 06 Como trabalho · 07 Contato (+ Footer).
 
 ## Movimento
-Helpers próprios, sem biblioteca: `Reveal` (IntersectionObserver), `Magnetic` (cap ~6px, só ponteiro fino), `HeroParallax`, nav headroom. Tudo respeita `prefers-reduced-motion`.
+Helpers próprios, sem biblioteca: `Reveal` (IntersectionObserver; entradas por movimento, sem desfoque — modos rise, mask, wipe, words, list; o desfoque fica só na abertura do hero), `Magnetic` (cap ~6px, só ponteiro fino), `HeroParallax`, nav headroom. Tudo respeita `prefers-reduced-motion`.
 
 ## Conteúdo editável
 Tudo em `content/home.config.ts`: `CONTACT`, `COPY`, `NAV`, `HERO`, `SHOWREEL`, `FEATURED_WORKS`, `SOBRE_HEADLINE`/`SOBRE_TEXT`, `ABOUT`, `CLIENTS`, `WORKFLOW_DATA`. Textos não definidos ficam como placeholder `[EM BREVE]`-style — nunca inventar copy.
