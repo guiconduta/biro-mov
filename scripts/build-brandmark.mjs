@@ -12,8 +12,12 @@
  *
  * Geometria (tudo nas mesmas unidades, então o alinhamento é exato em qualquer tela):
  * - viewBox do BIRO = caixa de tinta das 4 letras (borda da tinta = borda do SVG);
- * - descritor no MESMO sistema de x: 1ª palavra começa na tinta do B; a 2ª ocupa
- *   exatamente a tinta do O (tamanho resolvido para caber); a 1ª usa o mesmo tamanho.
+ * - descritor no MESMO sistema de x, em dois PARES que rimam com o nome (BI | RO se abre
+ *   em volta do rosto): "DIREÇÃO · PRODUÇÃO" sob o B e "AUDIO · VISUAL" sob o O.
+ *   Desktop: cada par numa linha, justificado nas bordas da letra de cima, com um ponto no meio.
+ *   Celular: cada par empilhado em duas linhas (numa linha a letra ficaria ilegível).
+ *   Cada palavra sai num path próprio, com o deslocamento do estado "fechado" (dx/dy):
+ *   na abertura o par nasce junto e se abre quando o retrato entra (CSS em home.css).
  */
 import fs from "node:fs";
 import opentype from "opentype.js";
@@ -26,7 +30,9 @@ if (!fontPath || !fs.existsSync(fontPath)) {
 const font = opentype.loadSync(fontPath);
 const UPM = 1000;
 const WORD = "BIRO";
-const [DESC_A, DESC_B] = ["DIREÇÃO", "AUDIOVISUAL"];
+const PAIR_A = ["DIREÇÃO", "PRODUÇÃO"]; // sob o B
+const PAIR_B = ["AUDIO", "VISUAL"]; // sob o O
+const DESC_TEXT = "direção e produção audiovisual"; // como um leitor de tela lê o descritor
 const TRACK = 0.06; // espacejamento do descritor, em fração do tamanho dele
 const GAP = 22; // distância da base do BIRO até o topo do acento mais alto do descritor (unidades)
 
@@ -79,10 +85,10 @@ function stretch(path, sx, x0) {
  * - sx: esticamento horizontal (letra mais larga, "estendida");
  * - stroke: contorno da mesma cor em volta da letra (engrossa = mais bold).
  * O viewBox já inclui o contorno: borda da tinta visível = borda do SVG.
- * descSize null -> AUDIOVISUAL ocupa exatamente a tinta do O; número -> tamanho fixo,
- * DIREÇÃO começando na tinta do B e AUDIOVISUAL terminando na tinta do O.
+ * descSize null -> a palavra mais larga do descritor ocupa a tinta da letra de cima;
+ * número -> tamanho fixo. stacked -> cada par em duas linhas (celular).
  */
-function variant({ track, sx, stroke, descSize }) {
+function variant({ track, sx, stroke, descSize, stacked = false }) {
   const word = font.stringToGlyphs(WORD);
   const box0 = inkBox(WORD, UPM, 0);
   const pad = stroke / 2;
@@ -102,22 +108,67 @@ function variant({ track, sx, stroke, descSize }) {
   const B = letters[0];
   const O = letters[letters.length - 1];
 
-  const probe = inkBox(DESC_B, 100, TRACK);
-  const size = descSize ?? 100 * ((O.x2 - O.x1) / (probe.x2 - probe.x1));
-  const a = inkBox(DESC_A, size, TRACK);
-  const b = inkBox(DESC_B, size, TRACK);
-  const top = Math.min(a.y1, b.y1);
-  const bottom = Math.max(a.y2, b.y2);
+  const all = [...PAIR_A, ...PAIR_B];
+  const widthAt = (w, sz) => { const k = inkBox(w, sz, TRACK); return k.x2 - k.x1; };
+  // celular: o tamanho é resolvido para a palavra mais larga ocupar a tinta da letra de cima
+  const widest = all.reduce((m, w) => (widthAt(w, 100) > widthAt(m, 100) ? w : m));
+  // (0,8: um pouco menor que a letra, para a 2ª linha não entrar atrás do cabelo do retrato)
+  const size = descSize ?? 0.8 * 100 * ((B.x2 - B.x1) / widthAt(widest, 100));
+  const boxes = Object.fromEntries(all.map((w) => [w, inkBox(w, size, TRACK)]));
+  const top = Math.min(...all.map((w) => boxes[w].y1));
+  const bottom = Math.max(...all.map((w) => boxes[w].y2));
   const baseY = GAP - top;
+  const descWord = (w, x, y, dx, dy) => ({ d: pathData(w, size, TRACK, x - boxes[w].x1, y), dx: r(dx), dy: r(dy) });
+
+  const desc = [];
+  const dots = [];
+  let descH;
+  if (stacked) {
+    // duas linhas por par: a 2ª nasce escondida sob a 1ª e desce
+    const lineH = bottom - top + 0.3 * size;
+    for (const [pair, L, alignRight] of [[PAIR_A, B, false], [PAIR_B, O, true]]) {
+      pair.forEach((w, i) => {
+        const bw = boxes[w].x2 - boxes[w].x1;
+        desc.push(descWord(w, alignRight ? L.x2 - bw : L.x1, baseY + i * lineH, 0, -i * lineH));
+      });
+    }
+    descH = baseY + lineH + bottom;
+  } else {
+    // uma linha por par, justificada na letra; fechado = as duas palavras juntas no centro da letra
+    const cap = inkBox("I", size, 0);
+    const dot = 0.17 * size;
+    const closedGap = 0.34 * size;
+    // vão de referência = o do par do B; o par do O abre o espacejamento das letras até o vão
+    // dele ficar igual (é o "AUDIO · VISUAL" espaçado de propósito, justificado no O)
+    const gapOf = (pair, L, tr) => L.x2 - L.x1 - pair.reduce((n, w) => { const k = inkBox(w, size, tr); return n + k.x2 - k.x1; }, 0);
+    const gapA = gapOf(PAIR_A, B, TRACK);
+    const steps = PAIR_B.reduce((n, w) => n + w.length - 1, 0);
+    const trackB = TRACK + Math.max(0, gapOf(PAIR_B, O, TRACK) - gapA) / (steps * size);
+    for (const [pair, L, tr] of [[PAIR_A, B, TRACK], [PAIR_B, O, trackB]]) {
+      for (const w of pair) boxes[w] = inkBox(w, size, tr);
+      const descWord = (w, x, y, dx, dy) => ({ d: pathData(w, size, tr, x - boxes[w].x1, y), dx: r(dx), dy: r(dy) });
+      const [wa, wb] = pair.map((w) => boxes[w].x2 - boxes[w].x1);
+      const c = (L.x1 + L.x2) / 2;
+      const xa = L.x1;
+      const xb = L.x2 - wb;
+      const xaClosed = c - (wa + closedGap + wb) / 2;
+      desc.push(descWord(pair[0], xa, baseY, xaClosed - xa, 0), descWord(pair[1], xb, baseY, xaClosed + wa + closedGap - xb, 0));
+      // ponto quadrado (a fonte é de blocos) no meio do vão, na meia altura da maiúscula
+      const gapC = (xa + wa + xb) / 2;
+      const cy = baseY + (cap.y1 + cap.y2) / 2;
+      dots.push(`M${r(gapC - dot / 2)} ${r(cy - dot / 2)}h${r(dot)}v${r(dot)}h${r(-dot)}Z`);
+    }
+    descH = baseY + bottom;
+  }
   return {
-    W: r(W), H: r(H), stroke, descSize: r(size), descH: r(baseY + bottom),
+    W: r(W), H: r(H), stroke, descSize: r(size), descH: r(descH),
     letters: letters.map((l) => l.d),
-    desc: [pathData(DESC_A, size, TRACK, B.x1 - a.x1, baseY), pathData(DESC_B, size, TRACK, O.x2 - b.x2, baseY)],
+    desc, dots,
   };
 }
 
 // celular: BIRO junto e um pouco mais largo/grosso (o rosto fica abaixo do nome)
-const tight = variant({ track: 20, sx: 1.12, stroke: 16, descSize: null });
+const tight = variant({ track: 20, sx: 1.12, stroke: 16, descSize: null, stacked: true });
 // desktop: largo e bold, com espaço moderado entre as letras; o descritor mantém o
 // tamanho visual que tinha (79,26u com o BIRO a 42svh -> BIRO agora a DESK_H svh)
 const DESK_H = 50;
@@ -126,11 +177,14 @@ const wide = variant({ track: 110, sx: 1.4, stroke: 26, descSize: 79.26 * (42 / 
 const out = `// GERADO por scripts/build-brandmark.mjs — não edite à mão.
 // Contornos da American Captain (fonte NÃO incluída no repositório; ver o script).
 
+/** Uma palavra do descritor: contorno + deslocamento do estado "fechado" (antes de o par se abrir). */
+export type DescWord = { d: string; dx: number; dy: number };
 export type BrandVariant = {
   W: number; H: number; stroke: number; descSize: number; descH: number;
-  letters: readonly string[]; desc: readonly [string, string];
+  letters: readonly string[]; desc: readonly DescWord[]; dots: readonly string[];
 };
-export const DESC_WORDS = ${JSON.stringify([DESC_A, DESC_B])} as const;
+/** texto do descritor para leitores de tela (os contornos são só desenho) */
+export const DESC_TEXT = ${JSON.stringify(DESC_TEXT)};
 /** desktop: altura do BIRO pensada para ${DESK_H}svh */
 export const BRAND_DESK_H_SVH = ${DESK_H};
 export const BRAND_WIDE: BrandVariant = ${JSON.stringify(wide, null, 2)};

@@ -3,7 +3,7 @@ import { COPY, HERO } from "@/content/home.config";
 import { HeroParallax } from "@/components/ui/HeroParallax";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { IconArrow, IconMouse } from "@/components/icons";
-import { BRAND_TIGHT, BRAND_WIDE, DESC_WORDS, type BrandVariant } from "@/components/site/brandmark.generated";
+import { BRAND_TIGHT, BRAND_WIDE, DESC_TEXT, type BrandVariant } from "@/components/site/brandmark.generated";
 
 /** BIRO + descritor de uma variante; os dois SVGs têm a mesma largura de viewBox = alinhamento exato. */
 function Mark({ v, className }: { v: BrandVariant; className: string }) {
@@ -16,8 +16,12 @@ function Mark({ v, className }: { v: BrandVariant; className: string }) {
         ))}
       </svg>
       <svg className="hero__desc" viewBox={`0 0 ${v.W} ${v.descH}`} aria-hidden focusable="false">
-        {v.desc.map((d, i) => (
-          <path key={i} d={d} />
+        {/* cada par nasce junto e se abre quando o retrato entra (--dx/--dy = estado fechado) */}
+        {v.desc.map((w, i) => (
+          <path key={i} className="hero__dw" d={w.d} style={{ ["--dx" as string]: w.dx, ["--dy" as string]: w.dy, ["--o0" as string]: w.dy ? 0 : 1 }} />
+        ))}
+        {v.dots.map((d, i) => (
+          <path key={`dot${i}`} className="hero__dot" d={d} />
         ))}
       </svg>
     </span>
@@ -53,7 +57,7 @@ export function Hero() {
               ["--ar-tight" as string]: BRAND_TIGHT.W / BRAND_TIGHT.H,
             }}
           >
-            <span className="sr-only">BIRO — {DESC_WORDS.join(" ").toLowerCase()}</span>
+            <span className="sr-only">BIRO — {DESC_TEXT}</span>
             {/* desktop: letras espaçadas em volta do rosto · celular: BIRO junto */}
             <Mark v={BRAND_WIDE} className="hero__mark--wide" />
             <Mark v={BRAND_TIGHT} className="hero__mark--tight" />

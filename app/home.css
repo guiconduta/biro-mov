@@ -192,6 +192,13 @@ a.socials__a:hover { color: #fff; transform: translateY(-1px); }
 .hero__biro, .hero__desc { display: block; width: 100%; height: auto; fill: currentColor; overflow: visible; }
 .hero__biro { animation: brand-in 1.9s var(--ease) 0.05s both; }
 .hero__desc { animation: fade-up 1.6s var(--ease) 0.75s both; }
+/* descritor em pares (DIREÇÃO · PRODUÇÃO sob o B, AUDIO · VISUAL sob o O): cada par nasce junto
+   e se abre no mesmo tempo do zoom-out, quando o retrato entra — o mesmo gesto do nome, que se
+   abre em volta do rosto. --dx/--dy = posição "fechada" de cada palavra (vem do gerador). */
+.hero__dw { animation: desc-open 1.6s cubic-bezier(0.65, 0, 0.35, 1) 2.2s both; }
+.hero__dot { transform-box: fill-box; transform-origin: center; animation: dot-in 0.9s var(--ease) 3.2s both; }
+@keyframes desc-open { from { opacity: var(--o0, 1); transform: translate(calc(var(--dx, 0) * 1px), calc(var(--dy, 0) * 1px)); } to { opacity: 1; transform: none; } }
+@keyframes dot-in { from { opacity: 0; transform: scale(0); } }
 
 /* retrato recortado + luz Phthalo nas bordas */
 .hero__figure-wrap {
