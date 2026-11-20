@@ -28,13 +28,13 @@ export const COPY = {
   heroTagline: [
     "Transformo ideias em",
     "experiências imersivas,",
-    "marcando sua presença digital.",
+    "marcando sua presença no mundo.",
   ],
   heroStatement: ["Reimaginando a vida", "com visual, som e ritmo."],
   cta: "Começar um projeto",
   scroll: "Role para explorar",
-  contactHeadline: "Pronto para uma imersão?",
-  contactSub: "Me diga sobre seu projeto e retornarei com um plano para trazer sua ideia à realidade.",
+  contactHeadline: "Pronto para conquistar o seu espaço no mundo?",
+  contactSub: "Me conte sobre o seu projeto e a sua visão, e eu volto com um plano para tirar a sua ideia do papel.",
   seeAllWorks: "Ver todos os trabalhos",
   seeProject: "Ver projeto",
 } as const;
@@ -145,7 +145,9 @@ export const FEATURED_WORKS: Work[] = [
 /* ----------------------------------------------------------------- sobre */
 export const SOBRE_HEADLINE = "Sobre"; // headline grande (definido pelo autor)
 // texto pessoal — separe parágrafos com linha em branco
-export const SOBRE_TEXT = `Sou o Biro, filmmaker e editor em Joinville. Venho do audiovisual e do design, e trabalho com marcas, eventos e criadores que querem conteúdo com intenção: imagem bonita, sim, mas com ritmo e história. Dirijo, filmo e edito cada projeto de perto, do roteiro à entrega.`;
+export const SOBRE_TEXT = `Mexo com editores de vídeo desde os 12 anos. Aos 14, me apaixonei de verdade: fazia montagens para uma comunidade de games no YouTube, e alguns vídeos chegaram a 2 milhões de visualizações. Mais do que os números, o que me marcou foi perceber que dava para moldar a realidade de um vídeo e fazer as pessoas sentirem alguma coisa com ele.
+
+A vida me levou para outros caminhos, mas o meu sonho me trouxe de volta. Hoje sou filmmaker e editor em Joinville e região, e é isso que eu busco em cada projeto: criar pontes entre as pessoas e fazer com que quem assiste saia um pouco diferente de como chegou.`;
 
 export const ABOUT = {
   photo: "/branding/sobre.jpg",
@@ -181,15 +183,15 @@ export type WhyItem = { kicker: string; title: string; text: string; icon: WhyIc
 export const WHY_ME = {
   eyebrow: "POR QUE EU",
   title: "Por que me escolher?",
-  sub: "Veja por que sou a escolha certa para inovar na sua marca.",
+  sub: "Seis motivos que elevam a sua presença.",
   items: [
     // kicker vazio = não mostra a etiqueta pequena acima do título
-    { kicker: "", title: "Um responsável do início ao fim", text: "Roteiro, câmera e edição na mesma mão. Sem ruído entre etapas.", icon: "users" },
-    { kicker: "", title: "Olhar de cinema, ritmo de redes", text: "Estética cinematográfica adaptada ao formato curto.", icon: "eye" },
-    { kicker: "", title: "Edição que segura atenção", text: "Gancho, cadência e corte pensados para retenção.", icon: "chart" },
-    { kicker: "", title: "Identidade, não template", text: "Cada marca ganha uma linguagem visual própria.", icon: "palette" },
-    { kicker: "", title: "Processo claro", text: "Etapas, prazos e aprovações combinados antes de começar.", icon: "clipboard" },
-    { kicker: "", title: "Parceria contínua", text: "Pacotes mensais para quem quer constância, não só um vídeo.", icon: "sparkle" },
+    { kicker: "", title: "Direção criativa do início ao fim", text: "Cada projeto passa por mim, da ideia à entrega, e conta com uma equipe de edição e design quando precisa de mais mãos.", icon: "users" },
+    { kicker: "", title: "Leitor de emoções", text: "De conteúdos para redes sociais a documentários, eu sei o que você precisa dizer e sei o que quem assiste vai sentir. É assim que um vídeo não é apenas visto, mas lembrado.", icon: "eye" },
+    { kicker: "", title: "Experiência imersiva", text: "Produzir comigo traz um olhar profissional e, ao mesmo tempo, muito pessoal para o seu conteúdo. Quem assiste não sente que está olhando para uma tela, e sim tendo uma conversa natural com você, frente a frente.", icon: "chart" },
+    { kicker: "", title: "Identidade", text: "Eu ajudo você a encontrar a sua identidade visual própria.", icon: "palette" },
+    { kicker: "", title: "Transparência", text: "Prazos, roteiros e um material de apoio para você chegar preparado na gravação. Tudo combinado antes de começar.", icon: "clipboard" },
+    { kicker: "", title: "Fidelidade", text: "Pacotes mensais com desconto para quem quer conteúdo com constância.", icon: "sparkle" },
   ] satisfies WhyItem[],
 };
 
@@ -205,10 +207,10 @@ export type WorkflowStep = { title: string; text: string; photo?: string; focus?
  * Títulos = sugestão inicial (troque à vontade). text vazio = aparece [TEXTO DA ETAPA].
  */
 export const WORKFLOW_DATA: WorkflowStep[] = [
-  { title: "Pré-produção", text: "Entendo o objetivo, defino roteiro, referências e plano de captação antes de ligar a câmera." },
-  { title: "Captação", text: "Filmagem com direção de cena, luz e enquadramento pensados para a edição.", photo: "/workflow/captacao.webp" },
-  { title: "Edição", text: "Ritmo, narrativa e ganchos montados para prender atenção do primeiro ao último segundo.", photo: "/workflow/edicao.webp" },
-  { title: "Cor", text: "Tratamento de cor que dá unidade e identidade visual à peça.", photo: "/workflow/cor.webp", focus: "60% 100%" },
-  { title: "Som", text: "Trilha, design de som e mixagem para o vídeo funcionar com e sem fone.", photo: "/workflow/som.webp" },
-  { title: "Entrega", text: "Arquivos finais nos formatos de cada plataforma, prontos para publicar.", photo: "/workflow/entrega.webp" },
+  { title: "Pré-produção", text: "Tudo começa com uma conversa de 30 minutos a uma hora. A ideia é levar a sua marca para outro patamar, com cara de profissional, mas sem perder o que ela tem de seu. Nessa conversa eu conheço você e a sua marca de verdade: o que você quer alcançar, para quem você fala, qual é a sua voz e a sua imagem." },
+  { title: "Captação", text: "No dia da gravação, a gente chega com o roteiro já aprovado. Você só precisa fazer o que combinamos, e dá para gravar vários roteiros na mesma sessão. Se a câmera te trava, eu dirijo cada take com você até sair natural. Para mim, profissional de verdade é isso: sua marca num outro nível, sem parecer forçado.", photo: "/workflow/captacao.webp" },
+  { title: "Edição", text: "Aqui é onde a mágica acontece. Com o material gravado do jeito que combinamos, a edição é a parte em que eu mais me entrego. Muitas ideias aparecem só na hora de montar e fazem o vídeo ganhar uma cara nova, muitas vezes melhor do que o planejado, mas sempre dentro do que a gente definiu.", photo: "/workflow/edicao.webp" },
+  { title: "Cor", text: "A cor é o clima do vídeo. Tenho bastante bagagem de referências cinematográficas, então consigo criar a ambientação certa para cada projeto. Nos primeiros segundos, a sensação já está ali, antes mesmo de qualquer fala aparecer.", photo: "/workflow/cor.webp", focus: "60% 100%" },
+  { title: "Som", text: "O som é um dos estímulos mais fortes de um vídeo. Trabalho com uma biblioteca profissional, usada por grandes criadores de conteúdo e grandes produtoras, e tem projeto que chega a 10 ou 15 camadas de áudio. É assim que a ambientação fica certa e quem assiste sente que está vivendo junto o que acontece no vídeo.", photo: "/workflow/som.webp" },
+  { title: "Entrega", text: "Entrego tudo por plataforma digital, já no formato certo para cada rede. Você assiste, avalia e pede os ajustes. As rodadas de revisão variam conforme o projeto, e a gente vai ajustando até chegar na versão final que você quer.", photo: "/workflow/entrega.webp" },
 ];

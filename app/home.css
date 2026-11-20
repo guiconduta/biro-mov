@@ -55,7 +55,7 @@
 .reveal--words[data-reveal="hidden"] { opacity: 1; transform: none; }
 .reveal--words[data-reveal="hidden"] .w { opacity: 0; transform: translate3d(0, 0.7em, 0); }
 .reveal--words[data-reveal="in"] .w {
-  transition: opacity 0.7s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--wi, 0) * 16ms), transform 0.9s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--wi, 0) * 16ms);
+  transition: opacity 0.7s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--wi, 0) * 8ms), transform 0.9s var(--rv-ease) calc(var(--rv-delay, 0ms) + var(--wi, 0) * 8ms);
 }
 
 /* list: os itens da lista deslizam da esquerda, um depois do outro */
@@ -498,8 +498,8 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .about__grid { display: grid; grid-template-columns: 6fr 5fr; gap: clamp(32px, 7vw, 120px); align-items: end; }
 .about__copy { display: grid; gap: clamp(22px, 3vw, 44px); align-content: end; }
 .about__headline { font-size: clamp(38px, 5.6vw, 104px); font-weight: 200; letter-spacing: -0.05em; line-height: 0.98; color: var(--text-hi); }
-/* o texto do Sobre entra como fala de abertura (grande), não como legenda no canto */
-.about__text { display: grid; gap: 1em; max-width: 27em; font-size: clamp(19px, 1.85vw, 30px); font-weight: 300; line-height: 1.42; letter-spacing: -0.015em; color: var(--text-hi); }
+/* o texto do Sobre entra como fala de abertura, não como legenda no canto (dois parágrafos: tamanho de leitura) */
+.about__text { display: grid; gap: 1em; max-width: 34em; font-size: clamp(17px, 1.3vw, 21px); font-weight: 300; line-height: 1.55; letter-spacing: -0.015em; color: var(--text-hi); }
 .about__photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 4px; }
 .about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 46% 40%; }
 .about__photo::after {
@@ -657,7 +657,8 @@ button.pf__media-link { width: 100%; padding: 0; border: 0; background: none; fo
 .workflow__nav-back { transform: scaleX(-1); }
 @media (max-width: 820px) {
   .workflow__monitor { min-height: 62svh; grid-template-columns: 1fr; align-content: end; }
-  .workflow__screen::after { background: linear-gradient(0deg, rgba(3, 8, 7, 0.95) 0%, rgba(3, 8, 7, 0.6) 48%, rgba(3, 8, 7, 0.1) 80%), linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)); }
+  /* a legenda ocupa mais da metade do quadro no celular: o escuro sobe junto */
+  .workflow__screen::after { background: linear-gradient(0deg, rgba(3, 8, 7, 0.96) 0%, rgba(3, 8, 7, 0.86) 55%, rgba(3, 8, 7, 0.35) 82%, rgba(3, 8, 7, 0.1) 100%), linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)); }
   .workflow__shot { object-position: 55% 30%; }
 }
 @media (prefers-reduced-motion: reduce) {

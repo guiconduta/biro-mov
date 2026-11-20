@@ -117,9 +117,9 @@ polimento Nguyan). Peças antigas são recuperáveis pelo git, não reintroduzir
   (`photo` e `focus` em `WORKFLOW_DATA`, arquivos em `public/workflow/`), com o texto como
   legenda. Timecode fixo no pé da tela (some no hero e quando o Como trabalho cruza o meio
   da tela).
-- Sobre: texto grande + foto. O bloco "Criação / Direção / Edição" com rack focus foi
+- Sobre: dois parágrafos (textos finais meus, 2026-11-20) + foto. O bloco "Criação / Direção / Edição" com rack focus foi
   removido a meu pedido.
-- "Por que me escolher": 6 cartões sem números inventados, **todos visíveis** (o "clique
+- "Por que me escolher": 6 cartões com os textos finais (2026-11-20), **todos visíveis** (o "clique
   para descobrir" foi removido a meu pedido); `kicker` vazio esconde a etiqueta pequena.
 - Contato em duas colunas (chamada + contatos diretos | formulário). O formulário **envia
   por WhatsApp** (abre `wa.me` com a mensagem pronta): Nome, E-mail, Tipo de projeto
@@ -141,8 +141,7 @@ botão de som / qualquer áudio no site.
 
 - **Minhas (conteúdo):** showreel oficial (hoje o "Olá 2026" segura o lugar), foto da etapa
   Pré-produção do Como trabalho, descrições dos trabalhos, escolha dos trabalhos e de quais
-  vídeos entram no `/work`, revisar o texto do Sobre (entrou como rascunho meu em 2026-10-28), título e
-  subtítulo do "Por que me escolher" (ainda os da referência), títulos "a confirmar",
+  vídeos entram no `/work`, títulos "a confirmar",
   categorias em inglês, cliente dos vídeos imobiliários avulsos, logo em vetor.
 - **Intro em vídeo (combinada em 2026-09-24, aguardando meu vídeo):** 3–5s em tela cheia,
   mudo, antes do hero; no fim dissolve "em areia" feito em código (WebGL: noise threshold +
